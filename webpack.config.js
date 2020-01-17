@@ -1,12 +1,29 @@
+//https://sujinlee.me/webpack-react-tutorial/
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const port = process.env.PORT || 3000;
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: {
+    vendor: ['semantic-ui-react'],
+    app: './src/index.js'
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          test: 'vendor',
+          name: 'vendor',
+          enforce: true
+        }
+      }
+    }
+  },
   output: {
-    filename: "bundle.[hash].js"
+    publicPath: "/",
+    filename: '[name].[hash].js',
   },
   devtool: "inline-source-map",
 
@@ -37,6 +54,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: "public/index.html",
       favicon: "public/favicon.ico"
@@ -47,6 +65,7 @@ module.exports = {
     host: "localhost",
     port: port,
     historyApiFallback: true,
-    open: true
+    open: true,
+    hot: true
   },
 };
