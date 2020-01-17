@@ -21,7 +21,7 @@ const AsyncNoMatch = importedComponent(
 const App = () => {
 		return (
 				<Router>
-						<div>
+						<div className="box">
 								<Switch>
 										<Route exact path="/" component={Home} />
 										<Route exact path="/dynamic" component={AsyncDynamicPAge} />

@@ -1,7 +1,7 @@
 //https://sujinlee.me/webpack-react-tutorial/
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 module.exports = {
   mode: "development",
@@ -35,31 +35,24 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              sourceMap: true
-            }
-          }
+        test: /\.scss$/,
+        loaders: [
+          require.resolve( 'style-loader' ),
+          require.resolve( 'css-loader' ),
+          require.resolve( 'sass-loader' )
         ]
-      }
+      },
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx','.ts','.tsx', '.css']
+    extensions: ['*', '.js', '.jsx','.ts','.tsx']
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: "public/index.html",
-      favicon: "public/favicon.ico"
+      template: "index.html",
+      favicon: "resources/images/icons/favicon.ico"
     })
   ],
 
