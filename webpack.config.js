@@ -7,7 +7,7 @@ module.exports = {
   mode: "development",
   entry: {
     vendor: ['semantic-ui-react'],
-    app: './src/index.js'
+    app: './src/index.tsx'
   },
   optimization: {
     splitChunks: {
@@ -30,9 +30,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx|ts|tsx)$/, //
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       },
       {
         test: /\.css$/,
@@ -44,13 +44,15 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: true,
-              // camelCase: true,
               sourceMap: true
             }
           }
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx','.ts','.tsx', '.css']
   },
 
   plugins: [
