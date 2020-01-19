@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    font-family: '돋움'
+}
+
+body {
+    height: 100vh;
+}
+
+.inner-contents {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+#all-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 48px;
+    background-color: #0a1425;
+}
+
+.search-wrap {
+    height: 130px;
+}
+
+.category {
+    height: 47px;
+}
+
+section {
+    flex-grow: 1;
+}
+
+.footer-top {
+    height: 45px;
+}
+
+.footer-center {
+    height: 110px;
+}
+
+.footer-bottom {
+    height: 156px;
+}
+
+.naver-color {
+    color: #03cf5d;
+}
+
+.white-color {
+    color: white;
+}
