@@ -16,12 +16,12 @@ export default class FormInputButton extends React.Component<AppProp, AppState> 
         labelText: ""
     };
 
-    label = (this.props.labelText) ? <label htmlFor="">{this.props.labelText}</label> : '';
+    renderLabel = (this.props.labelText) ? <label htmlFor="">{this.props.labelText}</label> : '';
 
     render() {
         return (
             <div className="form-item">
-                {this.label}
+                {this.renderLabel}
                 <div className="form-item-inner">
                     <input/>
                     <button>{this.props.buttonText}</button>
