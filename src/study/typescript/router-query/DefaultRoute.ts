@@ -1,4 +1,4 @@
-import { COMMON_QUERY} from "./DefaultQuery";
+import {COMMON_QUERY} from "./DefaultQuery";
 
 export function withoutEmptyString(value: string): boolean {
 
@@ -25,14 +25,14 @@ export function propertyDelete(object: object, ...deleteModes: Array<Function>):
 
     let clone = {...object};
 
-    Object.keys(clone).forEach( property => {
+    Object.keys(clone).forEach(property => {
 
         // @ts-ignore
         let value = clone[property];
 
-        let needDelete = deleteModes.some( deleteMode => deleteMode(value) );
+        let needDelete = deleteModes.some(deleteMode => deleteMode(value));
 
-        if(needDelete) {
+        if (needDelete) {
 
             // @ts-ignore
             delete clone[property];

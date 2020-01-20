@@ -1,4 +1,4 @@
-import { EndingQuizGenerator } from "./EndingQuizGenerator";
+import {EndingQuizGenerator} from "./EndingQuizGenerator";
 
 export class EnglishEndingQuizGenerator extends EndingQuizGenerator {
 
@@ -6,7 +6,7 @@ export class EnglishEndingQuizGenerator extends EndingQuizGenerator {
 
         let randomWord = "";
 
-        for(let i = 0 ; i < 10 ; i++) {
+        for (let i = 0; i < 10; i++) {
 
             randomWord = randomWord.concat(String.fromCharCode(parseInt(String(Math.random() * 26)) + 97));
         }

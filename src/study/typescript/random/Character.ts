@@ -9,7 +9,7 @@ class Character {
     readonly NATURAL_NUMBERS_STRING: Array<string> = this.NATURAL_NUMBERS.map(val => String(val));
 
     //0부터 9까지
-    readonly NUMBERS:Array<number> = [0].concat(this.NATURAL_NUMBERS);
+    readonly NUMBERS: Array<number> = [0].concat(this.NATURAL_NUMBERS);
 
     //0부터 9까지
     readonly NUMBERS_STRING: Array<string> = ["0"].concat(this.NATURAL_NUMBERS_STRING);
@@ -47,7 +47,7 @@ class Character {
     //일반적으로 입력하는 특수문자들
     readonly GENERAL_SPECIAL_LETTERS: Array<string> =
         ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "]", "\\", "|", "-", "+", "/", ",", ".", "<", ">", "?",
-        "\"", ":", ";", "_", "="];
+            "\"", ":", ";", "_", "="];
 }
 
 const CHARACTERS = new Character();

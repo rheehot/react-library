@@ -1,6 +1,6 @@
 import RouterQuery from "./RouterQuery";
 
-export default class SqlRouterQuery  extends RouterQuery {
+export default class SqlRouterQuery extends RouterQuery {
     private static readonly VALID_ORDERBY_VALUE: Array<string> = ["asc", "desc"];
     private static readonly DEFAULT_ORDERBY_VALUE: string = "desc";
     private _orderby: string = SqlRouterQuery.DEFAULT_ORDERBY_VALUE;
@@ -19,7 +19,7 @@ export default class SqlRouterQuery  extends RouterQuery {
      */
     set orderby(value: string) {
 
-        if(!SqlRouterQuery.VALID_ORDERBY_VALUE.includes(value)) {
+        if (!SqlRouterQuery.VALID_ORDERBY_VALUE.includes(value)) {
             console.warn(`경고 : 유효하지않은 값을 set하려고 시도하여, 시도가 실패되었습니다. 
             set을 시도한값=${value}`);
 

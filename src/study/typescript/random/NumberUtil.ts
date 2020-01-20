@@ -3,13 +3,14 @@ import MinMaxValidatiom from "../validate/common/MinMaxValidatiom";
 class NumberUtil {
 
     private static readonly MIN_MAX_VALIDATION = new MinMaxValidatiom();
+
     /**
      * @param min 이상
      * @param max 이하
      * @return min ~ max사이에 랜덤한 숫자 1개를 반환합니다.
      * @example (1, 10) ==> 8
      */
-    getMinMaxNumber(min: number, max: number) : number {
+    getMinMaxNumber(min: number, max: number): number {
 
         let {min: _min, max: _max} = NumberUtil.MIN_MAX_VALIDATION.validate({min, max});
 
@@ -37,7 +38,7 @@ class NumberUtil {
 
         let result: Array<number> = [];
 
-        for(let i = _min ; i < _max + 1; i++)
+        for (let i = _min; i < _max + 1; i++)
             result.push(i);
 
         return result;

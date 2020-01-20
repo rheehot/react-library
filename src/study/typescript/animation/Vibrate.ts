@@ -1,7 +1,7 @@
 export default class Vibrate {
 
-    private static readonly VIBRATE_INTERVAL:number = 20;
-    private static readonly VIBRATE_DISTANCE:number = 2;
+    private static readonly VIBRATE_INTERVAL: number = 20;
+    private static readonly VIBRATE_DISTANCE: number = 2;
 
     private vibrateDom: HTMLElement;
     private timeoutId: number = 0;
@@ -9,7 +9,7 @@ export default class Vibrate {
 
     constructor(dom: HTMLElement) {
 
-        if(dom) {
+        if (dom) {
             this.vibrateDom = dom;
             this.vibrateDom.style.position = "relative";
 
@@ -35,7 +35,7 @@ export default class Vibrate {
             window.clearInterval(this.intervalId);
             window.clearInterval(this.timeoutId);
 
-            if(onTerminated) onTerminated();
+            if (onTerminated) onTerminated();
 
         }, timeout);
     }

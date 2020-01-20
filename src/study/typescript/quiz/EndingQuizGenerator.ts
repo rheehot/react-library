@@ -6,7 +6,7 @@ export abstract class EndingQuizGenerator implements QuizGenerator {
 
     isAnswer(currentWord: string) {
 
-        if(currentWord === this.previousWord)
+        if (currentWord === this.previousWord)
             return false;
 
         return this.previousWord.charAt(this.previousWord.length - 1) === currentWord.charAt(0);

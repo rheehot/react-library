@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface AppProp {
-	labelText: string
+    labelText: string
 }
 
 interface AppState {
@@ -10,18 +10,18 @@ interface AppState {
 
 export default class FormInput extends React.Component<AppProp, AppState> {
 
-		static defaultProps = {
-				labelText : ""
-		};
+    static defaultProps = {
+        labelText: ""
+    };
 
-		label = (this.props.labelText) ? <label htmlFor="">{this.props.labelText}</label> : '';
+    label = (this.props.labelText) ? <label htmlFor="">{this.props.labelText}</label> : '';
 
-		render() {
-				return (
-						<div className="form-item">
-								{this.label}
-								<input/>
-						</div>
-				)
-		}
+    render() {
+        return (
+            <div className="form-item">
+                {this.label}
+                <input/>
+            </div>
+        )
+    }
 }

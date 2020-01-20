@@ -24,7 +24,7 @@ enum Action {
 
 const canActionByRole = (function () {
 
-    const _canActionByRole: {[index: string]:any} = {};
+    const _canActionByRole: { [index: string]: any } = {};
 
     _canActionByRole[CafeRole.OWNER] = [
         ...Object.keys(Action)
@@ -41,10 +41,11 @@ const canActionByRole = (function () {
     return Object.freeze(_canActionByRole);
 }());
 
-function canAction(userRole: CafeRole, action: Action):boolean {
+function canAction(userRole: CafeRole, action: Action): boolean {
 
     return canActionByRole[userRole].includes(action);
 }
+
 /*
 문제1.
 서버측에서 role하나가 추가되면

@@ -22,7 +22,7 @@ class RandomString {
 
         let result = new Array<string>(_length);
 
-        for(let i = 0 ; i < _length ; i++ ) {
+        for (let i = 0; i < _length; i++) {
 
             let randomIndex = numberUtil.getMinMaxNumber(0, _array.length - 1);
             result.push(String(_array[randomIndex]));

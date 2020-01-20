@@ -1,6 +1,6 @@
 export default class Rotate {
 
-    private static readonly VIBRATE_INTERVAL:number = 20;
+    private static readonly VIBRATE_INTERVAL: number = 20;
 
     private rotateDom: HTMLElement;
     private timeoutId: number = 0;
@@ -8,7 +8,7 @@ export default class Rotate {
 
     constructor(dom: HTMLElement) {
 
-        if(dom) {
+        if (dom) {
             this.rotateDom = dom;
 
         } else {
@@ -34,7 +34,7 @@ export default class Rotate {
             window.clearTimeout(this.timeoutId);
             this.rotateDom.style.transform = `rotate(0deg)`;
 
-            if(onTerminated) onTerminated();
+            if (onTerminated) onTerminated();
 
         }, timeout);
     }

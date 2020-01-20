@@ -12,15 +12,15 @@ export default class NaturalNumberValidation extends Validation<number> {
      */
     validate(num: number): number {
 
-        if(!Number.isInteger(num)) {
+        if (!Number.isInteger(num)) {
 
             throw new ArgumentError(`${NaturalNumberValidation._MUST_BE_NATURAL_NUMBER} ${Validation.RECEIVED_PARAMETER_MESSAEG}${num}`);
 
-        } else if(num === 0) {
+        } else if (num === 0) {
 
             throw new ArgumentError(`${NaturalNumberValidation._MUST_BE_NATURAL_NUMBER} ${Validation.RECEIVED_PARAMETER_MESSAEG}${num}`);
 
-        } else if(num < 0) {
+        } else if (num < 0) {
 
             throw new ArgumentError(`${NaturalNumberValidation._MUST_BE_NATURAL_NUMBER} ${Validation.RECEIVED_PARAMETER_MESSAEG}${num}`);
 

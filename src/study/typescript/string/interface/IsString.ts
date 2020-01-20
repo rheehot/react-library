@@ -1,4 +1,4 @@
 export default interface IsString {
 
-		isString(str: string): boolean
+    isString(str: string): boolean
 }

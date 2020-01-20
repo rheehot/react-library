@@ -13,7 +13,7 @@ export default class EmptyArrayValidation extends Validation<Array<any>> {
             EmptyArrayValidation.NATURAL_NUMBER_VALIDATION.validate(array.length);
             return array;
 
-        }catch (e) {
+        } catch (e) {
 
             throw new ArgumentError("array must not be empty array");
         }
