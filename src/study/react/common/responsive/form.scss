@@ -1,0 +1,54 @@
+.form-item {
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  > .form-item-inner,
+  > input {
+    min-width: 250px;
+  }
+
+  > .form-item-inner {
+    display: flex;
+    flex-grow: 1;
+
+    > input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+
+    margin-right: 20px;
+    width: 100px;
+  }
+
+  input {
+    flex-grow: 1;
+
+    font-size: 14px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid blueviolet;
+    height: 40px;
+  }
+
+  button {
+    background: blueviolet;
+    border-radius: 5px;
+    width: 60px;
+    height: 40px;
+
+    color: white;
+    font-size: 14px;
+  }
+
+  input + button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
