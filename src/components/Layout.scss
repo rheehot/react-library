@@ -1,10 +1,23 @@
-.pull-right {
+#root {
+  min-height: 100vh;
   display: flex;
-  justify-content: flex-end;
-  color: violet;
+  flex-direction: column;
 }
 
-.h1 {
-  margin: 10px;
-  color: red;
+header {
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  background: lightgoldenrodyellow;
+}
+
+section {
+  margin-top: 70px;
+  flex-grow: 1;
+  background: lightblue;
+}
+
+footer {
+  height: 70px;
+  background: blueviolet;
 }
