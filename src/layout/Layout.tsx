@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./Layout.scss";
+import "./layout.scss";
 import MyHeader from "./MyHeader";
 import MySection from "./MySection";
 import MyFooter from "./MyFooter";

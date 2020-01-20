@@ -13,11 +13,29 @@ header {
 
 section {
   margin-top: 70px;
+  padding: 20px;
   flex-grow: 1;
   background: lightblue;
+
+  display: flex;
 }
 
 footer {
   height: 70px;
   background: blueviolet;
+}
+
+.main-aside {
+  margin-right: 20px;
+  padding: 20px;
+
+  width: 200px;
+  height: 600px;
+  background: blueviolet;
+}
+
+.main {
+  padding: 20px;
+  background: lightcyan;
+  width: 100%;
 }
