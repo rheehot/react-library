@@ -2,6 +2,7 @@ import * as React from "react";
 import QuizGenerator from "../QuizGenerator";
 import MultiplicationTableQuizGenerator from "./MultiplicationTableQuizGenerator";
 import Quiz from "../Quiz";
+import {SyntheticEvent} from "react";
 
 interface AppProp {
 
@@ -9,13 +10,13 @@ interface AppProp {
 
 interface AppState {
     quiz: Quiz;
-    result: string,
-    inputValue:string
+    result: string
 }
 
 export default class MultiplicationTableQuiz extends React.Component<AppProp, AppState> {
 
     quizGenerator: QuizGenerator;
+    inputValue: React.RefObject<string>;
 
     constructor(props: any) {
         super(props);
@@ -25,17 +26,15 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
         this.state = {
             quiz: this.quizGenerator.makeQuiz(),
             result: "",
-            inputValue: ""
         };
+
+        this.inputValue = React.createRef();
 
         this.submit = this.submit.bind(this);
     }
 
-    myBlur = (val: any) => {
-        console.log(val);
-        this.setState({
-            inputValue: val
-        })
+    myBlur = (val: SyntheticEvent) => {
+        console.log(this.inputValue.current.value);
     };
 
     submit() {
@@ -52,10 +51,10 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
                 <form className="multiplication-table-wrap" onSubmit={this.submit}>
                     <h1>{this.state.quiz.title}</h1>
                     {/*<FormInputButton buttonText="제출"/>*/}
-                    <input type="text" value={this.state.inputValue} onInput={this.myBlur}/>
+                    <input ref={this.inputValue} type="text" defaultValue="" onBlur={this.myBlur}/>
                 </form>
                 {/*<span>{this.state.result}</span>*/}
-                <span>{this.state.inputValue}</span>
+                <span>{this.inputValue}</span>
             </div>
         )
     }
