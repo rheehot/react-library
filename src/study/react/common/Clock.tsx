@@ -5,26 +5,16 @@ interface AppProp {
 }
 
 interface AppState {
-	month: number,
-	date: number,
-	hour: number,
-	minute: number,
-	second: number
+    currentDate: Date
 }
 
 export default class Clock extends React.Component<AppProp, AppState> {
-
-	currentDate: Date = new Date();
 
     constructor(props: any) {
         super(props);
 
         this.state = {
-			month: this.currentDate.getUTCMonth() + 1,
-			date: this.currentDate.getUTCDate(),
-			hour: this.currentDate.getUTCHours(),
-			minute: this.currentDate.getUTCMinutes(),
-			second: this.currentDate.getUTCSeconds()
+            currentDate: new Date()
         };
 
         this.startClock = this.startClock.bind(this);
@@ -33,26 +23,28 @@ export default class Clock extends React.Component<AppProp, AppState> {
 
     startClock() {
         setInterval(() => {
-			this.currentDate = new Date();
 
 			this.setState({
-				month: this.currentDate.getUTCMonth() + 1,
-				date: this.currentDate.getUTCDate(),
-				hour: this.currentDate.getUTCHours(),
-				minute: this.currentDate.getUTCMinutes(),
-				second: this.currentDate.getUTCSeconds()
+                currentDate: new Date()
 			});
         }, 1000);
     }
 
     render() {
+
+        const month = this.state.currentDate.getUTCMonth() + 1;
+        const date = this.state.currentDate.getUTCDate();
+        const hour = this.state.currentDate.getUTCHours();
+        const minute = this.state.currentDate.getUTCMinutes();
+        const second = this.state.currentDate.getUTCSeconds();
+
         return (
             <div className="clock-wrap">
-                <span>{this.state.month}월</span>
-                <span>{this.state.date}일</span>
-                <span>{this.state.hour}시</span>
-                <span>{this.state.minute}분</span>
-                <span>{this.state.second}초</span>
+                <span>{month}월</span>
+                <span>{date}일</span>
+                <span>{hour}시</span>
+                <span>{minute}분</span>
+                <span>{second}초</span>
             </div>
         )
     }
