@@ -1,12 +1,12 @@
 import * as React from "react";
-import {dayContractionConvert, monthContractionConvert} from "../../typescript/date/dateConvert";
+import * as moment from "moment";
 
 interface AppProp {
 
 }
 
 interface AppState {
-    currentDate: Date
+    dateFormat: string
 }
 
 export default class Clock extends React.Component<AppProp, AppState> {
@@ -15,7 +15,7 @@ export default class Clock extends React.Component<AppProp, AppState> {
         super(props);
 
         this.state = {
-            currentDate: new Date()
+            dateFormat: moment().format('MMMM Do YYYY, h:mm:ss a')
         };
 
         this.startClock = this.startClock.bind(this);
@@ -24,29 +24,16 @@ export default class Clock extends React.Component<AppProp, AppState> {
 
     startClock() {
         setInterval(() => {
-
-			this.setState({
-                currentDate: new Date()
-			});
+            this.setState({
+                dateFormat: moment().format('MMMM Do YYYY, h:mm:ss a')
+            })
         }, 1000);
     }
 
     render() {
-
-        const month = monthContractionConvert(this.state.currentDate);
-        const day = dayContractionConvert(this.state.currentDate);
-        const date = this.state.currentDate.getUTCDate();
-        const hour = this.state.currentDate.getUTCHours();
-        const minute = this.state.currentDate.getUTCMinutes();
-        const second = this.state.currentDate.getUTCSeconds();
-
-
         return (
             <div className="clock-wrap">
-                <span>{month}</span>
-                <span>{date}</span>
-                <span>{day}</span>
-                <span>{hour}:{minute}:{second}</span>
+                <span>{this.state.dateFormat}</span>
             </div>
         )
     }
