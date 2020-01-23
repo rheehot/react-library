@@ -45,7 +45,7 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
         event.preventDefault();
 
         this.setState({
-            result: (this.quizGenerator.isAnswer(this.state.quiz)) ? "정답 입니다" : "오답입니다."
+            result: (this.quizGenerator.isAnswer(this.state.inputValue)) ? "정답입니다" : "오답입니다."
         });
     }
 
@@ -55,7 +55,6 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
                 <form className="multiplication-table-wrap" onSubmit={this.submit}>
                     <h1>{this.state.quiz.title}</h1>
                     <FormInputButton buttonText="제출" inputSetState={this.myChange}/>
-                    <span>{this.state.inputValue}</span>
                 </form>
                 <span>{this.state.result}</span>
             </div>
