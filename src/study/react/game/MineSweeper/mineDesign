@@ -1,6 +1,3 @@
-create()
--1위치 다 조져서 0인 곳에 주변 지뢰갯수 써서 카운트 집어넣음. (0부터 최대 8까지 있겠군)
-
 click()
 case1: 지뢰클릭 --> 게임오버
 case2: 지뢰없는곳 클릭 --> 8방향 조졌는데
@@ -8,7 +5,5 @@ if  8방향 모두 0이면 8방향 모두 열어주기.
 else 안에 숫자 보여주고(아까 지뢰갯수 센 숫자 노출) 0이면 숫자 노출없이 흰색으로 보여쥬쟈.(일단 0표시 ㄱㄱ)
 
 1.
-tr에는 tr-index를 prop으로 줘서 자신이 몇번째 row인지 알려주고,
-tr에서는 tr, td인덱스 둘다 td로 prop으로 줘서 자신이 몇번째인지 알려주고,
 td에서는 클릭되면 index2개를 부모에게 줘야햐는데 this.$emit("event", value)가 안되니까
 state에 currentClickIndex(row, column) setState를 부모 --> tr --> td까지 전달해주는쪽으로 하자.

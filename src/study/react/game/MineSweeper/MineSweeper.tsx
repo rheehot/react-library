@@ -16,16 +16,14 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
         super(props);
 
         this.state = ({
-            mineMap: [
-                [-1, 0, 0, 0, -1],
-                [0, -1, 0, -1, 0],
+            mineMap: mineMapInit([
+                [-1, 0, 0, 0, 0],
+                [0, -1, 0, 0, 0],
                 [0, 0, -1, 0, 0],
                 [0, -1, 0, -1, 0],
                 [-1, 0, 0, 0, -1],
-            ]
+            ])
         });
-
-        console.log(mineMapInit(this.state.mineMap));
     }
 
     render() {
@@ -33,7 +31,7 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
         const mineTrs = Array(this.state.mineMap.length).fill("").map((item, index) => {
 
             return (
-                <MineSweeperTr key={`tr-${index}`} rowIndex={index} tds={this.state.mineMap[index]}/>
+                <MineSweeperTr key={`tr-${index}`} rowIndex={index} tds={this.state.mineMap[index]} mineMap={this.state.mineMap}/>
             )
         });
 
