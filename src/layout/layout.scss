@@ -23,6 +23,7 @@ section {
 footer {
   height: 70px;
   background: blueviolet;
+  position: relative;
 }
 
 .main-aside {
@@ -38,4 +39,15 @@ footer {
   padding: 20px;
   background: lightcyan;
   width: 100%;
+}
+
+.clock-wrap {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 25px;
+
+  > span {
+    margin-right: 5px;
+  }
 }
