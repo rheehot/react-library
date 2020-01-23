@@ -1,16 +1,10 @@
-import Quiz from "./Quiz";
-
 export default interface QuizGenerator {
 
-    //흐음 이 3개는 private으로 만들고싶은데, 그럼 상속이 안되는걸로 아는데?
-    //그렇다고 자식클래스에서 private으로 더 범위를 좁힐수도없는노릇임..
-    //그런데 이 3개는 항상 필요한게 아님. 인터페이스에서는 항상 필요없는것은 더 작은 인터페이스로 분리하라고 했음.
-    quizCache: Quiz;
-    answerCache: string | number;
+    makeQuiz(): string;
 
-    quizTemplate(quizSrcs: Array<string>): string;
-
-    makeQuiz(): Quiz;
-
+    /**
+     * 만약 정답을 캐싱할 필요가 있다면, answerCache에 제출한 answer를 저장하세요.
+     * @param answer
+     */
     isAnswer(answer: string): boolean;
 }

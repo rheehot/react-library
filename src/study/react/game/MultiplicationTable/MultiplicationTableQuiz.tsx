@@ -1,7 +1,6 @@
 import * as React from "react";
 import QuizGenerator from "../QuizGenerator";
 import MultiplicationTableQuizGenerator from "./MultiplicationTableQuizGenerator";
-import Quiz from "../Quiz";
 import {SyntheticEvent} from "react";
 import FormInputButton from "../../common/responsive/FormInputButton";
 
@@ -10,7 +9,7 @@ interface AppProp {
 }
 
 interface AppState {
-    quiz: Quiz;
+    quiz: string;
     result: string,
     inputValue: string
 }
@@ -52,7 +51,7 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
         return (
             <div>
                 <form className="multiplication-table-wrap" onSubmit={this.submit}>
-                    <h1>{this.state.quiz.title}</h1>
+                    <h1>{this.state.quiz}</h1>
                     <FormInputButton buttonText="제출" inputSetState={this.myChange}/>
                 </form>
                 <span>{this.state.result}</span>

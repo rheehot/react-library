@@ -22,7 +22,7 @@ export default class EndingWordGame extends React.Component<AppProp, AppState> {
         super(props);
 
         this.state = {
-            quiz: this.endingGameQuizGenerator.makeQuiz().title,
+            quiz: this.endingGameQuizGenerator.makeQuiz(),
             result: "",
             inputValue: ""
         }
@@ -40,7 +40,7 @@ export default class EndingWordGame extends React.Component<AppProp, AppState> {
 
         if(answer) {
             this.setState({
-                quiz: this.endingGameQuizGenerator.makeQuiz().title
+                quiz: this.endingGameQuizGenerator.makeQuiz()
             });
         }
 
