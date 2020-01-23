@@ -2,7 +2,6 @@ import * as React from "react";
 import QuizGenerator from "../QuizGenerator";
 import MultiplicationTableQuizGenerator from "./MultiplicationTableQuizGenerator";
 import Quiz from "../Quiz";
-import FormInputButton from "../../common/responsive/FormInputButton";
 
 interface AppProp {
 
@@ -10,7 +9,8 @@ interface AppProp {
 
 interface AppState {
     quiz: Quiz;
-    result: string
+    result: string,
+    inputValue:string
 }
 
 export default class MultiplicationTableQuiz extends React.Component<AppProp, AppState> {
@@ -24,11 +24,19 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
 
         this.state = {
             quiz: this.quizGenerator.makeQuiz(),
-            result: ""
+            result: "",
+            inputValue: ""
         };
 
         this.submit = this.submit.bind(this);
     }
+
+    myBlur = (val: any) => {
+        console.log(val);
+        this.setState({
+            inputValue: val
+        })
+    };
 
     submit() {
         event.preventDefault();
@@ -43,9 +51,11 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
             <div>
                 <form className="multiplication-table-wrap" onSubmit={this.submit}>
                     <h1>{this.state.quiz.title}</h1>
-                    <FormInputButton buttonText="제출"/>
+                    {/*<FormInputButton buttonText="제출"/>*/}
+                    <input type="text" value={this.state.inputValue} onInput={this.myBlur}/>
                 </form>
-                <span>{this.state.result}</span>
+                {/*<span>{this.state.result}</span>*/}
+                <span>{this.state.inputValue}</span>
             </div>
         )
     }
