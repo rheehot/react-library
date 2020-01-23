@@ -1,13 +1,13 @@
 import * as React from "react";
 import MineSweeperTr from "./MineSweeperTr";
-import MineSweeperTd from "./MineSweeperTd";
+import mineMapInit from "./mineMapInit";
 
 interface AppProp {
 
 }
 
 interface AppState {
-    mineMap: Array<Array<number>>
+    mineMap: Array<Array<number>>,
 }
 
 export default class MineSweeper extends React.Component<AppProp, AppState> {
@@ -17,33 +17,25 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
 
         this.state = ({
             mineMap: [
-                [0, 0, 0, 0, 1],
-                [0, 1, 0, 1, 0],
-                [0, 0, 1, 0, 0],
-                [0, 1, 0, 1, 0],
-                [1, 0, 0, 0, 1],
+                [-1, 0, 0, 0, -1],
+                [0, -1, 0, -1, 0],
+                [0, 0, -1, 0, 0],
+                [0, -1, 0, -1, 0],
+                [-1, 0, 0, 0, -1],
             ]
         });
+
+        console.log(mineMapInit(this.state.mineMap));
     }
 
     render() {
 
-        const mineTds = Array(this.state.mineMap[0].length).fill("").map((item, index) => {
-            return (
-                <MineSweeperTd key={`td-${index}`}/>
-            )
-        });
-
         const mineTrs = Array(this.state.mineMap.length).fill("").map((item, index) => {
 
             return (
-                <MineSweeperTr key={`tr-${index}`}>
-                    {mineTds}
-                </MineSweeperTr>
+                <MineSweeperTr key={`tr-${index}`} rowIndex={index} tds={this.state.mineMap[index]}/>
             )
         });
-
-        console.log(mineTds);
 
         return (
             <div className="component-wrap">
