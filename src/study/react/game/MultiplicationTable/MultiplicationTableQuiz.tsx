@@ -18,7 +18,6 @@ interface AppState {
 export default class MultiplicationTableQuiz extends React.Component<AppProp, AppState> {
 
     quizGenerator: QuizGenerator;
-    inputValue: React.RefObject<string>;
 
     constructor(props: any) {
         super(props);

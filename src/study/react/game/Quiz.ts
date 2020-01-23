@@ -2,7 +2,7 @@ export default class Quiz {
     readonly title: string = "";
     readonly srcs: Array<string | number> = [""];
 
-    constructor(quiz: string, srcs: Array<string | number>) {
+    constructor(quiz: string, srcs: Array<string | number> = []) {
         this.title = quiz;
         this.srcs = srcs;
     }
