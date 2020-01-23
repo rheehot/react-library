@@ -1,5 +1,5 @@
 import * as React from "react";
-import {dayConvert, monthContractionConvert} from "../../typescript/date/dateConvert";
+import {dayContractionConvert, monthContractionConvert} from "../../typescript/date/dateConvert";
 
 interface AppProp {
 
@@ -34,7 +34,7 @@ export default class Clock extends React.Component<AppProp, AppState> {
     render() {
 
         const month = monthContractionConvert(this.state.currentDate);
-        const day = dayConvert(this.state.currentDate);
+        const day = dayContractionConvert(this.state.currentDate);
         const date = this.state.currentDate.getUTCDate();
         const hour = this.state.currentDate.getUTCHours();
         const minute = this.state.currentDate.getUTCMinutes();
@@ -44,11 +44,9 @@ export default class Clock extends React.Component<AppProp, AppState> {
         return (
             <div className="clock-wrap">
                 <span>{month}</span>
-                <span>{date}일</span>
+                <span>{date}</span>
                 <span>{day}</span>
-                <span>{hour}시</span>
-                <span>{minute}분</span>
-                <span>{second}초</span>
+                <span>{hour}:{minute}:{second}</span>
             </div>
         )
     }
