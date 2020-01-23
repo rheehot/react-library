@@ -12,7 +12,7 @@ export default class MineSweeperTd extends React.Component<AppProp, AppState> {
 
     render() {
         return (
-            <div className="component-wrap">
+            <div className="mine-td">
             </div>
         )
     }

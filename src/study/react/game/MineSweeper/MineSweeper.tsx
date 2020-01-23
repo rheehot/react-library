@@ -28,22 +28,22 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
 
     render() {
 
-        const mineTds = Array(this.state.mineMap[0].length).map(item => {
+        const mineTds = Array(this.state.mineMap[0].length).fill("").map((item, index) => {
             return (
-                <MineSweeperTd/>
+                <MineSweeperTd key={`td-${index}`}/>
             )
         });
 
-        const mineTrs = Array(this.state.mineMap.length).map(item => {
+        const mineTrs = Array(this.state.mineMap.length).fill("").map((item, index) => {
 
             return (
-                <MineSweeperTr>
+                <MineSweeperTr key={`tr-${index}`}>
                     {mineTds}
                 </MineSweeperTr>
             )
         });
 
-        console.log(mineTrs);
+        console.log(mineTds);
 
         return (
             <div className="component-wrap">
