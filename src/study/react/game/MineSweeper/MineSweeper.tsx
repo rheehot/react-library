@@ -25,15 +25,12 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
             ])
         });
 
-        console.log("asyncTest() call");
-        asyncTest().then(res => console.log(res));
-        console.log("asyncTest() call");
-        asyncTest().then(res => console.log(res));
-
-        // console.log("call");
-        // asyncTest();
-        // console.log("call");
-        // asyncTest();
+        console.log("call");
+        // asyncTest().then(res => console.log(res));
+        asyncTest2().then(res => console.log(res));
+        console.log("call");
+        // asyncTest().then(res => console.log(res));
+        asyncTest2().then(res => console.log(res));
     }
 
     render() {
@@ -68,6 +65,21 @@ function asyncTest(): Promise<number> {
     console.log("asyncTest() end");
 
     return promise;
+}
+
+async function asyncTest2(): Promise<number> {
+
+    console.log("asyncTest2() start");
+
+    const result = await new Promise<number>(resolve => {
+        console.log("promise start");
+        resolve(syncTest());
+        console.log("promise end");
+    });
+
+    console.log("asyncTest2() end");
+
+    return result;
 }
 
 function syncTest(): number {
