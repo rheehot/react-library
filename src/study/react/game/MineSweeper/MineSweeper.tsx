@@ -53,19 +53,21 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
     }
 }
 
-async function asyncTest(): Promise<number> {
+function asyncTest(): Promise<number> {
 
     console.log("async start");
 
-    // const result = await new Promise<number>(resolve => {
-    //     resolve(syncTest());
-    // });
-
-    const result = syncTest();
+    const promise = new Promise<number>(resolve => {
+        console.log("promise start");
+        const result = syncTest();
+        const result2 = syncTest();
+        resolve(result + result2);
+        console.log("promise end");
+    });
 
     console.log("async end");
 
-    return result;
+    return promise;
 }
 
 function syncTest(): number {
