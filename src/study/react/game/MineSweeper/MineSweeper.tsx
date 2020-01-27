@@ -26,10 +26,8 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
         });
 
         console.log("call");
-        // asyncTest().then(res => console.log(res));
         asyncTest2().then(res => console.log(res));
         console.log("call");
-        // asyncTest().then(res => console.log(res));
         asyncTest2().then(res => console.log(res));
     }
 
@@ -86,3 +84,13 @@ function syncTest(): number {
     for (let i = 0; i < 1999999999; i++) {}
     return 456;
 }
+
+/*
+await은 promise가 resolve될 때까지 기다렸다가.
+try {
+    await ...
+} catch {
+
+    await으로 promise가 reject되는 경우 여기로 오려나?
+}
+ */

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="reset.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="asyncTest()">무거운함수실행</button>
+    <button onclick="alert('clicked')">콜백함수실행버튼</button>
+<script>
+    async function asyncTest() {
+        console.log("asyncTest() start");
+        runFourSecond();
+        console.log("asyncTest() end");
+    }
+
+    function runFourSecond() {
+        console.log("runFourSecond() start");
+        for (let i = 0; i < 2999999999; i++) {}
+        console.log("runFourSecond() end");
+    }
+
+    async function asyncTest() {
+
+        console.log("asyncTest() start");
+
+        return new Promise(resolve => {
+            setTimeout(function () {
+                resolve();
+            }, 10000);
+        });
+
+        console.log("asyncTest() end");
+    }
+</script>
+</body>
+</html>
