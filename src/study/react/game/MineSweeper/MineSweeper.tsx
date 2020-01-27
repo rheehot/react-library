@@ -24,6 +24,16 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
                 [-1, 0, 0, 0, -1],
             ])
         });
+
+        console.log("call");
+        asyncTest().then(res => console.log(res));
+        console.log("call");
+        asyncTest().then(res => console.log(res));
+
+        // console.log("call");
+        // asyncTest();
+        // console.log("call");
+        // asyncTest();
     }
 
     render() {
@@ -41,4 +51,24 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
             </div>
         )
     }
+}
+
+async function asyncTest(): Promise<number> {
+
+    console.log("async start");
+
+    // const result = await new Promise<number>(resolve => {
+    //     resolve(syncTest());
+    // });
+
+    const result = syncTest();
+
+    console.log("async end");
+
+    return result;
+}
+
+function syncTest(): number {
+    for (let i = 0; i < 1999999999; i++) {}
+    return 456;
 }

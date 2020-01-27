@@ -2,10 +2,12 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const port = process.env.PORT || 8080;
+require("babel-polyfill");
 
 module.exports = {
   mode: "development",
   entry: {
+    "babel-polyfill": "babel-polyfill",
     vendor: ['semantic-ui-react'],
     app: './src/index.tsx'
   },
