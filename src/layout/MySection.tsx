@@ -5,6 +5,21 @@ import {Route, Switch} from "react-router-dom";
 import RatioBox from "../study/markup/square/RatioBox";
 import MineSweeper from "../study/react/game/MineSweeper/MineSweeper";
 
+const routes = [
+		{
+				path: "/square/ratio",
+				component: RatioBox
+		},
+		{
+				path: "/game/mine-map",
+				component: MineSweeper
+		},
+		{
+				path: "/",
+				component: ReactMain
+		}
+];
+
 export default class MySection extends React.Component {
 
 		render() {
@@ -12,17 +27,13 @@ export default class MySection extends React.Component {
 						<section>
 								<MyAside></MyAside>
 								<Switch>
-										<Route path="/square/ratio">
-												<RatioBox />
-										</Route>
-										<Route path="/game/mine-map">
-												<MineSweeper/>
-										</Route>
-										<Route path="/">
-												<ReactMain />
-										</Route>
+										{routes.map(route => {
+												return (
+														<Route key={`route-${route.path}`} path={route.path} component={route.component}></Route>
+												)
+										})}
 								</Switch>
 						</section>
-				)
+				);
 		}
 };
