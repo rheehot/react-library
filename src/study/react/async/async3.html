@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="reset.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log("call");
+    asyncTest2().then(res => console.log(res));
+    console.log("call");
+    asyncTest2().then(res => console.log(res));
+
+    function asyncTest() {
+
+        console.log("asyncTest() start");
+
+        const promise = new Promise(resolve => {
+            console.log("promise start");
+            const result = syncTest();
+            const result2 = syncTest();
+            resolve(result + result2);
+            console.log("promise end");
+        });
+
+        console.log("asyncTest() end");
+
+        return promise;
+    }
+
+    async function asyncTest2() {
+
+        console.log("asyncTest2() start");
+
+        const result = await new Promise(resolve => {
+            console.log("promise start");
+            resolve(syncTest());
+            console.log("promise end");
+        });
+
+        console.log("asyncTest2() end");
+
+        return result;
+    }
+
+    function syncTest() {
+        for (let i = 0; i < 1999999999; i++) {}
+        return 456;
+    }
+</script>
+</body>
+</html>
