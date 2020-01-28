@@ -29,7 +29,7 @@ export default class MySection extends React.Component {
 								<Switch>
 										{routes.map(route => {
 												return (
-														<Route key={`route-${route.path}`} path={route.path} component={route.component}></Route>
+														<Route key={`route-${route.path}`} {...route}></Route>
 												)
 										})}
 								</Switch>
