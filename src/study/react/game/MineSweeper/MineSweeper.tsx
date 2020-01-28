@@ -24,11 +24,6 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
                 [-1, 0, 0, 0, -1],
             ])
         });
-
-        console.log("call");
-        asyncTest2().then(res => console.log(res));
-        console.log("call");
-        asyncTest2().then(res => console.log(res));
     }
 
     render() {

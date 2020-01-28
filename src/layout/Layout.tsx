@@ -3,16 +3,20 @@ import MyHeader from "./MyHeader";
 import MySection from "./MySection";
 import MyFooter from "./MyFooter";
 
-// @ts-ignore
-const Layout = () => {
+interface AppProp {
+}
+interface AppState {
+}
 
-		return (
-				<>
-						<MyHeader></MyHeader>
-						<MySection></MySection>
-						<MyFooter></MyFooter>
-				</>
-		);
-};
+export default class Layout extends React.Component<AppProp, AppState> {
 
-export default Layout;
+		render() {
+				return (
+						<>
+								<MyHeader></MyHeader>
+								<MySection></MySection>
+								<MyFooter></MyFooter>
+						</>
+				);
+		}
+}
