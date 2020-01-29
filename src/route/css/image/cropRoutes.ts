@@ -1,4 +1,4 @@
-import CropImage from "../../../study/markup/image/CropImage";
+import CropImage from "../../../study/css/image/CropImage";
 
 export const routes: Array<{ path: string, component: React.ComponentType<any>; }> = [
     {
