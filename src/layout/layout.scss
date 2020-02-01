@@ -7,6 +7,11 @@
 
 a {
   text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
 }
 
 #root {
@@ -20,6 +25,11 @@ header {
   height: 70px;
   position: fixed;
   background: lightgoldenrodyellow;
+  transition: height, 0.2s;
+
+  &:hover {
+    height: 370px;
+  }
 }
 
 section {
@@ -126,5 +136,38 @@ footer {
     background: green;
     width: 50px;
     position: absolute;
+  }
+}
+
+.dropdown-nav {
+  display: flex;
+  height: 100%;
+
+  > .dropdown-ul {
+    margin-left: 20px;
+    height: 100%;
+    overflow: hidden;
+
+    > .dropdown-li {
+
+      text-align: center;
+
+      &:first-child {
+        padding-top: 24.5px;
+        height: 70px;
+
+        &:hover {
+          border-bottom: 5px solid black;
+        }
+      }
+
+      &:nth-child(n+2) {
+        margin-top: 10px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }

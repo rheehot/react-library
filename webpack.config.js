@@ -1,7 +1,7 @@
 //https://sujinlee.me/webpack-react-tutorial/
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8365;
 require("babel-polyfill");
 
 module.exports = {

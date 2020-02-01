@@ -26,12 +26,14 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
         });
     }
 
+
+
     render() {
 
         const mineTrs = Array(this.state.mineMap.length).fill("").map((item, index) => {
 
             return (
-                <MineSweeperTr key={`tr-${index}`} rowIndex={index} tds={this.state.mineMap[index]} mineMap={this.state.mineMap}/>
+                <MineSweeperTr key={`tr-${index}`} rowIndex={index} mineMap={this.state.mineMap}/>
             )
         });
 

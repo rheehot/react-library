@@ -8,7 +8,7 @@ interface AppState {
 
 }
 
-export default class WihteSpace extends React.Component<AppProp, AppState> {
+export default class WhiteSpace extends React.Component<AppProp, AppState> {
 
   render() {
     return (
