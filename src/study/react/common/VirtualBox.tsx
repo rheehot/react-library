@@ -21,16 +21,15 @@ export default class VirtualBox extends React.Component<AppProp, AppState> {
 
     constructor(props: any) {
         super(props);
-
-        this.state = {
-            _width: (this.props.square) ? this.props.square : this.props.width,
-            _height: (this.props.square) ? this.props.square : this.props.height
-        };
     }
 
     render() {
         return (
-            <div style={{width: this.state._width, height: this.state._height, background: "red"}} className="component-wrap">
+            <div style={{
+                width: (this.props.square) ? this.props.square : this.props.width,
+                height: (this.props.square) ? this.props.square : this.props.height,
+                background: "red"}}
+                 className="component-wrap">
             </div>
         )
     }
