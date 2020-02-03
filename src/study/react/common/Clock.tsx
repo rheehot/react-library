@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as moment from "moment";
+import "./Clock.scss";
 
 interface AppProp {
 
