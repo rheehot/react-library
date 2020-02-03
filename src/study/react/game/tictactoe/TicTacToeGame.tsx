@@ -14,13 +14,16 @@ interface AppState {
 
 export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
-    constructor(props: any) {
+    constructor(props: AppProp) {
         super(props);
 
         this.state = {
-            currentUserName: "",
+            currentUserName: props.playerList[0],
             cell2dList: [[""]]
         };
+
+        console.log(this.state);
+        debugger;
     }
 
     trs() {
