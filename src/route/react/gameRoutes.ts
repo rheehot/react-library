@@ -1,7 +1,7 @@
 import MultiplicationTableQuiz from "../../study/react/game/MultiplicationTable/MultiplicationTableQuiz";
 import EndingWordGame from "../../study/react/game/EndingWord/EndingWordGame";
 import MineSweeper from "../../study/react/game/MineSweeper/MineSweeper";
-import TicTacToeGame from "../../study/react/game/tictactoe/TicTacToeGame";
+import TicTacToeHome from "../../study/react/game/tictactoe/TicTacToeHome";
 
 export const gameRoutes = [
     {
@@ -21,7 +21,7 @@ export const gameRoutes = [
     },
     {
         path: "/react/game/tic-tac-toe",
-        component: TicTacToeGame,
+        component: TicTacToeHome,
         exact: true
     },
 ];

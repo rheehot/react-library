@@ -1,5 +1,5 @@
 import {isOddNumber} from "../../../typescript/random/NumberUtil";
-import {backwordDiagonalArray, forwardDiagonalArray} from "../../../typescript/random/squareArrayUtil";
+import {backwordDiagonalArray, forwardDiagonalArray, verticalArray} from "../../../typescript/random/squareArrayUtil";
 
 export default class TicTacToe {
     private readonly squareCount: number;
@@ -36,9 +36,11 @@ export default class TicTacToe {
 
     private winnerCheck(selectIndex: [number, number], selectUserName: string): void {
 
+        let sameCount = 0;
+
         if(this.needDiagonalSearch(selectIndex)) {
 
-            let sameCount = forwardDiagonalArray(this._cell2dList).filter((userName: string) => userName === selectUserName).length;
+            sameCount = forwardDiagonalArray(this._cell2dList).filter((userName: string) => userName === selectUserName).length;
 
             if(sameCount === this.squareCount) {
                 this.winner = selectUserName;
@@ -53,6 +55,18 @@ export default class TicTacToe {
             }
         }
 
+        sameCount = verticalArray(this._cell2dList, selectIndex[1]).filter((userName: string) => userName === selectUserName).length;
 
+        if(sameCount === this.squareCount) {
+            this.winner = selectUserName;
+            return;
+        }
+
+        sameCount = this._cell2dList[selectIndex[0]].filter((userName: string) => userName === selectUserName).length;
+
+        if(sameCount === this.squareCount) {
+            this.winner = selectUserName;
+            return;
+        }
     }
 }

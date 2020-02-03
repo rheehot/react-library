@@ -1,26 +1,40 @@
 import * as React from "react";
 import "./TicTacToe.scss";
-import {verticalArrayTest} from "../../../typescript/random/squareArrayUtil";
+import TicTacToeTr from "./TicTacToeTr";
 
 interface AppProp {
-
+    sqaureCount: number;
+    playerList: [string, string];
 }
 
 interface AppState {
-
+    currentUserName: string,
+    cell2dList: Array<Array<string>>
 }
 
 export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     constructor(props: any) {
         super(props);
-        verticalArrayTest();
+
+        this.state = {
+            currentUserName: "",
+            cell2dList: [[""]]
+        };
+    }
+
+    trs() {
+        return (
+            new Array(this.props.sqaureCount).fill("").map((val, index) => {
+                <TicTacToeTr key={`tr-${index}`} cell2dList={this.state.cell2dList} rowIndex={index} playerList={this.props.playerList}></TicTacToeTr>
+            })
+        );
     }
 
     render() {
         return (
             <div className="tic-tac-toe-wrap">
-                tic tac toe
+                {this.trs()}
             </div>
         )
     }
