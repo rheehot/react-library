@@ -45,5 +45,13 @@ class NumberUtil {
     }
 }
 
+export function isOddNumber(number: number):boolean {
+    return number % 2 === 1;
+}
+
+export function isEvenNumber(number: number):boolean {
+    return number % 2 === 0;
+}
+
 const numberUtil = new NumberUtil();
 export default numberUtil;

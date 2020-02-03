@@ -24,7 +24,7 @@ header {
   width: 100%;
   height: 70px;
   position: fixed;
-  background: lightgoldenrodyellow;
+  background: lightskyblue;
   transition: height, 0.2s;
 
   &:hover {
@@ -36,7 +36,7 @@ section {
   margin-top: 70px;
   padding: 20px;
   flex-grow: 1;
-  background: lightblue;
+  background: white;
 
   display: flex;
 }
