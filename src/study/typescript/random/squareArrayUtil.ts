@@ -6,13 +6,7 @@ import numberUtil from "./NumberUtil";
  * @example ([[1, 2, 3], [4, 5, 6], [7, 8, 9]) ==> [1, 5, 9]
  */
 export function forwardDiagonalArray(array2d: Array<Array<any>>): Array<any> {
-
-    return array2d.map((array: Array<any>, rowIndex) => {
-
-        return array.filter((cell: any, columnIndex) => {
-            return array[columnIndex] && rowIndex === columnIndex;
-        })[0];
-    });
+    return array2d.map((array: Array<any>, rowIndex) => array[rowIndex]);
 }
 
 /**
@@ -23,13 +17,11 @@ export function forwardDiagonalArray(array2d: Array<Array<any>>): Array<any> {
 export function backwordDiagonalArray(array2d: Array<Array<any>>): Array<any> {
 
     const standardLength = array2d[0].length;
+    return array2d.map((array: Array<any>, rowIndex) => array[standardLength - rowIndex - 1]);
+}
 
-    return array2d.map((array: Array<any>, rowIndex) => {
-
-        return array.filter((cell: any, columnIndex) => {
-            return array[columnIndex] && rowIndex + columnIndex === standardLength - 1;
-        })[0];
-    });
+export function verticalArray(array2d: Array<Array<any>>, columnIndex: number) {
+    return array2d.map(array => array[columnIndex]);
 }
 
 const successData1: Array<Array<number>> = [
@@ -55,7 +47,7 @@ const failData = [
     1, 2, 3
 ];
 
-function diagonalArrayTest() {
+export function diagonalArrayTest() {
     console.log(forwardDiagonalArray(successData1));
     console.log(forwardDiagonalArray(successData2));
     console.log(forwardDiagonalArray(successData3));
@@ -63,4 +55,11 @@ function diagonalArrayTest() {
     console.log(backwordDiagonalArray(successData1));
     console.log(backwordDiagonalArray(successData2));
     console.log(backwordDiagonalArray(successData3));
+}
+
+export function verticalArrayTest() {
+
+    console.log(verticalArray(successData1, 1));
+    console.log(verticalArray(successData2, 2));
+    console.log(verticalArray(successData3, 4));
 }

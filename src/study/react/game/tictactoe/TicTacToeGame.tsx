@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./TicTacToe.scss";
-import {diagonalArrayTest} from "../../../typescript/random/squareArrayUtil";
+import {verticalArrayTest} from "../../../typescript/random/squareArrayUtil";
 
 interface AppProp {
 
@@ -14,7 +14,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     constructor(props: any) {
         super(props);
-        diagonalArrayTest();
+        verticalArrayTest();
     }
 
     render() {
