@@ -13,8 +13,8 @@ export default class TicTacToeHome extends React.Component<AppProp, AppState> {
 
     render() {
         return (
-            <div className="component-wrap">
-                <h1>TicTacToe Game</h1>
+            <div className="tic-tac-toe-home">
+                <h1>틱택토 게임하기</h1><br/>
                 <TicTacToeGame sqaureCount={4} playerList={["철수", "영희"]}/>
             </div>
         )
