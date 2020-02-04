@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./TicTacToe.scss";
 import TicTacToeTr from "./TicTacToeTr";
-import TicTacToe from "./TicTacToe";
+import TicTacToe, {GameResult} from "./TicTacToe";
 
 interface AppProp {
     sqaureCount: number;
@@ -17,7 +17,6 @@ interface AppState {
 export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     readonly ticTacToe:TicTacToe;
-    gameIsOver: boolean = false;
 
     constructor(props: AppProp) {
         super(props);
@@ -31,10 +30,6 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         };
 
         this.mark = this.mark.bind(this);
-    }
-
-    shouldComponentUpdate(): boolean {
-        return !this.gameIsOver;
     }
 
     mark(selectIndex: [number, number]) {
@@ -51,14 +46,21 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
             });
         }
 
-        const winnerName = this.ticTacToe.getWinner();
+        switch(this.ticTacToe.gameResult) {
+            case GameResult.WHO_WIN:
+                const winnerName = this.ticTacToe.winner;
 
-        if(winnerName) {
-            this.setState({
-                message: `${winnerName}님이 우승하셨습니다.`
-            });
+                this.setState({
+                    message: `${winnerName}님이 우승하셨습니다.`
+                });
+                break;
 
-            this.gameIsOver = true;
+            case GameResult.TIE:
+
+                this.setState({
+                    message: `무승부 입니다.`
+                });
+                break;
         }
     }
 

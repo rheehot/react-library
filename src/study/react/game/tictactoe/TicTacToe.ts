@@ -1,25 +1,44 @@
-import {isOddNumber} from "../../../typescript/random/NumberUtil";
 import {backwordDiagonalArray, forwardDiagonalArray, verticalArray} from "../../../typescript/random/squareArrayUtil";
 
 export default class TicTacToe {
-    private readonly squareCount: number;
+    private readonly _squareCount: number;
     private readonly _cell2dList: Array<Array<string>>;
-    private winner: string | null = null;
+    private _winner: string | null = null;
+    private _gameResult: GameResult;
+    private _markCount: number;
 
     constructor(squareCount: number) {
-        this.squareCount = squareCount;
+        this._squareCount = squareCount;
         this._cell2dList = new Array(squareCount).fill("").map((): Array<string> => new Array(squareCount).fill(""));
+        this._gameResult = GameResult.PROCEEDING;
+        this._markCount = 0;
     }
 
     get cell2dList(): Array<Array<string>> {
         return this._cell2dList;
     }
 
+    /**
+     * @param selectIndex TicTacToe의 셀의 x, y좌표
+     * @param selectUserName
+     * @return 마킹에 성공했는지 여부
+     *
+     * 마킹에 실패하는 경우
+     * 1. 이미 마킹이 되어있는 경우
+     * 2. 이미 우승자가 존재하는 경우.
+     * 3. 무승부인 경우
+     */
     mark(selectIndex: [number, number], selectUserName: string): boolean {
 
-        if(this.winner === null && this.cellIsEmpty(selectIndex)) {
+        if(this._gameResult === GameResult.PROCEEDING && this.cellIsEmpty(selectIndex)) {
             this._cell2dList[selectIndex[0]][selectIndex[1]] = selectUserName;
             this.winnerCheck(selectIndex, selectUserName);
+            this._markCount++;
+
+            if(this._markCount === this._squareCount * this._squareCount) {
+                this._gameResult = GameResult.TIE;
+            }
+
             return true;
 
         } else {
@@ -27,12 +46,16 @@ export default class TicTacToe {
         }
     }
 
-    getWinner(): string | null {
-        return this.winner;
+    get winner(): string | null {
+        return this._winner;
+    }
+
+    get gameResult(): GameResult {
+        return this._gameResult;
     }
 
     private needDiagonalSearch(selectIndex: [number, number]): boolean {
-        return isOddNumber(this.squareCount) && (selectIndex[0] === selectIndex[1]) && (selectIndex[0] === this.squareCount / 2 + 1);
+        return (selectIndex[0] === selectIndex[1]) || (selectIndex[0] + selectIndex[1] === this._squareCount - 1);
     }
 
     private cellIsEmpty(cellIndex: [number, number]):boolean {
@@ -47,31 +70,41 @@ export default class TicTacToe {
 
             sameCount = forwardDiagonalArray(this._cell2dList).filter((userName: string) => userName === selectUserName).length;
 
-            if(sameCount === this.squareCount) {
-                this.winner = selectUserName;
+            if(sameCount === this._squareCount) {
+                this._winner = selectUserName;
+                this._gameResult = GameResult.WHO_WIN;
                 return;
             }
 
             sameCount = backwordDiagonalArray(this._cell2dList).filter((userName: string) => userName === selectUserName).length;
 
-            if(sameCount === this.squareCount) {
-                this.winner = selectUserName;
+            if(sameCount === this._squareCount) {
+                this._winner = selectUserName;
+                this._gameResult = GameResult.WHO_WIN;
                 return;
             }
         }
 
         sameCount = verticalArray(this._cell2dList, selectIndex[1]).filter((userName: string) => userName === selectUserName).length;
 
-        if(sameCount === this.squareCount) {
-            this.winner = selectUserName;
+        if(sameCount === this._squareCount) {
+            this._winner = selectUserName;
+            this._gameResult = GameResult.WHO_WIN;
             return;
         }
 
         sameCount = this._cell2dList[selectIndex[0]].filter((userName: string) => userName === selectUserName).length;
 
-        if(sameCount === this.squareCount) {
-            this.winner = selectUserName;
+        if(sameCount === this._squareCount) {
+            this._winner = selectUserName;
+            this._gameResult = GameResult.WHO_WIN;
             return;
         }
     }
+}
+
+export enum GameResult {
+    PROCEEDING = "PROCEEDING",
+    TIE = "TIE",
+    WHO_WIN = "WHO_WIN"
 }
