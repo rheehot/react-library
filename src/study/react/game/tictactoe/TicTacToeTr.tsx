@@ -1,12 +1,14 @@
 import * as React from "react";
 import TicTacToeTd from "./TicTacToeTd";
+import {GameResult} from "./TicTacToe";
 
 interface AppProp {
     rowIndex: number,
     cell2dList: Array<Array<string>>,
     playerList: [string, string],
     mark: Function,
-    currentUserIndex: number
+    currentUserIndex: number,
+    gameResult: GameResult
 }
 
 interface AppState {

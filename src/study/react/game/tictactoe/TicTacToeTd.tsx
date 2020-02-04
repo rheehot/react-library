@@ -1,4 +1,5 @@
 import * as React from "react";
+import {GameResult} from "./TicTacToe";
 
 interface AppProp {
     rowIndex: number,
@@ -6,7 +7,8 @@ interface AppProp {
     cell2dList: Array<Array<string>>,
     playerList: [string, string],
     currentUserIndex: number,
-    mark: Function
+    mark: Function,
+    gameResult: GameResult
 }
 
 interface AppState {
@@ -36,7 +38,11 @@ export default class TicTacToeTd extends React.Component<AppProp, AppState> {
     }
 
     handleClick() {
-        this.props.mark([this.props.rowIndex, this.props.columnIndex]);
+
+        console.log(this.props.gameResult);
+
+        if(this.props.gameResult === GameResult.PROCEEDING)
+            this.props.mark([this.props.rowIndex, this.props.columnIndex]);
     }
 
     render() {

@@ -12,6 +12,7 @@ interface AppState {
     cell2dList: Array<Array<string>>,
     currentUserIndex: number,
     message: string,
+    gameResult: GameResult
 }
 
 export default class TicTacToeGame extends React.Component<AppProp, AppState> {
@@ -26,19 +27,14 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         this.state = {
             cell2dList: this.ticTacToe.cell2dList,
             currentUserIndex: 0,
-            message: `현재 사용자 이름 : ${this.props.playerList[0]}`
+            message: `현재 사용자 이름 : ${this.props.playerList[0]}`,
+            gameResult: this.ticTacToe.gameResult
         };
 
         this.mark = this.mark.bind(this);
     }
 
-    shouldComponentUpdate(): boolean {
-        return this.ticTacToe.gameResult === GameResult.PROCEEDING;
-    }
-
     mark(selectIndex: [number, number]) {
-
-        if(this.ticTacToe.gameResult !== GameResult.PROCEEDING) return;
 
         const changeUserIndex = (this.state.currentUserIndex + 1) % 2;
         const markSuccess = this.ticTacToe.mark(selectIndex, this.props.playerList[this.state.currentUserIndex]);
@@ -56,7 +52,8 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
                 const winnerName = this.ticTacToe.winner;
 
                 this.setState({
-                    message: `${winnerName}님이 우승하셨습니다.`
+                    message: `${winnerName}님이 우승하셨습니다.`,
+                    gameResult: this.ticTacToe.gameResult
                 });
                 this.forceUpdate();
                 break;
@@ -64,7 +61,8 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
             case GameResult.TIE:
 
                 this.setState({
-                    message: `무승부 입니다.`
+                    message: `무승부 입니다.`,
+                    gameResult: this.ticTacToe.gameResult
                 });
                 this.forceUpdate();
                 break;
