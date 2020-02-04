@@ -9,14 +9,15 @@ interface AppProp {
 }
 
 interface AppState {
-    currentUserName: string,
-    cell2dList: Array<Array<string>>
+    cell2dList: Array<Array<string>>,
+    currentUserIndex: number,
+    message: string
 }
 
 export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     readonly ticTacToe:TicTacToe;
-    currentUserIndex: number;
+    gameIsOver: boolean = false;
 
     constructor(props: AppProp) {
         super(props);
@@ -24,37 +25,58 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         this.ticTacToe = new TicTacToe(props.sqaureCount);
 
         this.state = {
-            currentUserName: props.playerList[0],
-            cell2dList: this.ticTacToe.cell2dList
+            cell2dList: this.ticTacToe.cell2dList,
+            currentUserIndex: 0,
+            message: `현재 사용자 이름 : ${this.props.playerList[0]}`
         };
 
         this.mark = this.mark.bind(this);
+    }
 
-        this.currentUserIndex = 0;
+    shouldComponentUpdate(): boolean {
+        return !this.gameIsOver;
     }
 
     mark(selectIndex: [number, number]) {
 
-        this.ticTacToe.mark(selectIndex, this.state.currentUserName);
-        this.setState({
-            currentUserName: this.props.playerList[(this.currentUserIndex + 1) % 2]
-        }, () => {
-            this.currentUserIndex = this.props.playerList.indexOf(this.state.currentUserName);
-        });
+        const changeUserIndex = (this.state.currentUserIndex + 1) % 2;
+
+        const markSuccess = this.ticTacToe.mark(selectIndex, this.props.playerList[this.state.currentUserIndex]);
+
+        if(markSuccess) {
+
+            this.setState({
+                currentUserIndex: changeUserIndex,
+                message: `현재 사용자 이름 : ${this.props.playerList[changeUserIndex]}`
+            });
+        }
+
+        const winnerName = this.ticTacToe.getWinner();
+
+        if(winnerName) {
+            this.setState({
+                message: `${winnerName}님이 우승하셨습니다.`
+            });
+
+            this.gameIsOver = true;
+        }
     }
 
     trs() {
         return (
             new Array(this.props.sqaureCount).fill("").map((val, index) => {
-                return <TicTacToeTr key={`tr-${index}`} cell2dList={this.state.cell2dList} rowIndex={index} playerList={this.props.playerList} mark={this.mark}></TicTacToeTr>
+                return <TicTacToeTr key={`tr-${index}`} rowIndex={index} mark={this.mark} playerList={this.props.playerList} {...this.state}></TicTacToeTr>
             })
         );
     }
 
     render() {
+
+        console.log("render called");
+
         return (
             <>
-                <h2>현재 사용자 이름 : {this.state.currentUserName}</h2>
+                <h2>{this.state.message}</h2>
                 <table className="tic-tac-toe-wrap">
                     <tbody>
                         {this.trs()}

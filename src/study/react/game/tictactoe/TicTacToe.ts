@@ -15,10 +15,15 @@ export default class TicTacToe {
         return this._cell2dList;
     }
 
-    mark(selectIndex: [number, number], selectUserName: string): void {
+    mark(selectIndex: [number, number], selectUserName: string): boolean {
 
         if(this.winner === null && this.cellIsEmpty(selectIndex)) {
+            this._cell2dList[selectIndex[0]][selectIndex[1]] = selectUserName;
             this.winnerCheck(selectIndex, selectUserName);
+            return true;
+
+        } else {
+            return false;
         }
     }
 
