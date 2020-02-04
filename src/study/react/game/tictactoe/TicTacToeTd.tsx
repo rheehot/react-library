@@ -17,6 +17,8 @@ interface AppState {
 
 export default class TicTacToeTd extends React.Component<AppProp, AppState> {
 
+    cellHasClicked: boolean = false;
+
     constructor(props: AppProp) {
         super(props);
 
@@ -39,10 +41,15 @@ export default class TicTacToeTd extends React.Component<AppProp, AppState> {
 
     handleClick() {
 
-        console.log(this.props.gameResult);
+        if(this.cellHasClicked)
+            return;
 
-        if(this.props.gameResult === GameResult.PROCEEDING)
+        if(this.props.gameResult === GameResult.PROCEEDING) {
+
             this.props.mark([this.props.rowIndex, this.props.columnIndex]);
+            this.cellHasClicked = true;
+        }
+
     }
 
     render() {

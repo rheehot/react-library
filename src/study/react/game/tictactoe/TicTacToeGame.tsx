@@ -36,6 +36,8 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     mark(selectIndex: [number, number]) {
 
+        console.log("mark call");
+
         const changeUserIndex = (this.state.currentUserIndex + 1) % 2;
         const markSuccess = this.ticTacToe.mark(selectIndex, this.props.playerList[this.state.currentUserIndex]);
 
@@ -55,7 +57,6 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
                     message: `${winnerName}님이 우승하셨습니다.`,
                     gameResult: this.ticTacToe.gameResult
                 });
-                this.forceUpdate();
                 break;
 
             case GameResult.TIE:
@@ -64,7 +65,6 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
                     message: `무승부 입니다.`,
                     gameResult: this.ticTacToe.gameResult
                 });
-                this.forceUpdate();
                 break;
         }
     }
