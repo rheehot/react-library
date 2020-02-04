@@ -14,17 +14,18 @@ interface AppState {
 export default class TicTacToeTr extends React.Component<AppProp, AppState> {
 
     tds() {
-        // return (
-            // this.props.cell2dList[this.props.rowIndex]
-            // <TicTacToeTd></TicTacToeTd>
-        // )
+        return (
+          this.props.cell2dList[this.props.rowIndex].map( (tds, columnIndex) => {
+              return <TicTacToeTd key={`td-${columnIndex}`} rowIndex={this.props.rowIndex} columnIndex={columnIndex} playerList={this.props.playerList} cell2dList={this.props.cell2dList} />
+          })
+        );
     }
 
     render() {
         return (
-            <div className="component-wrap">
-                {/*{this.tds()}*/}
-            </div>
+            <tr className="component-wrap">
+                {this.tds()}
+            </tr>
         )
     }
 }

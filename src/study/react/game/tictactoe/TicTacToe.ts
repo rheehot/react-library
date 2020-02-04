@@ -12,7 +12,7 @@ export default class TicTacToe {
     }
 
     get cell2dList(): Array<Array<string>> {
-        return this.cell2dList;
+        return this._cell2dList;
     }
 
     mark(selectIndex: [number, number], selectUserName: string): void {
