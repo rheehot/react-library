@@ -32,6 +32,39 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         };
 
         this.mark = this.mark.bind(this);
+        this.userSymbol = this.userSymbol.bind(this);
+        this.userNameSymbol = this.userNameSymbol.bind(this);
+        this.currentSymbol = this.currentSymbol.bind(this);
+    }
+
+    userSymbol(rowIndex: number, columnIndex: number) {
+
+        const userName = this.ticTacToe.cell2dList[rowIndex][columnIndex];
+        return this.userNameSymbol(userName);
+    }
+
+    userNameSymbol(userName: string) {
+
+        if(userName === this.props.playerList[0])
+            return (
+              <div className={"circle red"}>
+              </div>
+            );
+
+        else if(userName === this.props.playerList[1])
+            return (
+              <div className={"circle blue"}>
+              </div>
+            );
+
+        else
+            return null;
+    }
+
+    currentSymbol() {
+
+        if(this.ticTacToe.gameResult === GameResult.PROCEEDING)
+            return this.userNameSymbol(this.props.playerList[this.state.currentUserIndex]);
     }
 
     mark(selectIndex: [number, number]) {
@@ -54,7 +87,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
                 const winnerName = this.ticTacToe.winner;
 
                 this.setState({
-                    message: `${winnerName}님이 우승하셨습니다.`,
+                    message: `결과 : ${winnerName}님이 우승하셨습니다.`,
                     gameResult: this.ticTacToe.gameResult
                 });
                 break;
@@ -62,7 +95,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
             case GameResult.TIE:
 
                 this.setState({
-                    message: `무승부 입니다.`,
+                    message: `결과 : 무승부 입니다.`,
                     gameResult: this.ticTacToe.gameResult
                 });
                 break;
@@ -72,7 +105,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
     trs() {
         return (
             new Array(this.props.sqaureCount).fill("").map((val, index) => {
-                return <TicTacToeTr key={`tr-${index}`} rowIndex={index} mark={this.mark} playerList={this.props.playerList} {...this.state}></TicTacToeTr>
+                return <TicTacToeTr key={`tr-${index}`} rowIndex={index} mark={this.mark} userSymbol={this.userSymbol} {...this.state}></TicTacToeTr>
             })
         );
     }
@@ -83,8 +116,11 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
         return (
             <>
-                <h2>{this.state.message}</h2>
-                <table className="tic-tac-toe-wrap">
+                <div className="tic-tac-toe-top">
+                    <h2>{this.state.message}</h2>
+                    {this.currentSymbol()}
+                </div>
+                <table className="tic-tac-toe-table">
                     <tbody>
                         {this.trs()}
                     </tbody>
