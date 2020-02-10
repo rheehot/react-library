@@ -8,3 +8,12 @@
 a {
     text-decoration: none;
 }
+
+textarea {
+    resize: none;
+}
+
+button,
+*:disabled {
+    background: white;
+}
