@@ -1,0 +1,24 @@
+.hover-container {
+
+  overflow: hidden;
+
+  .hover-item-scale {
+    transition: all, 0.2s;
+  }
+
+  &:hover .hover-item-underline {
+    text-decoration: underline;
+  }
+
+  &:hover .hover-item-scale {
+    transform: scale(1.2);
+  }
+}
+
+.background-image-default {
+  background-repeat: no-repeat;
+  background-position: center;
+
+  width: 100%;
+  height: 100%;
+}
