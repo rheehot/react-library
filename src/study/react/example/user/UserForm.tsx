@@ -2,6 +2,7 @@ import * as React from "react";
 import InputItem from "../../common/form/InputItem";
 import MyButton from "../../common/form/MyButton";
 import "./UserForm.scss";
+import {getUserInfo} from "./api";
 
 interface AppProp {
 }
@@ -57,6 +58,18 @@ id: ${this.state.id}
 name: ${this.state.name}
 email: ${this.state.email}`);
 
+		}
+
+		async componentDidMount(): Promise<void> {
+
+				const {id, name, email} = await getUserInfo();
+				console.log(id, name, email);
+
+				this.setState({
+						id: id,
+						name: name,
+						email: email
+				});
 		}
 
 		render() {
