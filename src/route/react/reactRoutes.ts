@@ -1,5 +1,6 @@
 import ReactMain from "../../layout/main/ReactMain";
 import {gameRoutes} from "./gameRoutes";
+import {exampleRoutes} from "./exampleRoutes";
 
 export const routes = [
     {
@@ -12,4 +13,4 @@ export const routes = [
         component: ReactMain,
         exact: true
     },
-].concat(gameRoutes);
+].concat(gameRoutes, exampleRoutes);

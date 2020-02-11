@@ -1,5 +1,6 @@
 import MinMaxValidatiom from "../validate/common/MinMaxValidatiom";
 import Validation from "../validate/Validation";
+import ArgumentError from "../validate/ArgumentError";
 
 
 /**
@@ -18,27 +19,19 @@ function getMinMaxNumberFunc(min: number, max: number): number {
  * 다른 proxy에서 동일한 유효성 검증이 필요할 경우 proxy마다 돌려쓸 수 있으니까.
  * 하지만 유효성검증 코드가 proxy에 들어가는 순간 다른 proxy에서 똑같은 유효성검증이 필요할 때 똑같은 코드가 들어가게 될 것
  */
-function mustBeLess(min: number, max: number): string  {
+function mustBeLessCheck(min: number, max: number)  {
 
     if (min >= max)
-        return `min must be less than max. ${Validation.RECEIVED_PARAMETER_MESSAEG}min=${min} max=${max}`;
-
-    else
-        return "";
+        throw new ArgumentError(`min must be less than max. ${Validation.RECEIVED_PARAMETER_MESSAEG}min=${min} max=${max}`);
 }
 
 export const getMinMaxNumberProxy = new Proxy(getMinMaxNumberFunc, {
 
     apply: (target, thisArg, args) => {
 
-        const errorMessage = mustBeLess.apply(null, args);
+        mustBeLessCheck.apply(null, args);
 
-        if(errorMessage) {
-            throw Error(errorMessage);
-        }
-
-        else
-            return target.apply(thisArg, args);
+        return target.apply(thisArg, args);
     }
 });
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import EndingWordQuizGenerator from "./EndingWordQuizGenerator";
 import QuizGenerator from "../QuizGenerator";
-import FormInputButton from "../../common/responsive/FormInputButton";
+import InputAndButtonItem from "../../common/form/InputButtonItem";
 import {SyntheticEvent} from "react";
 
 interface AppProp {
@@ -57,7 +57,7 @@ export default class EndingWordGame extends React.Component<AppProp, AppState> {
         return (
             <form className="component-wrap" onSubmit={this.submit}>
                 <h1>{this.state.quiz}</h1>
-                <FormInputButton buttonText="제출" inputSetState={this.myChange}/>
+                <InputAndButtonItem buttonText="제출" inputSetState={this.myChange}/>
                 <span>{this.state.result}</span>
             </form>
         )

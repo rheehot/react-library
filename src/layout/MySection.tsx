@@ -1,6 +1,6 @@
 import * as React from "react";
 import MyAside from "./MyAside";
-import Routes from "../route/routes";
+import AppMain from "./AppMain";
 
 export default class MySection extends React.Component {
 
@@ -8,7 +8,7 @@ export default class MySection extends React.Component {
 				return (
 						<section>
 								<MyAside></MyAside>
-								<Routes/>
+								<AppMain/>
 						</section>
 				);
 		}
