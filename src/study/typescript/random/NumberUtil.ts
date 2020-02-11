@@ -1,4 +1,41 @@
 import MinMaxValidatiom from "../validate/common/MinMaxValidatiom";
+import Validation from "../validate/Validation";
+
+
+/**
+ * @param min 이상
+ * @param max 이하
+ * @return min ~ max사이에 랜덤한 숫자 1개를 반환합니다.
+ * @example (1, 10) ==> 8
+ */
+function getMinMaxNumberFunc(min: number, max: number): number {
+
+    return parseInt(String(Math.random() * (max - min + 1))) + min;
+}
+
+function validate(nums: { min: number; max: number }): string  {
+
+    if (nums.min >= nums.max)
+        return `min must be less than max. ${Validation.RECEIVED_PARAMETER_MESSAEG}min=${nums.min} max=${nums.max}`;
+
+    else
+        return "";
+}
+
+export const getMinMaxNumberProxy = new Proxy(getMinMaxNumberFunc, {
+
+    apply: (target, thisArg, args) => {
+
+        const errorMessage = validate.call(null, args);
+
+        if(errorMessage) {
+            throw Error(errorMessage);
+        }
+
+        else
+            return target.apply(thisArg, args);
+    }
+});
 
 class NumberUtil {
 
