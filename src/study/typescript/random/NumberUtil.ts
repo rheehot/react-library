@@ -13,10 +13,15 @@ function getMinMaxNumberFunc(min: number, max: number): number {
     return parseInt(String(Math.random() * (max - min + 1))) + min;
 }
 
-function validate(nums: { min: number; max: number }): string  {
+/**
+ * 유효성 검증하는 코드를 별도의 함수로 분리하는것은 의미가 있음.
+ * 다른 proxy에서 동일한 유효성 검증이 필요할 경우 proxy마다 돌려쓸 수 있으니까.
+ * 하지만 유효성검증 코드가 proxy에 들어가는 순간 다른 proxy에서 똑같은 유효성검증이 필요할 때 똑같은 코드가 들어가게 될 것
+ */
+function mustBeLess(min: number, max: number): string  {
 
-    if (nums.min >= nums.max)
-        return `min must be less than max. ${Validation.RECEIVED_PARAMETER_MESSAEG}min=${nums.min} max=${nums.max}`;
+    if (min >= max)
+        return `min must be less than max. ${Validation.RECEIVED_PARAMETER_MESSAEG}min=${min} max=${max}`;
 
     else
         return "";
@@ -26,7 +31,7 @@ export const getMinMaxNumberProxy = new Proxy(getMinMaxNumberFunc, {
 
     apply: (target, thisArg, args) => {
 
-        const errorMessage = validate.call(null, args);
+        const errorMessage = mustBeLess.apply(null, args);
 
         if(errorMessage) {
             throw Error(errorMessage);
