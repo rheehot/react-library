@@ -37,12 +37,8 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.scss$/,
-        loaders: [
-          require.resolve( 'style-loader' ),
-          require.resolve( 'css-loader' ),
-          require.resolve( 'sass-loader' )
-        ]
+        test: /\.(css|scss|sass)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
     ]
   },
