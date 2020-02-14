@@ -3,7 +3,7 @@ import {MouseEventHandler} from "react";
 import "./form.scss";
 
 interface AppProp {
-    onClickHandler: MouseEventHandler,
+    onClickHandler: MouseEventHandler<HTMLButtonElement>,
     className: string
 }
 

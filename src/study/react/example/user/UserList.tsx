@@ -1,6 +1,7 @@
 import * as React from "react";
 import UserInfo from "./UserInfo";
 import {getUserList} from "./api";
+import MyButton from "../../common/form/MyButton";
 
 interface AppProp {
 
@@ -46,8 +47,8 @@ export default class UserList extends React.Component<AppProp, AppState> {
 				return (
 					<li key={`userList-${index}`}>
 						<span>{item.name}</span>
-						<button onClick={event => this.info(item, event)}>info</button>
-						<button onClick={event => this.delete(item)}>delete</button>
+						<MyButton onClickHandler={event => this.info(item, event)}>info</MyButton>
+						<MyButton onClickHandler={event => this.delete(item)}>delete</MyButton>
 					</li>
 				)
 			})
