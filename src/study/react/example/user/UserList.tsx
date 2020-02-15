@@ -14,7 +14,6 @@ interface AppState {
 
 export default class UserList extends React.Component<AppProp, AppState> {
 
-
 	constructor(props: AppProp) {
 		super(props);
 		this.state = {
