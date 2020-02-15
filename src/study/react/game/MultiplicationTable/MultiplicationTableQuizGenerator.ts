@@ -1,5 +1,5 @@
 import QuizGenerator from "../QuizGenerator";
-import {getMinMaxNumber} from "../../../typescript/random/NumberUtil";
+import {getMinMaxNumber} from "../../../typescript/random/numberUtil";
 
 export default class MultiplicationTableQuizGenerator implements QuizGenerator {
 

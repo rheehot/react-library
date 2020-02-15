@@ -32,7 +32,6 @@ export default class MultiplicationTableQuiz extends React.Component<AppProp, Ap
     }
 
     myChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("myChange called");
         this.setState({
             inputValue: event.target.value
         })

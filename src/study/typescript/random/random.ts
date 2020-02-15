@@ -1,4 +1,4 @@
-import numberUtil from "./NumberUtil";
+import numberUtil from "./numberUtil";
 import CHARACTERS from "./Character";
 import Validation from "../validate/Validation";
 import NaturalNumberValidation from "../validate/common/NaturalNumberValidation";

@@ -1,9 +1,9 @@
-import numberUtil from "./NumberUtil";
+import {getNumberArray} from "./numberUtil";
 
 class Character {
 
     //1부터 9까지
-    readonly NATURAL_NUMBERS: Array<number> = numberUtil.getNumberArray(1, 9);
+    readonly NATURAL_NUMBERS: Array<number> = getNumberArray(1, 9);
 
     //1부터 9까지
     readonly NATURAL_NUMBERS_STRING: Array<string> = this.NATURAL_NUMBERS.map(val => String(val));
@@ -15,7 +15,7 @@ class Character {
     readonly NUMBERS_STRING: Array<string> = ["0"].concat(this.NATURAL_NUMBERS_STRING);
 
     //F1부터 F12까지
-    readonly F_KEYS: Array<string> = numberUtil.getNumberArray(1, 12).map(val => `F${String(val)}`);
+    readonly F_KEYS: Array<string> = getNumberArray(1, 12).map(val => `F${String(val)}`);
 
     //방향키 4개
     readonly ARROW_KEYS = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
@@ -27,7 +27,7 @@ class Character {
         .concat(this.ARROW_KEYS).concat(this.F_KEYS).concat(this._FOR_INPUT_KEYS).concat(this._FOR_SHORT_CUTS_KEYS);
 
     //대문자 아스키코드값들
-    readonly UPPER_CASE_LETTER_CODES: Array<number> = numberUtil.getNumberArray(65, 90);
+    readonly UPPER_CASE_LETTER_CODES: Array<number> = getNumberArray(65, 90);
 
     //소문자 아스키코드값들
     readonly LOWER_CASE_LETTER_CODES: Array<number> = this.UPPER_CASE_LETTER_CODES.map(val => val + 32);

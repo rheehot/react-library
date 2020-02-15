@@ -1,4 +1,4 @@
-import numberUtil from "./NumberUtil";
+import {getNumberArray} from "./numberUtil";
 
 /**
  * @param array2d 정사각형 이차원배열
@@ -25,22 +25,22 @@ export function verticalArray(array2d: Array<Array<any>>, columnIndex: number) {
 }
 
 const successData1: Array<Array<number>> = [
-    numberUtil.getNumberArray(1, 5),
-    numberUtil.getNumberArray(6, 10),
-    numberUtil.getNumberArray(11, 15),
-    numberUtil.getNumberArray(16, 20),
-    numberUtil.getNumberArray(21, 25),
+    getNumberArray(1, 5),
+    getNumberArray(6, 10),
+    getNumberArray(11, 15),
+    getNumberArray(16, 20),
+    getNumberArray(21, 25),
 ];
 const successData2: Array<Array<number>> = [
-    numberUtil.getNumberArray(1, 5),
-    numberUtil.getNumberArray(6, 10),
+    getNumberArray(1, 5),
+    getNumberArray(6, 10),
 ];
 const successData3: Array<Array<number>> = [
-    numberUtil.getNumberArray(1, 3),
-    numberUtil.getNumberArray(6, 8),
-    numberUtil.getNumberArray(11, 13),
-    numberUtil.getNumberArray(16, 18),
-    numberUtil.getNumberArray(21, 23),
+    getNumberArray(1, 3),
+    getNumberArray(6, 8),
+    getNumberArray(11, 13),
+    getNumberArray(16, 18),
+    getNumberArray(21, 23),
 ];
 
 const failData = [

@@ -3,6 +3,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Layout from "./layout/Layout";
+import {getNumberArray} from "./study/typescript/random/numberUtil";
+
+console.log(getNumberArray(1, 10));
 
 ReactDOM.render(
 		<BrowserRouter>
