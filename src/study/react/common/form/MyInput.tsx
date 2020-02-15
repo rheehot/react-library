@@ -2,7 +2,7 @@ import * as React from "react";
 import {ChangeEventHandler} from "react";
 
 interface AppProp {
-    onChangeHandler: ChangeEventHandler,
+    onChangeHandler: ChangeEventHandler<HTMLInputElement>,
     inputValue: string
 }
 

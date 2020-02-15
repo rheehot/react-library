@@ -9,7 +9,7 @@ import ArgumentError from "../validate/ArgumentError";
  * @return min ~ max사이에 랜덤한 숫자 1개를 반환합니다.
  * @example (1, 10) ==> 8
  */
-function getMinMaxNumberFunc(min: number, max: number): number {
+function _getMinMaxNumber(min: number, max: number): number {
 
     return parseInt(String(Math.random() * (max - min + 1))) + min;
 }
@@ -25,7 +25,13 @@ function mustBeLessCheck(min: number, max: number)  {
         throw new ArgumentError(`min must be less than max. ${Validation.RECEIVED_PARAMETER_MESSAEG}min=${min} max=${max}`);
 }
 
-export const getMinMaxNumberProxy = new Proxy(getMinMaxNumberFunc, {
+/**
+ * @param min 이상
+ * @param max 이하
+ * @return min ~ max사이에 랜덤한 숫자 1개를 반환합니다.
+ * @example (1, 10) ==> 8
+ */
+export const getMinMaxNumber = new Proxy(_getMinMaxNumber, {
 
     apply: (target, thisArg, args) => {
 
@@ -38,24 +44,6 @@ export const getMinMaxNumberProxy = new Proxy(getMinMaxNumberFunc, {
 class NumberUtil {
 
     private static readonly MIN_MAX_VALIDATION = new MinMaxValidatiom();
-
-    /**
-     * @param min 이상
-     * @param max 이하
-     * @return min ~ max사이에 랜덤한 숫자 1개를 반환합니다.
-     * @example (1, 10) ==> 8
-     */
-    getMinMaxNumber(min: number, max: number): number {
-
-        let {min: _min, max: _max} = NumberUtil.MIN_MAX_VALIDATION.validate({min, max});
-
-        /**
-         * max는 min보다 반드시 커야함.
-         * 같아서도안되고 작아서도안됨.
-         */
-
-        return parseInt(String(Math.random() * (_max - _min + 1))) + _min;
-    }
 
     /**
      * @param min 이상

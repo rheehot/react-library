@@ -23,7 +23,7 @@ export default class UserList extends React.Component<AppProp, AppState> {
 
 	}
 
-	async getuserList() {
+	async getUserList() {
 
 		this.setState({
 			userList: await getUserList()
@@ -31,7 +31,7 @@ export default class UserList extends React.Component<AppProp, AppState> {
 	}
 
 	componentDidMount() {
-		this.getuserList().then();
+		this.getUserList().then();
 	}
 
 	delete(item:UserInfo) {
@@ -40,7 +40,7 @@ export default class UserList extends React.Component<AppProp, AppState> {
 
 			deleteUser(item.id).then(res => {
 				console.log(res);
-				this.getuserList().then();
+				this.getUserList().then();
 			});
 		}
 	}
@@ -57,7 +57,7 @@ export default class UserList extends React.Component<AppProp, AppState> {
 					<li className="user-list-li" key={`userList-${index}`}>
 						<span className="name">{item.name}</span>
 						<MyButton onClickHandler={event => this.info(item, event)}>info</MyButton>
-						<MyButton onClickHandler={event => this.delete(item)}>delete</MyButton>
+						<MyButton onClickHandler={() => this.delete(item)}>delete</MyButton>
 					</li>
 				)
 			})

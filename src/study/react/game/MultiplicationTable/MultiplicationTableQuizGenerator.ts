@@ -1,5 +1,5 @@
 import QuizGenerator from "../QuizGenerator";
-import numberUtil from "../../../typescript/random/NumberUtil";
+import {getMinMaxNumber} from "../../../typescript/random/NumberUtil";
 
 export default class MultiplicationTableQuizGenerator implements QuizGenerator {
 
@@ -9,8 +9,8 @@ export default class MultiplicationTableQuizGenerator implements QuizGenerator {
 
     makeQuiz(): string {
 
-        const num1 = numberUtil.getMinMaxNumber(1, 9);
-        const num2 = numberUtil.getMinMaxNumber(1, 9);
+        const num1 = getMinMaxNumber(1, 9);
+        const num2 = getMinMaxNumber(1, 9);
         this.answerCache = String(num1 * num2);
 
         this.quizCache = `${[num1, num2].join(" * ")} = ?`;
