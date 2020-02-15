@@ -3,7 +3,7 @@ import UserInfo from "./UserInfo";
 {
     if (!localStorage.getItem("userInfo")) {
 
-		let dummy = new Array(15).fill(undefined).map((val, index) => new UserInfo(`id-${index}`, `name-${index}`, `email-${index}`));
+		let dummy = new Array(15).fill(undefined).map((val, index) => new UserInfo(index, `name${index}`, `email${index}`));
 		console.log(dummy);
         localStorage.setItem("userInfo", JSON.stringify(dummy));
     }
@@ -33,4 +33,18 @@ export async function getUserList(): Promise<Array<UserInfo>> {
             clearTimeout(timeoutId);
         }, 100);
     })
+}
+
+export async function deleteUser(id: number) {
+
+    return new Promise(resolve => {
+
+        setTimeout(() => {
+
+            const toDel = userList.find(user => user.id === id);
+            userList.splice(userList.indexOf(toDel), 1);
+            resolve(200);
+
+        }, 100);
+    });
 }

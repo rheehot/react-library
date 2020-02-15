@@ -1,6 +1,6 @@
 import * as React from "react";
 import UserInfo from "./UserInfo";
-import {getUserList} from "./api";
+import {deleteUser, getUserList} from "./api";
 import MyButton from "../../common/form/MyButton";
 
 interface AppProp {
@@ -23,16 +23,25 @@ export default class UserList extends React.Component<AppProp, AppState> {
 
 	}
 
-	async componentDidMount() {
+	async getuserList() {
+
 		this.setState({
 			userList: await getUserList()
 		});
 	}
 
+	componentDidMount() {
+		this.getuserList().then();
+	}
+
 	delete(item:UserInfo) {
 
 		if(confirm(`${item.name}회원을 삭제하시겠습니까?`)) {
-			console.log(`${item.id}회원 삭제`);
+
+			deleteUser(item.id).then(res => {
+				console.log(res);
+				this.getuserList().then();
+			});
 		}
 	}
 
@@ -45,8 +54,8 @@ export default class UserList extends React.Component<AppProp, AppState> {
 		return (
 			this.state.userList.map((item, index) => {
 				return (
-					<li key={`userList-${index}`}>
-						<span>{item.name}</span>
+					<li className="user-list-li" key={`userList-${index}`}>
+						<span className="name">{item.name}</span>
 						<MyButton onClickHandler={event => this.info(item, event)}>info</MyButton>
 						<MyButton onClickHandler={event => this.delete(item)}>delete</MyButton>
 					</li>
