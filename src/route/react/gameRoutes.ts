@@ -1,7 +1,7 @@
-import MultiplicationTableQuiz from "../../study/react/game/MultiplicationTable/MultiplicationTableQuiz";
-import EndingWordGame from "../../study/react/game/EndingWord/EndingWordGame";
-import MineSweeper from "../../study/react/game/MineSweeper/MineSweeper";
-import TicTacToeHome from "../../study/react/game/tictactoe/TicTacToeHome";
+import MultiplicationTableQuiz from "../../study/react/game/multiplication-table/MultiplicationTableQuiz";
+import EndingWordGame from "../../study/react/game/ending-word/EndingWordGame";
+import MineSweeper from "../../study/react/game/mine-sweeper/MineSweeper";
+import TicTacToeHome from "../../study/react/game/tic-tac-toe/TicTacToeHome";
 
 export const gameRoutes = [
     {

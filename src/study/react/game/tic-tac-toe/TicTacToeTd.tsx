@@ -14,7 +14,7 @@ interface AppState {
 
 }
 
-export default class TicTacToeTd extends React.Component<AppProp, AppState> {
+export default class TicTacToeTd extends React.PureComponent<AppProp, AppState> {
 
     cellHasClicked: boolean = false;
 

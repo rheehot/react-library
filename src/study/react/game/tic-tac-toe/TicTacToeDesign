@@ -1,4 +1,4 @@
-Root Parent (Tic Tac Toe Home)
+Root PureComponentParent (Tic Tac Toe Home)
 state : currentUserName, 2dCellList, playerList
 field : Array<Array<string>>
 
