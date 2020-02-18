@@ -33,33 +33,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         };
 
         this.mark = this.mark.bind(this);
-        this.userSymbol = this.userSymbol.bind(this);
-        this.userNameSymbol = this.userNameSymbol.bind(this);
         this.currentSymbol = this.currentSymbol.bind(this);
-    }
-
-    userSymbol(rowIndex: number, columnIndex: number) {
-
-        const userName = this.ticTacToe.cell2dList[rowIndex][columnIndex];
-        return this.userNameSymbol(userName);
-    }
-
-    userNameSymbol(userName: string) {
-
-        if(userName === this.props.playerList[0])
-            return (
-              <div className={"circle red"}>
-              </div>
-            );
-
-        else if(userName === this.props.playerList[1])
-            return (
-              <div className={"circle blue"}>
-              </div>
-            );
-
-        else
-            return null;
     }
 
     currentSymbol() {
@@ -76,6 +50,10 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
     mark(selectIndex: [number, number]) {
 
         console.log("mark call");
+
+        if(this.state.gameResult !== GameResult.PROCEEDING) {
+            return;
+        }
 
         const changeUserIndex = (this.state.currentUserIndex + 1) % 2;
         const markSuccess = this.ticTacToe.mark(selectIndex, this.props.playerList[this.state.currentUserIndex]);
@@ -118,8 +96,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
                           return (
                             <TicTacToeTd key={`td-${rowIndex}-${columnIndex}`} rowIndex={rowIndex} columnIndex={columnIndex}
-                                         mark={this.mark} gameResult={this.state.gameResult}
-                                         cellValue={this.props.playerList.indexOf(this.state.cell2dList[rowIndex][columnIndex])}></TicTacToeTd>
+                                         mark={this.mark} cellValue={this.props.playerList.indexOf(this.state.cell2dList[rowIndex][columnIndex])}></TicTacToeTd>
                           )
                       })}
                   </tr>
