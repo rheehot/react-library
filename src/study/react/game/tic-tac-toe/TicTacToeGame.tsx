@@ -2,6 +2,7 @@ import * as React from "react";
 import "./TicTacToe.scss";
 import TicTacToe, {GameResult} from "./TicTacToe";
 import TicTacToeTd from "./TicTacToeTd";
+import CircleSymbol from "../symbol/CircleSymbol";
 
 interface AppProp {
     squareCount: number;
@@ -63,8 +64,13 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     currentSymbol() {
 
+        const currentUser = this.props.playerList[this.state.currentUserIndex];
+
         if(this.ticTacToe.gameResult === GameResult.PROCEEDING)
-            return this.userNameSymbol(this.props.playerList[this.state.currentUserIndex]);
+            return <CircleSymbol colorIndex={this.props.playerList.indexOf(currentUser)}></CircleSymbol>;
+
+        else
+            return null;
     }
 
     mark(selectIndex: [number, number]) {
@@ -111,7 +117,9 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
                       {new Array(this.props.squareCount).fill(undefined).map((val, columnIndex) => {
 
                           return (
-                            <TicTacToeTd key={`td-${rowIndex}-${columnIndex}`} rowIndex={rowIndex} columnIndex={columnIndex} mark={this.mark} gameResult={this.state.gameResult} userSymbol={this.userSymbol}></TicTacToeTd>
+                            <TicTacToeTd key={`td-${rowIndex}-${columnIndex}`} rowIndex={rowIndex} columnIndex={columnIndex}
+                                         mark={this.mark} gameResult={this.state.gameResult}
+                                         cellValue={this.props.playerList.indexOf(this.state.cell2dList[rowIndex][columnIndex])}></TicTacToeTd>
                           )
                       })}
                   </tr>
