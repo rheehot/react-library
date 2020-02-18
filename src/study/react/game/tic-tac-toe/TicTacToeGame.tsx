@@ -1,10 +1,10 @@
 import * as React from "react";
 import "./TicTacToe.scss";
-import TicTacToeTr from "./TicTacToeTr";
 import TicTacToe, {GameResult} from "./TicTacToe";
+import TicTacToeTd from "./TicTacToeTd";
 
 interface AppProp {
-    sqaureCount: number;
+    squareCount: number;
     playerList: [string, string];
 }
 
@@ -22,7 +22,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
     constructor(props: AppProp) {
         super(props);
 
-        this.ticTacToe = new TicTacToe(props.sqaureCount);
+        this.ticTacToe = new TicTacToe(props.squareCount);
 
         this.state = {
             cell2dList: this.ticTacToe.cell2dList,
@@ -104,8 +104,18 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     trs() {
         return (
-            new Array(this.props.sqaureCount).fill("").map((val, index) => {
-                return <TicTacToeTr key={`tr-${index}`} rowIndex={index} mark={this.mark} userSymbol={this.userSymbol} {...this.state}></TicTacToeTr>
+            new Array(this.props.squareCount).fill(undefined).map((val, rowIndex) => {
+                return (
+
+                  <tr key={`tr-${rowIndex}`}>
+                      {new Array(this.props.squareCount).fill(undefined).map((val, columnIndex) => {
+
+                          return (
+                            <TicTacToeTd key={`td-${rowIndex}-${columnIndex}`} rowIndex={rowIndex} columnIndex={columnIndex} mark={this.mark} gameResult={this.state.gameResult} userSymbol={this.userSymbol}></TicTacToeTd>
+                          )
+                      })}
+                  </tr>
+                )
             })
         );
     }

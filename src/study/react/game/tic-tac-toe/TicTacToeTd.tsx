@@ -4,7 +4,6 @@ import {GameResult} from "./TicTacToe";
 interface AppProp {
     rowIndex: number,
     columnIndex: number,
-    currentUserIndex: number,
     mark: Function,
     gameResult: GameResult,
     userSymbol: Function
@@ -14,7 +13,7 @@ interface AppState {
 
 }
 
-export default class TicTacToeTd extends React.PureComponent<AppProp, AppState> {
+export default class TicTacToeTd extends React.Component<AppProp, AppState> {
 
     cellHasClicked: boolean = false;
 
