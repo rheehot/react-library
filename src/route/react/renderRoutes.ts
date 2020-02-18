@@ -1,4 +1,4 @@
-import PureComponentParent from "../../study/react/game/render/pure/PureComponentParent";
+import PureComponentParent from "../../study/react/render/pure/PureComponentParent";
 
 export const renderRoutes = [
     {

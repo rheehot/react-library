@@ -1,6 +1,6 @@
 import * as React from "react";
 import PureComponentChild from "./PureComponentChild";
-import MyButton from "../../../common/form/MyButton";
+import MyButton from "../../common/form/MyButton";
 
 interface AppProp {
 
@@ -10,7 +10,7 @@ interface AppState {
     parentState: Array<number>
 }
 
-export default class PureComponentParent extends React.Component<AppProp, AppState> {
+export default class PureComponentParent extends React.PureComponent<AppProp, AppState> {
 
     constructor(props: AppProp) {
 
@@ -25,14 +25,23 @@ export default class PureComponentParent extends React.Component<AppProp, AppSta
 
     referenceChange() {
 
+        this.setState({
+            parentState: [1, 2, 3]
+        });
+
     }
 
     render() {
+
+        console.log("parent render call");
+
         return (
             <div className="component-wrap">
                 Parent Component
-                <PureComponentChild></PureComponentChild>
                 <MyButton onClickHandler={this.referenceChange}>부모 state바꾸기</MyButton>
+                <MyButton onClickHandler={() => this.forceUpdate()}>부모 forceUpdate</MyButton>
+
+                <PureComponentChild></PureComponentChild>
             </div>
         )
     }
