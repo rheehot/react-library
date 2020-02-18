@@ -1,0 +1,23 @@
+<script>
+    var viewPortCalculator = (function() {
+        var mobileScreen = {
+            findInnerMaxWidth: function () {
+                return 123;
+            },
+            getScale: function (max) {
+                return "123";
+            }
+        };
+        var scale = mobileScreen.getScale(mobileScreen.findInnerMaxWidth());
+
+        return {
+            calViewPort: function() {
+
+                $("meta[name=viewport]").attr("content", "width=device-width, initial-scale=" + scale + ", maximum-scale=3.0, minimum-scale=" + scale + ", user-scalable=yes, viewport-fit=cover");
+                debugger;
+            }
+        }
+    })();
+
+    viewPortCalculator.calViewPort();
+</script>
