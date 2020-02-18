@@ -35,3 +35,13 @@
   @include background-image-default;
   background-size: contain;
 }
+
+.delete-left-radius-border {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.delete-right-radius-border {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}

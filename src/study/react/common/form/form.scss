@@ -38,19 +38,9 @@
   > .form-item-inner {
     display: flex;
     flex-grow: 1;
-
-    > .my-input {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
   }
 
   .my-input {
     flex-grow: 1;
-  }
-
-  .my-input + .my-button {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
   }
 }
