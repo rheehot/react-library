@@ -33,7 +33,6 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         };
 
         this.mark = this.mark.bind(this);
-        this.currentSymbol = this.currentSymbol.bind(this);
     }
 
     currentSymbol() {

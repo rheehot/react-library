@@ -14,10 +14,6 @@ interface AppState {
 
 export default class TicTacToeTd extends React.Component<AppProp, AppState> {
 
-    constructor(props: AppProp) {
-        super(props);
-    }
-
     shouldComponentUpdate(nextProps: Readonly<AppProp>, nextState: Readonly<AppState>, nextContext: any): boolean {
         return nextProps.cellValue !== this.props.cellValue;
     }
