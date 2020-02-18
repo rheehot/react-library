@@ -16,6 +16,9 @@ export async function getUserInfo(id: number): Promise<UserInfo> {
 
         let timeoutId = setTimeout(() => {
 
+            console.log(id);
+            console.log(userList[id]);
+
             resolve(userList[id]);
             clearTimeout(timeoutId);
 

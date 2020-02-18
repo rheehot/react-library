@@ -3,7 +3,7 @@ import {ChangeEventHandler} from "react";
 
 interface AppProp {
     onChangeHandler: ChangeEventHandler<HTMLInputElement>,
-    inputValue: string,
+    inputValue: string | number,
     className: string
 }
 

@@ -5,7 +5,7 @@ import MyInput from "./MyInput";
 interface AppProp {
     labelText: string,
     onChangeHandler: ChangeEventHandler,
-    inputValue: string
+    inputValue: string | number
 }
 
 interface AppState {

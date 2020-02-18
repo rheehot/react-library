@@ -8,7 +8,7 @@ interface AppProp {
 }
 
 interface AppState {
-    id: string,
+    id: number,
     name: string,
     email: string
 }
@@ -19,7 +19,7 @@ export default class UserForm extends React.Component<AppProp, AppState> {
         super(props);
 
         this.state = {
-            id: "",
+            id: 0,
             name: "",
             email: ""
         };
@@ -39,7 +39,7 @@ export default class UserForm extends React.Component<AppProp, AppState> {
     idChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
 
         this.setState({
-            id: event.target.value
+            id: parseInt(event.target.value)
         })
     }
 
@@ -62,7 +62,9 @@ email: ${this.state.email}`);
 
     async componentDidMount(): Promise<void> {
 
-        const {id, name, email} = await getUserInfo();
+        const userId = this.props.match.params.id;
+
+        const {id, name, email} = await getUserInfo(userId);
 
         this.setState({
             id: id,
