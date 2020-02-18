@@ -10,15 +10,13 @@ interface AppProp {
 }
 
 interface AppState {
-    cell2dList: Array<Array<string>>,
-    currentUserIndex: number,
-    message: string,
-    gameResult: GameResult
+    message: string
 }
 
 export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     readonly ticTacToe:TicTacToe;
+    currentUserIndex: number = 0;
 
     constructor(props: AppProp) {
         super(props);
@@ -26,10 +24,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         this.ticTacToe = new TicTacToe(props.squareCount);
 
         this.state = {
-            cell2dList: this.ticTacToe.cell2dList,
-            currentUserIndex: 0,
             message: `현재 사용자 이름 : ${this.props.playerList[0]}`,
-            gameResult: this.ticTacToe.gameResult
         };
 
         this.mark = this.mark.bind(this);
@@ -37,10 +32,10 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     currentSymbol() {
 
-        const currentUser = this.props.playerList[this.state.currentUserIndex];
+        const currentUser = this.props.playerList[this.currentUserIndex];
 
         if(this.ticTacToe.gameResult === GameResult.PROCEEDING)
-            return <CircleSymbol colorIndex={this.props.playerList.indexOf(currentUser)}></CircleSymbol>;
+            return <CircleSymbol colorIndex={this.props.playerList.indexOf(currentUser)}/>;
 
         else
             return null;
@@ -50,36 +45,37 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
         console.log("mark call");
 
-        if(this.state.gameResult !== GameResult.PROCEEDING) {
+        if(this.ticTacToe.gameResult !== GameResult.PROCEEDING) {
             return;
         }
 
-        const changeUserIndex = (this.state.currentUserIndex + 1) % 2;
-        const markSuccess = this.ticTacToe.mark(selectIndex, this.props.playerList[this.state.currentUserIndex]);
+        const changeUserIndex = (this.currentUserIndex + 1) % 2;
+        const markSuccess = this.ticTacToe.mark(selectIndex, this.props.playerList[this.currentUserIndex]);
 
         if(markSuccess) {
 
+            this.currentUserIndex = changeUserIndex;
+
             this.setState({
-                currentUserIndex: changeUserIndex,
                 message: `현재 사용자 이름 : ${this.props.playerList[changeUserIndex]}`
             });
         }
 
         switch(this.ticTacToe.gameResult) {
+            //@ts-ignore
             case GameResult.WHO_WIN:
                 const winnerName = this.ticTacToe.winner;
 
                 this.setState({
                     message: `결과 : ${winnerName}님이 우승하셨습니다.`,
-                    gameResult: this.ticTacToe.gameResult
                 });
                 break;
 
+            //@ts-ignore
             case GameResult.TIE:
 
                 this.setState({
                     message: `결과 : 무승부 입니다.`,
-                    gameResult: this.ticTacToe.gameResult
                 });
                 break;
         }
@@ -95,7 +91,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
                           return (
                             <TicTacToeTd key={`td-${rowIndex}-${columnIndex}`} rowIndex={rowIndex} columnIndex={columnIndex}
-                                         mark={this.mark} cellValue={this.props.playerList.indexOf(this.state.cell2dList[rowIndex][columnIndex])}></TicTacToeTd>
+                                         mark={this.mark} cellValue={this.props.playerList.indexOf(this.ticTacToe.cell2dList[rowIndex][columnIndex])}/>
                           )
                       })}
                   </tr>
