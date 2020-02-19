@@ -15,6 +15,8 @@ interface AppState {
 
 export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
+    test: void = fieldInit();
+
     readonly ticTacToe:TicTacToe;
     currentUserIndex: number = 0;
 
@@ -28,6 +30,20 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
         };
 
         this.mark = this.mark.bind(this);
+
+        console.log("tictactoe game constructor call");
+    }
+
+    componentDidMount(): void {
+        console.log("tictactoe game componentDidMount call");
+    }
+
+    componentWillUnmount(): void {
+        console.log("tictactoe game componentWillUnmount call");
+    }
+
+    componentDidUpdate(prevProps: Readonly<AppProp>, prevState: Readonly<AppState>, snapshot?: any): void {
+        console.log("tictactoe game componentDidUpdate call");
     }
 
     currentSymbol() {
@@ -42,8 +58,6 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
     }
 
     mark(selectIndex: [number, number]) {
-
-        console.log("mark call");
 
         if(this.ticTacToe.gameResult !== GameResult.PROCEEDING) {
             return;
@@ -102,7 +116,7 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
 
     render() {
 
-        console.log("render called");
+        console.log("tictactoe game render called");
 
         return (
             <>
@@ -118,4 +132,8 @@ export default class TicTacToeGame extends React.Component<AppProp, AppState> {
             </>
         )
     }
+}
+
+function fieldInit() {
+    console.log("tictactoe game field init");
 }
