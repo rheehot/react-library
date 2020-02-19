@@ -43,7 +43,7 @@ export default class PureComponentChild extends React.PureComponent<AppProp, App
 
         return (
             <div className="component-wrap">
-                Child Component
+                Child PureComponent
                 <MyButton onClickHandler={this.referenceChange}>자식 state 바꾸기</MyButton>
                 <MyButton onClickHandler={() => this.forceUpdate()}>자식 forceUpdate</MyButton>
             </div>
