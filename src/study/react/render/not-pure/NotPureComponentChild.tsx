@@ -2,7 +2,8 @@ import * as React from "react";
 import MyButton from "../../common/form/MyButton";
 
 interface AppProp {
-
+    primitiveProp: number,
+    referenceProp: Array<number>
 }
 
 interface AppState {
@@ -35,6 +36,7 @@ export default class NotPureComponentChild extends React.Component<AppProp, AppS
         return (
             <div className="component-wrap">
                 Child Component
+                {this.props.referenceProp} {this.props.primitiveProp}
                 <MyButton onClickHandler={this.justSetState}>setState호출(state유지)</MyButton>
             </div>
         )
