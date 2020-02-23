@@ -1,5 +1,5 @@
 import PureComponentParent from "../../study/react/render/pure/PureComponentParent";
-import NotPureComponentParent from "../../study/react/render/not-pure/NotPureComponentParent";
+import PropReRenderChild from "../../study/react/render/prop-render-test/PropReRenderChild";
 
 export const renderRoutes = [
     {
@@ -8,8 +8,11 @@ export const renderRoutes = [
         exact: true
     },
     {
-        path: "/react/render/not-pure",
-        component: NotPureComponentParent,
-        exact: true
+        path: "/react/render/props-re-render-test",
+        component: PropReRenderChild,
+        exact: true,
+        meta: {
+            name: "Props Re-render"
+        }
     }
 ];

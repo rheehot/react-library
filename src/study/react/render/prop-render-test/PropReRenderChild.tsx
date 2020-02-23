@@ -1,5 +1,5 @@
 import * as React from "react";
-import NotPureComponentChild from "./NotPureComponentChild";
+import PropReRenderParent from "./PropReRenderParent";
 import MyButton from "../../common/form/MyButton";
 
 interface AppProp {
@@ -10,7 +10,7 @@ interface AppState {
     parentState: Array<number>
 }
 
-export default class NotPureComponentParent extends React.Component<AppProp, AppState> {
+export default class PropReRenderChild extends React.Component<AppProp, AppState> {
 
     primitiveField: number = 1;
     referenceField: Array<number> = [1, 2, 3];
@@ -54,7 +54,7 @@ export default class NotPureComponentParent extends React.Component<AppProp, App
                 <MyButton onClickHandler={this.changePrimitiveField}>primitiveProp변경하기</MyButton>
                 <MyButton onClickHandler={this.changeReferenceField}>referenceProp변경하기</MyButton>
 
-                <NotPureComponentChild primitiveProp={this.primitiveField} referenceProp={this.referenceField}></NotPureComponentChild>
+                <PropReRenderParent primitiveProp={this.primitiveField} referenceProp={this.referenceField}></PropReRenderParent>
             </div>
         )
     }

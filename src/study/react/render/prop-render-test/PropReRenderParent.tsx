@@ -10,7 +10,7 @@ interface AppState {
     childState: number
 }
 
-export default class NotPureComponentChild extends React.Component<AppProp, AppState> {
+export default class PropReRenderParent extends React.Component<AppProp, AppState> {
 
     constructor(props: AppProp) {
         super(props);
