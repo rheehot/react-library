@@ -12,6 +12,9 @@ interface AppState {
 
 export default class NotPureComponentParent extends React.Component<AppProp, AppState> {
 
+    primitiveField: number = 1;
+    referenceField: Array<number> = [1, 2, 3];
+
     constructor(props: AppProp) {
 
         super(props);
@@ -21,6 +24,16 @@ export default class NotPureComponentParent extends React.Component<AppProp, App
         };
 
         this.justSetState = this.justSetState.bind(this);
+        this.changePrimitiveField = this.changePrimitiveField.bind(this);
+        this.changeReferenceField = this.changeReferenceField.bind(this);
+    }
+
+    changeReferenceField() {
+        this.referenceField = [...this.referenceField, this.primitiveField];
+    }
+
+    changePrimitiveField() {
+        this.primitiveField++;
     }
 
     justSetState() {
@@ -38,8 +51,10 @@ export default class NotPureComponentParent extends React.Component<AppProp, App
             <div className="component-wrap">
                 Parent Component
                 <MyButton onClickHandler={this.justSetState}>setState호출(state유지)</MyButton>
+                <MyButton onClickHandler={this.changePrimitiveField}>primitiveProp변경하기</MyButton>
+                <MyButton onClickHandler={this.changeReferenceField}>referenceProp변경하기</MyButton>
 
-                <NotPureComponentChild></NotPureComponentChild>
+                <NotPureComponentChild primitiveProp={this.primitiveField} referenceProp={this.referenceField}></NotPureComponentChild>
             </div>
         )
     }
