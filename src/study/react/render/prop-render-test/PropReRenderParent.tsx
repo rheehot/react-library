@@ -36,6 +36,7 @@ export default class PropReRenderParent extends React.Component<AppProp, AppStat
         return (
             <div className="component-wrap">
                 Child Component
+                {this.props.referenceProp} {this.props.primitiveProp}
                 <MyButton onClickHandler={this.justSetState}>setState호출(state유지)</MyButton>
                 <div>부모에게받은 prop1 = {this.props.primitiveProp}</div>
                 <div>부모에게받은 prop1 = {this.props.referenceProp}</div>
