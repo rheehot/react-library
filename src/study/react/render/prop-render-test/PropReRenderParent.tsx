@@ -1,46 +1,61 @@
 import * as React from "react";
 import MyButton from "../../common/form/MyButton";
+import PropReRenderChild from "./PropReRenderChild";
 
 interface AppProp {
-    primitiveProp: number,
-    referenceProp: Array<number>
+
 }
 
 interface AppState {
-    childState: number
+    parentState: Array<number>
 }
 
 export default class PropReRenderParent extends React.Component<AppProp, AppState> {
 
+    primitiveField: number = 1;
+    referenceField: Array<number> = [1, 2, 3];
+
     constructor(props: AppProp) {
+
         super(props);
 
         this.state = {
-            childState: 1
+            parentState: [1, 2, 3]
         };
 
         this.justSetState = this.justSetState.bind(this);
+        this.changePrimitiveField = this.changePrimitiveField.bind(this);
+        this.changeReferenceField = this.changeReferenceField.bind(this);
+    }
+
+    changeReferenceField() {
+        this.referenceField = [...this.referenceField, this.primitiveField];
+    }
+
+    changePrimitiveField() {
+        this.primitiveField++;
     }
 
     justSetState() {
 
         this.setState({
-            childState: this.state.childState
+            parentState: this.state.parentState
         });
     }
 
     render() {
 
-        console.log("child render call");
+        console.log("parent render call");
 
         return (
             <div className="component-wrap">
-                Child Component
-                {this.props.referenceProp} {this.props.primitiveProp}
+                Parent Component
                 <MyButton onClickHandler={this.justSetState}>setState호출(state유지)</MyButton>
-                <div>부모에게받은 prop1 = {this.props.primitiveProp}</div>
-                <div>부모에게받은 prop1 = {this.props.referenceProp}</div>
+                <MyButton onClickHandler={this.changePrimitiveField}>primitiveProp변경하기</MyButton>
+                <MyButton onClickHandler={this.changeReferenceField}>referenceProp변경하기</MyButton>
+
+                <PropReRenderChild primitiveProp={this.primitiveField} referenceProp={this.referenceField}/>
             </div>
-        );
+        )
     }
 }

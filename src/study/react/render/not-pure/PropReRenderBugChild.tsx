@@ -10,7 +10,7 @@ interface AppState {
     childState: number
 }
 
-export default class PropReRenderChild extends React.Component<AppProp, AppState> {
+export default class PropReRenderBugChild extends React.Component<AppProp, AppState> {
 
     constructor(props: AppProp) {
         super(props);
@@ -36,10 +36,9 @@ export default class PropReRenderChild extends React.Component<AppProp, AppState
         return (
             <div className="component-wrap">
                 Child Component
+                {this.props.referenceProp} {this.props.primitiveProp}
                 <MyButton onClickHandler={this.justSetState}>setState호출(state유지)</MyButton>
-                <div>부모에게받은 primitive prop = {this.props.primitiveProp}</div>
-                <div>부모에게받은 reference prop = {this.props.referenceProp}</div>
             </div>
-        );
+        )
     }
 }

@@ -1,5 +1,6 @@
 import PureComponentParent from "../../study/react/render/pure/PureComponentParent";
-import PropReRenderChild from "../../study/react/render/prop-render-test/PropReRenderChild";
+import PropReRenderParent from "../../study/react/render/prop-render-test/PropReRenderParent";
+import PropReRenderBugParent from "../../study/react/render/not-pure/PropReRenderBugParent";
 
 export const renderRoutes = [
     {
@@ -9,10 +10,18 @@ export const renderRoutes = [
     },
     {
         path: "/react/render/props-re-render-test",
-        component: PropReRenderChild,
+        component: PropReRenderParent,
         exact: true,
         meta: {
             name: "Props Re-render"
+        }
+    },
+    {
+        path: "/react/render/props-re-render-bug",
+        component: PropReRenderBugParent,
+        exact: true,
+        meta: {
+            name: "Props Re-render Bug"
         }
     }
 ];
