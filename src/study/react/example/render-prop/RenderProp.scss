@@ -1,0 +1,25 @@
+.RenderProp-container {
+
+  position: relative;
+
+  .mouse-wrap {
+    width: 300px;
+    height: 300px;
+    border: 3px solid gray;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .mouse-wrap.active .pointer {
+    display: inline-block;
+  }
+
+  .mouse-wrap:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  .pointer {
+    display: none;
+    position: absolute;
+  }
+}
