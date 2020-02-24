@@ -1,0 +1,18 @@
+1. 컴포넌트 구조
+
+카운터 컴포넌트
+  [현재 카운트된 숫자 표시]
+  [+] [-]
+
++ 버튼 누르면 증가
+- 버튼 누르면 감소
+
+prop
+  x
+
+state
+  currentCount
+
+increase()
+
+decrease()
