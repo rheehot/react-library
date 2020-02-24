@@ -39,8 +39,7 @@ export default class Mouse extends React.Component<AppProp, AppState> {
         <div ref={this.mouseWrap} className="mouse-wrap" onMouseMove={this.mouseMove} onMouseOver={this.mouseToggle} onMouseOut={this.mouseToggle}>
           현재 좌표: {this.state.x} / {this.state.y}
 
-          <div className="pointer" style={{left: this.state.x, top: this.state.y}}>
-            {/*<this.props.render/>*/}
+          <div className="mouse-pointer" style={{left: this.state.x, top: this.state.y}}>
             {this.props.render}
           </div>
         </div>

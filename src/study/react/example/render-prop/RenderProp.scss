@@ -10,15 +10,15 @@
     display: inline-block;
   }
 
-  .mouse-wrap.active .pointer {
+  .mouse-wrap.active .mouse-pointer {
     display: inline-block;
   }
 
-  .mouse-wrap:not(:first-child) {
+  .mouse-wrap:last-child {
     margin-left: 20px;
   }
 
-  .pointer {
+  .mouse-pointer {
     display: none;
     position: absolute;
   }

@@ -37,9 +37,6 @@ export default class MyHeader extends React.Component<AppProp> {
 
     render() {
 
-      console.log(this.props.headerUls);
-      console.log("header render");
-
         return (
             <header>
                 <nav className="dropdown-nav">
