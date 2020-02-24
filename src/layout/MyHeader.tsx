@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 import HeaderInfo from "./header/HeaderInfo";
 
 interface AppProp {
-    headerUls: Array<Array<HeaderInfo>>
+    headerUls: Array<Array<HeaderInfo>>,
+    headerChange: Function
 }
 
 export default class MyHeader extends React.Component<AppProp> {
@@ -16,9 +17,16 @@ export default class MyHeader extends React.Component<AppProp> {
             this.props.headerUls.map((headerUl, ulIndex) => {
                 return (
                     <ul key={`ul-${ulIndex}`} className="dropdown-ul">
-                        {headerUl.map((headerItem, liIndex) => {
+                        {headerUl.map((headerInfo, liIndex) => {
+
+                            if(ulIndex === 0) {
+                              return (
+                                  <li key={`li-${liIndex}`} onClickCapture={() => this.props.headerChange(headerInfo)} className="dropdown-li"><Link to={headerInfo.to}>{headerInfo.text}</Link></li>
+                              )
+                            }
+
                             return (
-                                <li key={`li-${liIndex}`} className="dropdown-li"><Link to={headerItem.to}>{headerItem.text}</Link></li>
+                                <li key={`li-${liIndex}`} className="dropdown-li"><Link to={headerInfo.to}>{headerInfo.text}</Link></li>
                             )
                         })}
                     </ul>
@@ -28,6 +36,10 @@ export default class MyHeader extends React.Component<AppProp> {
     };
 
     render() {
+
+      console.log(this.props.headerUls);
+      console.log("header render");
+
         return (
             <header>
                 <nav className="dropdown-nav">

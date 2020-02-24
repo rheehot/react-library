@@ -1,6 +1,6 @@
 import UserList from "../../study/react/form/user/UserList";
 import UserForm from "../../study/react/form/user/UserForm";
-import UsefulBug from "../../study/react/form/UsefulBug";
+import UsefulFormBug from "../../study/react/form/UsefulFormBug";
 
 export const formRoutes = [
     {
@@ -30,7 +30,7 @@ export const formRoutes = [
     },
     {
         path: "/react/form/basic",
-        component: UsefulBug,
+        component: UsefulFormBug,
         exact: true
     }
 ];

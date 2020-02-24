@@ -1,4 +1,4 @@
-import ReactMain from "../../layout/main/ReactMain";
+import ReactMain from "../../study/react/ReactMain";
 import {gameRoutes} from "./gameRoutes";
 import {formRoutes} from "./formRoutes";
 import {renderRoutes} from "./renderRoutes";

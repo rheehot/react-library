@@ -8,7 +8,7 @@ interface AppState {
 
 }
 
-export default class UsefulBug extends React.Component<AppProp, AppState> {
+export default class UsefulFormBug extends React.Component<AppProp, AppState> {
 
   render() {
     return (

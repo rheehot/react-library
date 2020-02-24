@@ -1,11 +1,11 @@
-import {cropRoutes} from "./cropRoutes";
+import {imageRoutes} from "./imageRoutes";
 import {transitionRoutes} from "./transitionRoutes";
 import {squareRoutes} from "./squareRoutes";
-import CssMain from "../../layout/main/CssMain";
+import CssMain from "../../study/css/CssMain";
 
 export const routes = [
     {
         path: "/css/main",
         component: CssMain
     }
-].concat(cropRoutes, transitionRoutes, squareRoutes);
+].concat(imageRoutes, transitionRoutes, squareRoutes);
