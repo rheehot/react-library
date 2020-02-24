@@ -1,8 +1,8 @@
-import MineSweeper from "../../study/react/game/mine-sweeper/MineSweeper";
-import TicTacToeHome from "../../study/react/game/tic-tac-toe/TicTacToeHome";
-import Counter from "../../study/react/game/counter/Counter";
+import MineSweeper from "../../study/react/example/mine-sweeper/MineSweeper";
+import TicTacToeHome from "../../study/react/example/tic-tac-toe/TicTacToeHome";
+import Counter from "../../study/react/example/counter/Counter";
 
-export const gameRoutes = [
+export const exampleRoutes = [
     {
         path: "/react/game/tic-tac-toe",
         component: TicTacToeHome,
