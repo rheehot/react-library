@@ -28,17 +28,18 @@ section {
 
 footer {
   height: 70px;
-  background: blueviolet;
+  background: lightskyblue;
   position: relative;
 }
 
 .main-aside {
   margin-right: 20px;
-  padding: 20px;
+  flex-shrink: 0;
 
+  padding: 20px;
   width: 200px;
   height: 600px;
-  background: blueviolet;
+  background: lightskyblue;
 }
 
 .main {
