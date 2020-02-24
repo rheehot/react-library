@@ -1,6 +1,6 @@
 import ReactMain from "../../layout/main/ReactMain";
 import {gameRoutes} from "./gameRoutes";
-import {exampleRoutes} from "./exampleRoutes";
+import {formRoutes} from "./formRoutes";
 import {renderRoutes} from "./renderRoutes";
 
 export const routes = [
@@ -14,4 +14,4 @@ export const routes = [
         component: ReactMain,
         exact: true
     },
-].concat(gameRoutes, exampleRoutes, renderRoutes);
+].concat(gameRoutes, formRoutes, renderRoutes);
