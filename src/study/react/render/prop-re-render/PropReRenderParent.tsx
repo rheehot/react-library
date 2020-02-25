@@ -14,6 +14,10 @@ export default class PropReRenderParent extends React.Component<AppProp, AppStat
 
     primitiveField: number = 1;
     referenceField: Array<number> = [1, 2, 3];
+    myProps = {
+        primitiveProp: this.primitiveField,
+        referenceProp: this.referenceField
+    };
 
     constructor(props: AppProp) {
 
@@ -26,6 +30,7 @@ export default class PropReRenderParent extends React.Component<AppProp, AppStat
         this.justSetState = this.justSetState.bind(this);
         this.changePrimitiveField = this.changePrimitiveField.bind(this);
         this.changeReferenceField = this.changeReferenceField.bind(this);
+        this.addDynamicProp = this.addDynamicProp.bind(this);
     }
 
     changeReferenceField() {
@@ -43,6 +48,10 @@ export default class PropReRenderParent extends React.Component<AppProp, AppStat
         });
     }
 
+    addDynamicProp() {
+        this.myProps = {...this.myProps, dynamicProp: 123};
+    }
+
     render() {
 
         console.log("parent render call");
@@ -51,10 +60,11 @@ export default class PropReRenderParent extends React.Component<AppProp, AppStat
             <div className="component-wrap">
                 Parent Component
                 <MyButton onClickHandler={this.justSetState}>setState호출(state유지)</MyButton>
-                <MyButton onClickHandler={this.changePrimitiveField}>primitiveProp변경하기</MyButton>
-                <MyButton onClickHandler={this.changeReferenceField}>referenceProp변경하기</MyButton>
+                {/*<MyButton onClickHandler={this.changePrimitiveField}>primitiveProp변경하기</MyButton>*/}
+                {/*<MyButton onClickHandler={this.changeReferenceField}>referenceProp변경하기</MyButton>*/}
+                <MyButton onClickHandler={this.addDynamicProp}>dynamicProp추가하기</MyButton>
 
-                <PropReRenderChild primitiveProp={this.primitiveField} referenceProp={this.referenceField}/>
+                <PropReRenderChild {...this.myProps}/>
             </div>
         )
     }

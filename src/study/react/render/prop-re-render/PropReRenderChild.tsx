@@ -44,6 +44,7 @@ export default class PropReRenderChild extends React.Component<AppProp, AppState
                 <MyButton onClickHandler={this.myPropConsoleLog}>현재 prop 콘솔에 찍기</MyButton>
                 <div>부모에게받은 primitive prop = {this.props.primitiveProp}</div>
                 <div>부모에게받은 reference prop = {this.props.referenceProp}</div>
+                <div>부모에게받은 dynamic prop = {this.props.dynamicProp}</div>
             </div>
         );
     }
