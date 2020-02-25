@@ -24,6 +24,42 @@ export function verticalArray(array2d: Array<Array<any>>, columnIndex: number) {
     return array2d.map(array => array[columnIndex]);
 }
 
+export function getSquareArray(squareCount: number): Array<Array<undefined>> {
+    return new Array(squareCount).fill(undefined).map(() => new Array(squareCount).fill(undefined));
+}
+
+//https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+export function flat(arr: Array<any>, depth = 1): Array<any> {
+    return depth > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flat(val, depth - 1) : val), [])
+        : arr.slice();
+}
+
+/**
+ * @param squareArray 2차원배열
+ * @return 정사각형 2차원배열이면 한 변의 길이를 반환하고, 정사각형 2차원배열이 아니면 -1을 반환
+ */
+export function getSquareCount(squareArray: Array<Array<any>>): number {
+
+    const firstArray = squareArray[0];
+
+    if(! Array.isArray(firstArray))
+        return -1;
+
+    const isSquareArray = squareArray.every(val => {
+
+        if (! Array.isArray(val))
+            return false;
+
+        else
+            return val.length === firstArray.length;
+    });
+
+    if(! isSquareArray)
+        return -1;
+
+    return flat(squareArray).length / firstArray.length;
+}
+
 const successData1: Array<Array<number>> = [
     getNumberArray(1, 5),
     getNumberArray(6, 10),
