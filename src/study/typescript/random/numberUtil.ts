@@ -1,5 +1,4 @@
-import Validation from "../validate/Validation";
-import ArgumentError from "../validate/ArgumentError";
+import ArgumentError from "../ArgumentError";
 
 function _getMinMaxNumber(min: number, max: number): number {
 
@@ -24,7 +23,7 @@ function _getNumberArray(min: number, max: number): Array<number> {
 function mustBeLessCheck(min: number, max: number)  {
 
     if (min >= max)
-        throw new ArgumentError(`min must be less than max. ${Validation.RECEIVED_PARAMETER_MESSAEG}min=${min} max=${max}`);
+        throw new ArgumentError(`min must be less than max. min=${min} max=${max}`);
 }
 
 /**
