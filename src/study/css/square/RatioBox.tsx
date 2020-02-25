@@ -10,11 +10,11 @@ interface AppState {
 
 export default class RatioBox extends React.Component<AppProp, AppState> {
 
-		render() {
-				return (
-							<div>
-									Ratio Box
-							</div>
-				)
-		}
+    render() {
+        return (
+            <div>
+                Ratio Box
+            </div>
+        )
+    }
 }

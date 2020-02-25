@@ -4,9 +4,9 @@ export default class ReactMain extends React.Component {
 
     render() {
         return (
-          <div>
-            React Main화면입니다.
-          </div>
+            <div>
+                React Main화면입니다.
+            </div>
         );
     }
 };

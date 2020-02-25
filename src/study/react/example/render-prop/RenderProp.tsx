@@ -14,13 +14,13 @@ interface AppState {
 
 export default class RenderProp extends React.Component<AppProp, AppState> {
 
-  render() {
-    return (
-        <div className="RenderProp-container">
-          <h3>박스 위에 커서를 올려보세요.</h3>
-          <Mouse render={AppleCursor()} />
-          <Mouse render={ReactCursor()} />
-        </div>
-    )
-  }
+    render() {
+        return (
+            <div className="RenderProp-container">
+                <h3>박스 위에 커서를 올려보세요.</h3>
+                <Mouse render={AppleCursor()}/>
+                <Mouse render={ReactCursor()}/>
+            </div>
+        )
+    }
 }

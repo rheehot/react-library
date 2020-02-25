@@ -3,7 +3,7 @@ import {CircleSymbolEnum} from "./CircleSymbolEnum";
 import "./CircleSymbol.scss";
 
 interface AppProp {
-		colorIndex: number
+    colorIndex: number
 }
 
 interface AppState {
@@ -12,21 +12,21 @@ interface AppState {
 
 export default class CircleSymbol extends React.PureComponent<AppProp, AppState> {
 
-		constructor(props: AppProp) {
-				super(props);
+    constructor(props: AppProp) {
+        super(props);
 
-				this.circleColorClass = this.circleColorClass.bind(this);
-		}
+        this.circleColorClass = this.circleColorClass.bind(this);
+    }
 
-		circleColorClass() {
+    circleColorClass() {
 
-				return CircleSymbolEnum[this.props.colorIndex];
-		}
+        return CircleSymbolEnum[this.props.colorIndex];
+    }
 
-		render() {
-				return (
-						<div className={`circle ${this.circleColorClass()}`}>
-						</div>
-				)
-		}
+    render() {
+        return (
+            <div className={`circle ${this.circleColorClass()}`}>
+            </div>
+        )
+    }
 }

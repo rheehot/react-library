@@ -6,12 +6,12 @@ import Layout from "./layout/Layout";
 import {getNumberArray} from "./study/typescript/random/numberUtil";
 
 ReactDOM.render(
-		<BrowserRouter>
-				<Switch>
-						<Route path="/public">
-						</Route>
-						<Layout/>
-				</Switch>
-		</BrowserRouter>,
+    <BrowserRouter>
+        <Switch>
+            <Route path="/public">
+            </Route>
+            <Layout/>
+        </Switch>
+    </BrowserRouter>,
     document.getElementById("root")
 );

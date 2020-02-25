@@ -1,51 +1,51 @@
 @mixin background-image-default {
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
 }
 
 .hover-container {
 
-  overflow: hidden;
+    overflow: hidden;
 
-  .hover-item-scale {
-    transition: all, 0.2s;
-  }
+    .hover-item-scale {
+        transition: all, 0.2s;
+    }
 
-  &:hover .hover-item-underline {
-    text-decoration: underline;
-  }
+    &:hover .hover-item-underline {
+        text-decoration: underline;
+    }
 
-  &:hover .hover-item-scale {
-    transform: scale(1.2);
-  }
+    &:hover .hover-item-scale {
+        transform: scale(1.2);
+    }
 }
 
 .background-image-default {
-  @include background-image-default;
+    @include background-image-default;
 }
 
 .background-contain-image- {
-  @include background-image-default;
-  background-size: contain;
+    @include background-image-default;
+    background-size: contain;
 }
 
 .background-cover-default {
-  @include background-image-default;
-  background-size: contain;
+    @include background-image-default;
+    background-size: contain;
 }
 
 .delete-left-radius-border {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
 }
 
 .delete-right-radius-border {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .image-link {
-  font-size: 0;
+    font-size: 0;
 }

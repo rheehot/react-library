@@ -1,148 +1,148 @@
 #root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-  width: 100%;
-  height: 70px;
-  z-index: 2020;
-  position: fixed;
-  background: lightskyblue;
-  transition: height, 0.2s;
+    width: 100%;
+    height: 70px;
+    z-index: 2020;
+    position: fixed;
+    background: lightskyblue;
+    transition: height, 0.2s;
 
-  &:hover {
-    height: 370px;
-  }
+    &:hover {
+        height: 370px;
+    }
 }
 
 section {
-  margin-top: 70px;
-  padding: 20px;
-  flex-grow: 1;
-  background: white;
+    margin-top: 70px;
+    padding: 20px;
+    flex-grow: 1;
+    background: white;
 
-  display: flex;
+    display: flex;
 }
 
 footer {
-  height: 70px;
-  background: lightskyblue;
-  position: relative;
+    height: 70px;
+    background: lightskyblue;
+    position: relative;
 }
 
 .main-aside {
-  margin-right: 20px;
-  flex-shrink: 0;
+    margin-right: 20px;
+    flex-shrink: 0;
 
-  padding: 20px;
-  width: 200px;
-  height: 600px;
-  background: lightskyblue;
+    padding: 20px;
+    width: 200px;
+    height: 600px;
+    background: lightskyblue;
 }
 
 .main {
-  padding: 20px;
-  width: 100%;
-  border: 1px solid gray;
+    padding: 20px;
+    width: 100%;
+    border: 1px solid gray;
 }
 
 .mine-tr {
-  display: flex;
+    display: flex;
 }
 
 .mine-td {
-  width: 30px;
-  height: 30px;
-  border: 1px solid gray;
+    width: 30px;
+    height: 30px;
+    border: 1px solid gray;
 
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .collapse-btn {
-  text-align: right;
-  padding: 10px;
-  border: 1px solid gray;
+    text-align: right;
+    padding: 10px;
+    border: 1px solid gray;
 }
 
 .collapse-content {
-  height: 0;
-  transition: height, 1s;
-  //padding: 10px; // box-sizing 잘못이해하고있었음. padding이 길이에 포함은 될지언정 padding길이보다 짧아지면 무시됨.
-  overflow: hidden;
+    height: 0;
+    transition: height, 1s;
+    //padding: 10px; // box-sizing 잘못이해하고있었음. padding이 길이에 포함은 될지언정 padding길이보다 짧아지면 무시됨.
+    overflow: hidden;
 }
 
 .open.collapse-content {
-  height: 100px; //auto, fit-content는 안됨. 이걸 js없이 가능?
+    height: 100px; //auto, fit-content는 안됨. 이걸 js없이 가능?
 }
 
 .white-space-item {
 
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 
-  width: 300px;
-  height: 100px;
-  background: yellow;
+    width: 300px;
+    height: 100px;
+    background: yellow;
 
-  > div,
-  > span {
-    display: inline-block;
-    background: red;
-  }
+    > div,
+    > span {
+        display: inline-block;
+        background: red;
+    }
 }
 
 .naver-search {
 
-  > span {
-    display: inline-block;
-    height: 49px;
-    border: 2px solid green;
+    > span {
+        display: inline-block;
+        height: 49px;
+        border: 2px solid green;
 
-    > input {
-      width: 100%;
-      height: 100%;
+        > input {
+            width: 100%;
+            height: 100%;
+        }
     }
-  }
 
-  > button {
-    height: 49px;
-    background: green;
-    width: 50px;
-    position: absolute;
-  }
+    > button {
+        height: 49px;
+        background: green;
+        width: 50px;
+        position: absolute;
+    }
 }
 
 .dropdown-nav {
-  display: flex;
-  height: 100%;
-
-  > .dropdown-ul {
-    margin-left: 20px;
+    display: flex;
     height: 100%;
-    overflow: hidden;
 
-    > .dropdown-li {
+    > .dropdown-ul {
+        margin-left: 20px;
+        height: 100%;
+        overflow: hidden;
 
-      text-align: center;
+        > .dropdown-li {
 
-      &:first-child {
-        padding-top: 24.5px;
-        height: 70px;
+            text-align: center;
 
-        &:hover {
-          border-bottom: 5px solid black;
+            &:first-child {
+                padding-top: 24.5px;
+                height: 70px;
+
+                &:hover {
+                    border-bottom: 5px solid black;
+                }
+            }
+
+            &:nth-child(n+2) {
+                margin-top: 10px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
-      }
-
-      &:nth-child(n+2) {
-        margin-top: 10px;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
     }
-  }
 }

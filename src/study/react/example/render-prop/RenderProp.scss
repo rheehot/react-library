@@ -1,25 +1,25 @@
 .RenderProp-container {
 
-  position: relative;
+    position: relative;
 
-  .mouse-wrap {
-    width: 300px;
-    height: 300px;
-    border: 3px solid gray;
-    overflow: hidden;
-    display: inline-block;
-  }
+    .mouse-wrap {
+        width: 300px;
+        height: 300px;
+        border: 3px solid gray;
+        overflow: hidden;
+        display: inline-block;
+    }
 
-  .mouse-wrap.active .mouse-pointer {
-    display: inline-block;
-  }
+    .mouse-wrap.active .mouse-pointer {
+        display: inline-block;
+    }
 
-  .mouse-wrap:last-child {
-    margin-left: 20px;
-  }
+    .mouse-wrap:last-child {
+        margin-left: 20px;
+    }
 
-  .mouse-pointer {
-    display: none;
-    position: absolute;
-  }
+    .mouse-pointer {
+        display: none;
+        position: absolute;
+    }
 }

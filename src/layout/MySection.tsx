@@ -4,12 +4,12 @@ import AppMain from "./AppMain";
 
 export default class MySection extends React.Component {
 
-		render() {
-				return (
-						<section>
-								<MyAside></MyAside>
-								<AppMain/>
-						</section>
-				);
-		}
+    render() {
+        return (
+            <section>
+                <MyAside></MyAside>
+                <AppMain/>
+            </section>
+        );
+    }
 };
