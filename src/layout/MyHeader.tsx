@@ -9,40 +9,34 @@ interface AppProp {
     headerChange: Function
 }
 
-export default class MyHeader extends React.Component<AppProp> {
+export const MyHeader = (props: AppProp) => {
 
-    headerUls() {
+    const headerUls = (
+        props.headerUls.map((headerUl, ulIndex) => {
+            return (
+                <ul key={`ul-${ulIndex}`} className="dropdown-ul">
+                    {headerUl.map((headerInfo, liIndex) => {
 
-        return (
-            this.props.headerUls.map((headerUl, ulIndex) => {
-                return (
-                    <ul key={`ul-${ulIndex}`} className="dropdown-ul">
-                        {headerUl.map((headerInfo, liIndex) => {
-
-                            if(ulIndex === 0) {
-                              return (
-                                  <li key={`li-${liIndex}`} onClickCapture={() => this.props.headerChange(headerInfo)} className="dropdown-li"><Link to={headerInfo.to}>{headerInfo.text}</Link></li>
-                              )
-                            }
-
+                        if(ulIndex === 0) {
                             return (
-                                <li key={`li-${liIndex}`} className="dropdown-li"><Link to={headerInfo.to}>{headerInfo.text}</Link></li>
+                                <li key={`li-${liIndex}`} onClickCapture={() => props.headerChange(headerInfo)} className="dropdown-li"><Link to={headerInfo.to}>{headerInfo.text}</Link></li>
                             )
-                        })}
-                    </ul>
-                )
-            })
-        );
-    };
+                        }
 
-    render() {
+                        return (
+                            <li key={`li-${liIndex}`} className="dropdown-li"><Link to={headerInfo.to}>{headerInfo.text}</Link></li>
+                        )
+                    })}
+                </ul>
+            )
+        })
+    );
 
-        return (
-            <header>
-                <nav className="dropdown-nav">
-                    {this.headerUls()}
-                </nav>
-            </header>
-        );
-    }
-}
+    return (
+        <header>
+            <nav className="dropdown-nav">
+                {headerUls}
+            </nav>
+        </header>
+    )
+};

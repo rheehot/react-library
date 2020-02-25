@@ -1,15 +1,13 @@
 import * as React from "react";
-import MyAside from "./MyAside";
-import AppMain from "./AppMain";
+import {MyAside} from "./MyAside";
+import {AppMain} from "./AppMain";
 
-export default class MySection extends React.Component {
+export const MySection = () => {
 
-    render() {
-        return (
-            <section>
-                <MyAside></MyAside>
-                <AppMain/>
-            </section>
-        );
-    }
+    return (
+        <section>
+            <MyAside/>
+            <AppMain/>
+        </section>
+    )
 };
