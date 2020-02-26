@@ -1,11 +1,10 @@
 import * as React from "react";
-import {ChangeEventHandler} from "react";
 import MyInput from "./MyInput";
 
 interface AppProp {
     labelText: string,
-    onChangeHandler: ChangeEventHandler,
-    inputValue: string | number
+    onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    inputValue: string
 }
 
 export default function InputItem(props: AppProp) {

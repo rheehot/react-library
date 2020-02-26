@@ -1,9 +1,8 @@
 import * as React from "react";
-import {ChangeEventHandler} from "react";
 
 interface AppProp {
-    onChangeHandler: ChangeEventHandler<HTMLInputElement>,
-    inputValue: string | number,
+    onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    inputValue: string,
     className: string
 }
 
