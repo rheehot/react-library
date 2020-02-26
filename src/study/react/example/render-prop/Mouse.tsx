@@ -1,49 +1,32 @@
 import * as React from "react";
-import {RefObject} from "react";
 
 interface AppProp {
     render: any
 }
 
-interface AppState {
-    x: number,
-    y: number
-}
+export default function Mouse(props: AppProp) {
 
-export default class Mouse extends React.Component<AppProp, AppState> {
+    const [x, setX] = React.useState(0);
+    const [y, setY] = React.useState(0);
+    const mouseWrap = React.useRef(null);
+    
+    function mouseMove(event: React.MouseEvent<HTMLElement>) {
 
-    mouseWrap: RefObject<any> = React.createRef();
-
-    constructor(props: AppProp) {
-        super(props);
-        this.state = {
-            x: 0,
-            y: 0
-        };
+        setX(event.clientX - mouseWrap.current.parentNode.offsetLeft);
+        setY(event.clientY - mouseWrap.current.parentNode.offsetTop);
     }
 
-    mouseMove = (event: React.MouseEvent<HTMLElement>) => {
+    function mouseToggle() {
+        mouseWrap.current.classList.toggle("active");
+    }
 
-        this.setState({
-            x: event.clientX - this.mouseWrap.current.parentNode.offsetLeft,
-            y: event.clientY - this.mouseWrap.current.parentNode.offsetTop
-        });
-    };
+    return (
+        <div ref={mouseWrap} className="mouse-wrap" onMouseMove={mouseMove} onMouseOver={mouseToggle} onMouseOut={mouseToggle}>
+            현재 좌표: {x} / {y}
 
-    mouseToggle = () => {
-        this.mouseWrap.current.classList.toggle("active");
-    };
-
-    render() {
-        return (
-            <div ref={this.mouseWrap} className="mouse-wrap" onMouseMove={this.mouseMove} onMouseOver={this.mouseToggle}
-                 onMouseOut={this.mouseToggle}>
-                현재 좌표: {this.state.x} / {this.state.y}
-
-                <div className="mouse-pointer" style={{left: this.state.x, top: this.state.y}}>
-                    {this.props.render}
-                </div>
+            <div className="mouse-pointer" style={{left: x, top: y}}>
+                {props.render}
             </div>
-        );
-    }
+        </div>
+    );
 }
