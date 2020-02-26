@@ -3,6 +3,7 @@ import PropReRenderParent from "../../study/react/render/prop-re-render/PropReRe
 import ClassComponentParent from "../../study/react/render/function/ClassComponentParent";
 import WhenPropUpdateParent from "../../study/react/render/when-prop-update/WhenPropUpdateParent";
 import {UseMemoComponent} from "../../study/react/render/use-memo/UseMemoComponent";
+import {UseEffectComponent} from "../../study/react/render/use-effect/UseEffectComponent";
 
 const path = "/react/render";
 
@@ -39,6 +40,11 @@ export const renderRoutes = [
     {
         path: `${path}/memo-test`,
         component: UseMemoComponent,
+        exact: true
+    },
+    {
+        path: `${path}/effect-test`,
+        component: UseEffectComponent,
         exact: true
     }
 ];
