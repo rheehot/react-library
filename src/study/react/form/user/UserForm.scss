@@ -2,9 +2,12 @@
   float: right;
 }
 
-.user-list-li {
+.user-table {
+  border-spacing: 5px;
+}
 
-  margin-bottom: 5px;
+.user-list-tr {
+
   font-size: 20px;
 
   > *:not(:last-child) {

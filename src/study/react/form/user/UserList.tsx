@@ -3,7 +3,13 @@ import UserInfo from "./UserInfo";
 import {deleteUser, getUserList} from "./api";
 import MyButton from "../../common/form/MyButton";
 
-export default function UserList() {
+interface AppProp {
+	history: {
+		push(url: string): void
+	}
+}
+
+export default function UserList(props: AppProp) {
 
 	const [stateUserList, setStateUserList] = React.useState([]);
 
@@ -16,6 +22,10 @@ export default function UserList() {
 		fetchData().then();
 
 	}, []);
+
+	function userUpdate(item: UserInfo) {
+		props.history.push(`/react/form/user/modify/${item.id}`);
+	}
 
 	function userDelete(item:UserInfo) {
 
@@ -36,23 +46,29 @@ export default function UserList() {
 
 	function renderUserList() {
 		return (
-			stateUserList.map((item, index) => {
-				return (
-					<li className="user-list-li" key={`userList-${index}`}>
-						<span className="name">{item.name}</span>
-						<MyButton onClickHandler={() => info(item)}>info</MyButton>
-						<MyButton onClickHandler={() => userDelete(item)}>delete</MyButton>
-					</li>
-				)
-			})
+			<table className="user-table">
+				<tbody>
+					{stateUserList.map((item, index) => {
+						return (
+							<tr className="user-list-tr" key={`userList-${index}`}>
+								<td><span>{item.id}</span></td>
+								<td><span>{item.name}</span></td>
+								<td><span>{item.email}</span></td>
+								<td><MyButton onClickHandler={() => info(item)}>info</MyButton></td>
+								<td><MyButton onClickHandler={() => userDelete(item)}>delete</MyButton></td>
+								<td><MyButton onClickHandler={() => userUpdate(item)}>update</MyButton></td>
+							</tr>
+						)
+					})}
+				</tbody>
+			</table>
 		)
 	}
 
 	return (
 		<div className="component-wrap">
-			<ul>
-				{renderUserList()}
-			</ul>
+			{renderUserList()}
+			<MyButton className="" onClickHandler={() => props.history.push("/react/form/user/create")}>회원등록</MyButton>
 		</div>
 	);
 }

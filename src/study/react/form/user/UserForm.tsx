@@ -2,24 +2,30 @@ import * as React from "react";
 import InputItem from "../../common/form/InputItem";
 import MyButton from "../../common/form/MyButton";
 import "./UserForm.scss";
-import {getUserInfo} from "./api";
+import {getUserInfo, insertUser, modifyUser} from "./api";
+import {formRoutes} from "../../../../route/react/formRoutes";
+import {PageType} from "../../../typescript/common/PageType";
+import UserInfo from "./UserInfo";
+import {RouteComponentProps} from "react-router-dom";
 
-interface AppProp {
+interface AppProp extends RouteComponentProps {
 }
 
 interface AppState {
-    id: number,
+    id: string,
     name: string,
     email: string
 }
 
 export default class UserForm extends React.Component<AppProp, AppState> {
 
+    readonly pageType: PageType;
+
     constructor(props: AppProp) {
         super(props);
 
         this.state = {
-            id: 0,
+            id: "",
             name: "",
             email: ""
         };
@@ -28,6 +34,14 @@ export default class UserForm extends React.Component<AppProp, AppState> {
         this.idChangeHandler = this.idChangeHandler.bind(this);
         this.emailChangeHandler = this.emailChangeHandler.bind(this);
         this.submit = this.submit.bind(this);
+
+        const insertRoute = formRoutes.find(route => route.meta.pageType === PageType.INSERT);
+
+        if(insertRoute.path === location.pathname) {
+            this.pageType = PageType.INSERT;
+        } else {
+            this.pageType = PageType.UPDATE;
+        }
     }
 
     nameChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
@@ -39,7 +53,7 @@ export default class UserForm extends React.Component<AppProp, AppState> {
     idChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
 
         this.setState({
-            id: parseInt(event.target.value)
+            id: event.target.value
         })
     }
 
@@ -53,24 +67,39 @@ export default class UserForm extends React.Component<AppProp, AppState> {
     submit(event: React.MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
-        alert(` #result
-id: ${this.state.id}
-name: ${this.state.name}
-email: ${this.state.email}`);
+
+        const {id, name, email} = this.state;
+        const userInfo = new UserInfo(parseInt(id), name, email);
+
+        if(this.pageType === PageType.UPDATE) {
+            modifyUser(userInfo.id, userInfo).then(() => {
+                alert("수정 성공");
+                this.props.history.push("/react/form/user/list");
+            });
+
+        } else {
+            insertUser(userInfo).then(() => {
+                alert("등록 성공");
+                this.props.history.push("/react/form/user/list");
+            });
+        }
 
     }
 
     async componentDidMount(): Promise<void> {
 
-        const userId = this.props.match.params.id;
+        if(this.pageType === PageType.UPDATE) {
 
-        const {id, name, email} = await getUserInfo(userId);
+            const userId = this.props.match.params.id;
 
-        this.setState({
-            id: id,
-            name: name,
-            email: email
-        });
+            const {id, name, email} = await getUserInfo(userId);
+
+            this.setState({
+                id: String(id),
+                name: name,
+                email: email
+            });
+        }
     }
 
     render() {
@@ -80,7 +109,7 @@ email: ${this.state.email}`);
                     <InputItem labelText="아이디" onChangeHandler={this.idChangeHandler} inputValue={this.state.id}/>
                     <InputItem labelText="이름" onChangeHandler={this.nameChangeHandler} inputValue={this.state.name}/>
                     <InputItem labelText="이메일" onChangeHandler={this.emailChangeHandler} inputValue={this.state.email}/>
-                    <MyButton className="submit-button" onClickHandler={this.submit}/>
+                    <MyButton className="submit-button" onClickHandler={this.submit}>저장</MyButton>
                 </form>
             </div>
         );
