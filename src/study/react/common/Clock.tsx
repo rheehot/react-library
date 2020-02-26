@@ -11,7 +11,7 @@ export const Clock = () => {
 
         console.log("effect call");
 
-        const intervalId = setInterval(() => {
+        const timeoutId = setTimeout(() => {
             setDateFormat(moment().format('MMMM Do YYYY, h:mm:ss a'))
         }, 1000);
 
@@ -19,10 +19,10 @@ export const Clock = () => {
 
             console.log("effect end");
 
-            clearInterval(intervalId);
+            clearInterval(timeoutId);
         };
 
-    }, []);
+    }, [dateFormat]);
 
     return (
         <div className="clock-wrap">
