@@ -2,11 +2,9 @@ import * as React from "react";
 import UserInfo from "./UserInfo";
 import {deleteUser, getUserList} from "./api";
 import MyButton from "../../common/form/MyButton";
+import {RouteComponentProps} from "react-router-dom";
 
-interface AppProp {
-	history: {
-		push(url: string): void
-	}
+interface AppProp extends RouteComponentProps {
 }
 
 export default function UserList(props: AppProp) {
