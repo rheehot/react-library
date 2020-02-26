@@ -9,16 +9,16 @@ export default function Clock() {
 
     React.useEffect(() => {
 
-        const timeoutId = setTimeout(() => {
+        const intervalId = setInterval(() => {
             setDateFormat(moment().format('MMMM Do YYYY, h:mm:ss a'))
         }, 1000);
 
         return () => {
 
-            clearInterval(timeoutId);
+            clearInterval(intervalId);
         };
 
-    }, [dateFormat]);
+    }, []);
 
     return (
         <div className="clock-wrap">
