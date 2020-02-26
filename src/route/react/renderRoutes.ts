@@ -2,6 +2,7 @@ import PureComponentParent from "../../study/react/render/pure/PureComponentPare
 import PropReRenderParent from "../../study/react/render/prop-re-render/PropReRenderParent";
 import ClassComponentParent from "../../study/react/render/function/ClassComponentParent";
 import WhenPropUpdateParent from "../../study/react/render/when-prop-update/WhenPropUpdateParent";
+import {UseMemoComponent} from "../../study/react/render/use-memo/UseMemoComponent";
 
 const path = "/react/render";
 
@@ -35,4 +36,9 @@ export const renderRoutes = [
             name: "prop업데이트 시점"
         }
     },
+    {
+        path: `${path}/memo-test`,
+        component: UseMemoComponent,
+        exact: true
+    }
 ];
