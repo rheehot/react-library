@@ -5,6 +5,7 @@ import WhenPropUpdateParent from "../../study/react/render/when-prop-update/When
 import {UseMemoComponent} from "../../study/react/render/use-memo/UseMemoComponent";
 import {UseEffectComponent} from "../../study/react/render/use-effect/UseEffectComponent";
 import MultiSetStateParent from "../../study/react/render/multi-set-state/MultiSetStateParent";
+import StatePropReferenceParent from "../../study/react/render/state-prop-reference/StatePropReferenceParent";
 
 const path = "/react/render";
 
@@ -56,6 +57,11 @@ export const renderRoutes = [
     {
         path: `${path}/multi-set-state`,
         component: MultiSetStateParent,
+        exact: true
+    },
+    {
+        path: `${path}/state-prop-reference`,
+        component: StatePropReferenceParent,
         exact: true
     }
 ];
