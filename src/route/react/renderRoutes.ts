@@ -4,6 +4,7 @@ import ClassComponentParent from "../../study/react/render/function/ClassCompone
 import WhenPropUpdateParent from "../../study/react/render/when-prop-update/WhenPropUpdateParent";
 import {UseMemoComponent} from "../../study/react/render/use-memo/UseMemoComponent";
 import {UseEffectComponent} from "../../study/react/render/use-effect/UseEffectComponent";
+import MultiSetStateParent from "../../study/react/render/multi-set-state/MultiSetStateParent";
 
 const path = "/react/render";
 
@@ -11,14 +12,18 @@ export const renderRoutes = [
     {
         path: `${path}/pure`,
         component: PureComponentParent,
-        exact: true
+        exact: true,
+        meta: {
+            hoverable: false
+        }
     },
     {
         path: `${path}/props-re-render-test`,
         component: PropReRenderParent,
         exact: true,
         meta: {
-            name: "Props Re-render"
+            name: "Props Re-render",
+            hoverable: false
         }
     },
     {
@@ -26,7 +31,8 @@ export const renderRoutes = [
         component: ClassComponentParent,
         exact: true,
         meta: {
-            name: "함수형 컴포넌트"
+            name: "함수형 컴포넌트",
+            hoverable: false
         }
     },
     {
@@ -45,6 +51,11 @@ export const renderRoutes = [
     {
         path: `${path}/effect-test`,
         component: UseEffectComponent,
+        exact: true
+    },
+    {
+        path: `${path}/multi-set-state`,
+        component: MultiSetStateParent,
         exact: true
     }
 ];
