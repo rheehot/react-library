@@ -1,5 +1,5 @@
 import * as React from "react";
-import Clock from "../study/react/common/Clock";
+import {Clock} from "../study/react/common/Clock";
 
 export const MyFooter = () => {
 
@@ -8,5 +8,4 @@ export const MyFooter = () => {
             <Clock/>
         </footer>
     )
-
 };

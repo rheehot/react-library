@@ -2,40 +2,20 @@ import * as React from "react";
 import * as moment from "moment";
 import "./Clock.scss";
 
-interface AppProp {
 
-}
+export const Clock = () => {
 
-interface AppState {
-    dateFormat: string
-}
+    const [dateFormat, setDateFormat] = React.useState(moment().format('MMMM Do YYYY, h:mm:ss a'));
 
-export default class Clock extends React.Component<AppProp, AppState> {
-
-    constructor(props: any) {
-        super(props);
-
-        this.state = {
-            dateFormat: moment().format('MMMM Do YYYY, h:mm:ss a')
-        };
-
-        this.startClock = this.startClock.bind(this);
-        this.startClock();
-    }
-
-    startClock() {
+    const startClock = () => {
         setInterval(() => {
-            this.setState({
-                dateFormat: moment().format('MMMM Do YYYY, h:mm:ss a')
-            })
+            setDateFormat(moment().format('MMMM Do YYYY, h:mm:ss a'))
         }, 1000);
-    }
+    };
 
-    render() {
-        return (
-            <div className="clock-wrap">
-                <span>{this.state.dateFormat}</span>
-            </div>
-        )
-    }
-}
+    return (
+        <div className="clock-wrap">
+            <span>{dateFormat}</span>
+        </div>
+    )
+};
