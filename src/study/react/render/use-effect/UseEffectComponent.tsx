@@ -6,7 +6,6 @@ export const UseEffectComponent = () => {
     const [number, setNumber] = React.useState(0);
     const [array, setArray] = React.useState([0]);
 
-    //ComponentDidUpdate
     React.useEffect(() => {
 
         console.log("2번쨰 parameter없는 effect 실행");
@@ -14,7 +13,6 @@ export const UseEffectComponent = () => {
         return () => console.log("2번쨰 parameter없는 effect 종료");
     });
 
-    //ComponentDidMount
     React.useEffect(() => {
 
         console.log("2번째 parameter가 빈배열인 effect 실행");
@@ -23,7 +21,6 @@ export const UseEffectComponent = () => {
 
     }, []);
 
-    //ComponentDidUpdate + 괄호안에 변수가 변경되었을 때만.
     React.useEffect(() => {
 
         console.log("2번째 paremeter가 number(state)인 effect 실행");
@@ -31,7 +28,6 @@ export const UseEffectComponent = () => {
         return () => console.log("2번째 paremeter가 number(state)인 effect 종료");
     }, [number]);
 
-    //ComponentDidUpdate + 괄호안에 변수가 변경되었을 때만.
     React.useEffect(() => {
 
         console.log("2번째 parameter가 array(state)인 effect 실행");

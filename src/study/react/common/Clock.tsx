@@ -9,15 +9,11 @@ export const Clock = () => {
 
     React.useEffect(() => {
 
-        console.log("effect call");
-
         const timeoutId = setTimeout(() => {
             setDateFormat(moment().format('MMMM Do YYYY, h:mm:ss a'))
         }, 1000);
 
         return () => {
-
-            console.log("effect end");
 
             clearInterval(timeoutId);
         };
