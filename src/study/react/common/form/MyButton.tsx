@@ -4,23 +4,20 @@ import "./form.scss";
 
 interface AppProp {
     onClickHandler: MouseEventHandler<HTMLButtonElement>,
-    className: string
+    className: string,
+    children: React.ReactNode
 }
 
-interface AppState {
-}
+export default function MyButton(props: AppProp) {
 
-export default class MyButton extends React.Component<AppProp, AppState> {
+    return (
+        <button className={`my-button ${props.className}`} onClick={props.onClickHandler}>
+            {(props.children) ? props.children : '버튼'}
+        </button>
+    )
+};
 
-    static defaultProps = {
-        className: ""
-    };
-
-    render() {
-        return (
-            <button className={`my-button ${this.props.className}`} onClick={this.props.onClickHandler}>
-                {(this.props.children) ? this.props.children : '버튼'}
-            </button>
-        )
-    }
-}
+MyButton.defaultProps = {
+    className: "",
+    children: "버튼"
+};

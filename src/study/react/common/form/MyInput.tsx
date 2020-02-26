@@ -7,19 +7,14 @@ interface AppProp {
     className: string
 }
 
-interface AppState {
+export default function MyInput(props: AppProp) {
 
-}
+    return (
+        <input className={`my-input ${props.className}`} value={props.inputValue} onChange={props.onChangeHandler}/>
+    )
+};
 
-export default class MyInput extends React.Component<AppProp, AppState> {
+MyInput.defaultProps = {
+    className: ""
+};
 
-    static defaultProps = {
-        className: ""
-    };
-
-    render() {
-        return (
-          <input className={`my-input ${this.props.className}`} value={this.props.inputValue} onChange={this.props.onChangeHandler}/>
-        )
-    }
-}

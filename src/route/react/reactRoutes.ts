@@ -10,6 +10,11 @@ export const routes = [
         exact: true
     },
     {
+        path: "/react",
+        component: ReactMain,
+        exact: true
+    },
+    {
         path: "/react/main",
         component: ReactMain,
         exact: true

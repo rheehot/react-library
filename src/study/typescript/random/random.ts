@@ -1,13 +1,7 @@
-import numberUtil from "./numberUtil";
 import CHARACTERS from "./Character";
-import Validation from "../validate/Validation";
-import NaturalNumberValidation from "../validate/common/NaturalNumberValidation";
-import EmptyArrayValidation from "../validate/common/EmptyArrayValidation";
+import {getMinMaxNumber} from "./numberUtil";
 
 class RandomString {
-
-    private static readonly MIN_1: Validation<number> = new NaturalNumberValidation();
-    private static readonly ARRAY_LENGTH_MIN_1: Validation<Array<any>> = new EmptyArrayValidation();
 
     /**
      * @param anagramArray 랜덤한 문자열을 만들 때 들어갈 요소들
@@ -17,15 +11,12 @@ class RandomString {
      */
     makeString(anagramArray: Array<string | number>, length: number): string {
 
-        let _array = RandomString.ARRAY_LENGTH_MIN_1.validate(anagramArray);
-        let _length = RandomString.MIN_1.validate(length);
+        let result = new Array<string>(length);
 
-        let result = new Array<string>(_length);
+        for (let i = 0; i < length; i++) {
 
-        for (let i = 0; i < _length; i++) {
-
-            let randomIndex = numberUtil.getMinMaxNumber(0, _array.length - 1);
-            result.push(String(_array[randomIndex]));
+            let randomIndex = getMinMaxNumber(0, anagramArray.length - 1);
+            result.push(String(anagramArray[randomIndex]));
         }
 
         return result.join("");

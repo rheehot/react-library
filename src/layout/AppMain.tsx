@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Routes} from "../route/routes";
+import Routes from "../route/routes";
 
-export const AppMain = () => {
+export default function AppMain() {
 
     return (
         <div className="main">

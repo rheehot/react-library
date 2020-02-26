@@ -8,18 +8,12 @@ interface AppProp {
     inputValue: string | number
 }
 
-interface AppState {
+export default function InputItem(props: AppProp) {
 
-}
-
-export default class InputItem extends React.Component<AppProp, AppState> {
-
-    render() {
-        return (
-            <div className="responsive-form-item">
-                <label className="my-label">{this.props.labelText}</label>
-                <MyInput inputValue={this.props.inputValue} onChangeHandler={this.props.onChangeHandler}/>
-            </div>
-        )
-    }
+    return (
+        <div className="responsive-form-item">
+            <label className="my-label">{props.labelText}</label>
+            <MyInput inputValue={props.inputValue} onChangeHandler={props.onChangeHandler}/>
+        </div>
+    )
 }

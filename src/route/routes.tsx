@@ -5,7 +5,7 @@ import {routes as cssRoutes} from "./css/cssRoutes";
 
 const routes = [].concat(reactRoutes, cssRoutes);
 
-export const Routes = () => {
+export default function Routes() {
 
     return (
         <Switch>

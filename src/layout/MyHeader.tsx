@@ -9,7 +9,7 @@ interface AppProp {
     headerChange: Function
 }
 
-export const MyHeader = (props: AppProp) => {
+export default function MyHeader(props: AppProp) {
 
     const headerUls = (
         props.headerUls.map((headerUl, ulIndex) => {

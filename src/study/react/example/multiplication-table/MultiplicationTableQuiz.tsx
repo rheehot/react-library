@@ -1,59 +1,36 @@
 import * as React from "react";
-import QuizGenerator from "../QuizGenerator";
 import MultiplicationTableQuizGenerator from "./MultiplicationTableQuizGenerator";
 import InputAndButtonItem from "../../common/form/InputButtonItem";
+import {useEffect} from "react";
 
-interface AppProp {
+export default function MultiplicationTableQuiz() {
 
-}
+    const quizGenerator = React.useMemo(() => new MultiplicationTableQuizGenerator(), []);
+    const [quiz, setQuiz] = React.useState();
 
-interface AppState {
-    quiz: string;
-    result: string,
-    inputValue: string
-}
+    useEffect(() => {
+        setQuiz(quizGenerator.makeQuiz());
+    }, []);
 
-export default class MultiplicationTableQuiz extends React.Component<AppProp, AppState> {
+    const [result, setResult] = React.useState("");
+    const [inputValue, setInputValue] = React.useState("");
 
-    quizGenerator: QuizGenerator;
-
-    constructor(props: any) {
-        super(props);
-
-        this.quizGenerator = new MultiplicationTableQuizGenerator();
-
-        this.state = {
-            quiz: this.quizGenerator.makeQuiz(),
-            result: "",
-            inputValue: ""
-        };
-
-        this.submit = this.submit.bind(this);
+    function changeEventHandler(event: React.ChangeEvent<HTMLInputElement>) {
+        setInputValue(event.target.value);
     }
 
-    myChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            inputValue: event.target.value
-        })
-    };
-
-    submit() {
+    function submit() {
         event.preventDefault();
-
-        this.setState({
-            result: (this.quizGenerator.isAnswer(this.state.inputValue)) ? "정답입니다" : "오답입니다."
-        });
+        setResult((quizGenerator.isAnswer(inputValue)) ? "정답입니다" : "오답입니다.");
     }
 
-    render() {
-        return (
-            <div>
-                <form className="multiplication-table-wrap" onSubmit={this.submit}>
-                    <h1>{this.state.quiz}</h1>
-                    <InputAndButtonItem buttonText="제출" onChangeHandler={this.myChange} inputValue={this.state.inputValue} onClickHandler={this.submit}/>
-                </form>
-                <span>{this.state.result}</span>
-            </div>
-        )
-    }
+    return (
+        <div>
+            <form className="multiplication-table-wrap" onSubmit={submit}>
+                <h1>{quiz}</h1>
+                <InputAndButtonItem buttonText="제출" onChangeHandler={changeEventHandler} inputValue={inputValue} onClickHandler={submit}/>
+            </form>
+            <span>{result}</span>
+        </div>
+    )
 }

@@ -3,7 +3,7 @@ import * as moment from "moment";
 import "./Clock.scss";
 
 
-export const Clock = () => {
+export default function Clock() {
 
     const [dateFormat, setDateFormat] = React.useState(moment().format('MMMM Do YYYY, h:mm:ss a'));
 

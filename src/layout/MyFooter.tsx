@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Clock} from "../study/react/common/Clock";
+import Clock from "../study/react/common/Clock";
 
-export const MyFooter = () => {
+export default function MyFooter() {
 
     return (
         <footer>

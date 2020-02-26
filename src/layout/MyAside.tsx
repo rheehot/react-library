@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const MyAside = () => {
+export default function MyAside() {
 
     return (
         <aside className="main-aside">

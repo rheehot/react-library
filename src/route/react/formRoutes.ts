@@ -9,7 +9,7 @@ export const formRoutes = [
         meta: {
             name: "회원목록"
         },
-        exact: false
+        exact: true
     },
     {
         path: "/react/form/user/:id",
@@ -18,7 +18,7 @@ export const formRoutes = [
             name: "회원수정",
             linkPath: "/react/form/2"
         },
-        exact: false
+        exact: true
     },
     {
         path: "/react/form/user/create",
@@ -26,7 +26,7 @@ export const formRoutes = [
         meta: {
             name: "회원추가"
         },
-        exact: false
+        exact: true
     },
     {
         path: "/react/form/basic",

@@ -12,25 +12,17 @@ interface AppProp {
     onClickHandler: MouseEventHandler<HTMLButtonElement>
 }
 
-interface AppState {
+export default function InputButtonItem(props: AppProp) {
 
+    return (
+        <div className="responsive-form-item">
+            <label>{props.labelText}</label>
+            <MyInput className="delete-right-radius-border" inputValue={props.inputValue} onChangeHandler={props.onChangeHandler}/>
+            <MyButton className="delete-left-radius-border" onClickHandler={props.onClickHandler}>{props.buttonText}</MyButton>
+        </div>
+    )
 }
 
-export default class InputButtonItem extends React.Component<AppProp, AppState> {
-
-    static defaultProps = {
-        labelText: ""
-    };
-
-    render() {
-        return (
-            <div className="responsive-form-item">
-                <label>{this.props.labelText}</label>
-                <MyInput className="delete-right-radius-border" inputValue={this.props.inputValue}
-                         onChangeHandler={this.props.onChangeHandler}/>
-                <MyButton className="delete-left-radius-border"
-                          onClickHandler={this.props.onClickHandler}>{this.props.buttonText}</MyButton>
-            </div>
-        )
-    }
-}
+InputButtonItem.defaultProps = {
+    labelText: ""
+};

@@ -1,7 +1,7 @@
 import * as React from "react";
 import MyButton from "../../common/form/MyButton";
 
-export const Counter = () => {
+export default function Counter() {
 
     const [currentCount, setCurrentCount] = React.useState(0);
 
