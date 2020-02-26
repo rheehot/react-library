@@ -7,12 +7,13 @@ export default function UserList() {
 
 	const [stateUserList, setStateUserList] = React.useState([]);
 
+	async function fetchData() {
+		setStateUserList([...await getUserList()]);
+	}
+
 	React.useEffect(() => {
 
-		getUserList().then((userList) => {
-
-			setStateUserList([...userList]);
-		});
+		fetchData().then();
 
 	}, []);
 
@@ -22,10 +23,7 @@ export default function UserList() {
 
 			deleteUser(item.id).then(() => {
 
-				getUserList().then((userList) => {
-
-					setStateUserList([...userList]);
-				});
+				fetchData().then();
 
 			});
 		}
