@@ -2,6 +2,7 @@ import ReactMain from "../../study/react/ReactMain";
 import {exampleRoutes} from "./exampleRoutes";
 import {formRoutes} from "./formRoutes";
 import {renderRoutes} from "./renderRoutes";
+import {reduxRoutes} from "./reduxRoutes";
 
 export const routes = [
     {
@@ -19,4 +20,4 @@ export const routes = [
         component: ReactMain,
         exact: true
     },
-].concat(exampleRoutes, formRoutes, renderRoutes);
+].concat(exampleRoutes, formRoutes, renderRoutes, reduxRoutes);
