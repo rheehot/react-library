@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {increment, decrement, Action} from "../../../store/modules/counter";
+import * as React from 'react';
 import Counter from "./Counter";
 import {store} from "../../../store/store";
+import {CounterAction} from "../../../store/modules/counter";
 
-class CounterContainer extends Component {
+export default class CounterContainer extends React.Component {
     handleIncrement = () => {
         // this.props.increment();
-        console.log(store.dispatch({type: Action.INCREMENT, payload: {test: 123}}));
+        store.dispatch({type: CounterAction.INCREMENT, payload: {test: 123}});
     };
     handleDecrement = () => {
-        this.props.decrement();
+        store.dispatch({type: CounterAction.INCREMENT, payload: {test: 123}});
     };
     render() {
 
-        console.log(this.props);
+        const color = store.getState().color.color;
+        const number = store.getState().counter.number;
 
-        const { color, number } = this.props;
         return (
             <Counter
                 color={color}
@@ -27,15 +26,3 @@ class CounterContainer extends Component {
         );
     }
 }
-
-const mapStateToProps = ({ counter }) => ({
-    color: counter.color,
-    number: counter.number,
-});
-
-const mapDispatchToProps = { increment, decrement };
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(CounterContainer);

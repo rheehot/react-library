@@ -1,10 +1,9 @@
 import * as React from "react";
-import {changeColor, Color, CounterState} from "../../../store/modules/counter";
-import {connect} from "react-redux";
 import Palette from "./Palette";
 import "./Palette.css";
-import Counter from "./Counter";
 import CounterContainer from "./CounterContainer";
+import {Color, ColorAction} from "../../../store/modules/color";
+import {store} from "../../../store/store";
 
 interface AppProp {
 }
@@ -13,7 +12,7 @@ interface AppState {
 
 }
 
-class PaletteContainer extends React.PureComponent<AppProp, AppState> {
+export default class PaletteContainer extends React.PureComponent<AppProp, AppState> {
 
     constructor(props: AppProp) {
         super(props);
@@ -22,14 +21,12 @@ class PaletteContainer extends React.PureComponent<AppProp, AppState> {
     }
 
     handleSelect(color: Color) {
-        const {changeColor} = this.props;
-        console.log("handleSelect call");
-        changeColor(color);
+        store.dispatch({type: ColorAction.CHANGE, color: color});
     }
 
     render() {
 
-        const {color} = this.props;
+        const color = store.getState().color.color;
 
         return (
             <>
@@ -39,17 +36,3 @@ class PaletteContainer extends React.PureComponent<AppProp, AppState> {
         )
     }
 }
-
-const mapStateToProps = (state: CounterState) => {
-    console.log(state);
-    return {color: state.counter.color}
-};
-
-const mapDispatchToProps = dispatch => {
-    return {changeColor: (color: Color) => dispatch(changeColor(color))}
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(PaletteContainer);
