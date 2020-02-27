@@ -6,6 +6,7 @@ import {UseMemoComponent} from "../../study/react/render/use-memo/UseMemoCompone
 import {UseEffectComponent} from "../../study/react/render/use-effect/UseEffectComponent";
 import MultiSetStateParent from "../../study/react/render/multi-set-state/MultiSetStateParent";
 import StatePropReferenceParent from "../../study/react/render/state-prop-reference/StatePropReferenceParent";
+import ReactMemoParent from "../../study/react/render/react-memo/ReactMemoParent";
 
 const path = "/react/render";
 
@@ -62,6 +63,11 @@ export const renderRoutes = [
     {
         path: `${path}/state-prop-reference`,
         component: StatePropReferenceParent,
+        exact: true
+    },
+    {
+        path: `${path}/react-memo`,
+        component: ReactMemoParent,
         exact: true
     }
 ];
