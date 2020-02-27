@@ -48,7 +48,7 @@ export default class ReactMemoParent extends React.Component<AppProp, AppState> 
             <div className="component-wrap">
                 <MyButton onClickHandler={this.setParentPrimitiveState}>부모prop 바꾸기</MyButton>
                 <MyButton onClickHandler={() => this.forceUpdate()}>부모forceUpdate</MyButton>
-                <ReactMemoChild primitiveProp={this.state.primitive}/>
+                <ReactMemoChild primitiveProp={this.state.primitive} referenceProp={this.state.reference}/>
             </div>
         )
     }
