@@ -14,18 +14,16 @@ const initialState = {
  */
 export default function counter(state = initialState, action: {type: CounterAction, number: number}) {
 
-    console.log(state);
-
     /**
      * 흠 이건 쫌 별로네~ Vue는 메소드이름 잘 찾아갔는데 React Redux는 이렇게 일일히 세상에 어떻게 switch를 쓸수가있지 에이설마 잘나가는 리액트가 에이..
      */
     switch (action.type) {
 
         case CounterAction.INCREMENT:
-            return {...state, number: state.number + 1};
+            return {number: state.number + 1};
 
         case CounterAction.DECREMENT:
-            return {...state, number: state.number - 1};
+            return {number: state.number - 1};
 
         default:
             return state;
