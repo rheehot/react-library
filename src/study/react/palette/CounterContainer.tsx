@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increment, decrement } from "../../../store/modules/counter";
+import {increment, decrement, Action} from "../../../store/modules/counter";
 import Counter from "./Counter";
-import {store} from "../../../index";
+import {store} from "../../../store/store";
 
 class CounterContainer extends Component {
     handleIncrement = () => {
-        this.props.increment();
+        // this.props.increment();
+        console.log(store.dispatch({type: Action.INCREMENT, payload: {test: 123}}));
     };
     handleDecrement = () => {
         this.props.decrement();
