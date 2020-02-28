@@ -1,5 +1,5 @@
 import * as React from "react";
-import InputItem from "../../common/form/InputItem";
+import {InputItem} from "../../common/form/InputItem";
 import MyButton from "../../common/form/MyButton";
 import "./UserForm.scss";
 import {getUserInfo, insertUser, modifyUser} from "./api";
@@ -103,9 +103,9 @@ export default function UserForm(props: RouteComponentProps) {
     return (
         <div className="component-wrap">
             <form>
-                <InputItem inputRef={idRef} labelText="아이디" onChangeHandler={idChangeHandler} inputValue={id}/>
-                <InputItem inputRef={nameRef} labelText="이름" onChangeHandler={nameChangeHandler} inputValue={name}/>
-                <InputItem inputRef={emailRef} labelText="이메일" onChangeHandler={emailChangeHandler} inputValue={email}/>
+                <InputItem ref={idRef} labelText="아이디" onChangeHandler={idChangeHandler} inputValue={id}/>
+                <InputItem ref={nameRef} labelText="이름" onChangeHandler={nameChangeHandler} inputValue={name}/>
+                <InputItem ref={emailRef} labelText="이메일" onChangeHandler={emailChangeHandler} inputValue={email}/>
                 <MyButton className="submit-button" onClickHandler={submit}>저장</MyButton>
             </form>
         </div>
