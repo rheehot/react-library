@@ -4,6 +4,7 @@ import UsefulFormBug from "../../study/react/form/UsefulFormBug";
 import {PageType} from "../../study/typescript/common/PageType";
 import RefClassComponent from "../../study/react/form/ref/RefClassComponent";
 import RefClassParent from "../../study/react/form/ref/RefClassParent";
+import RefHooksComponent from "../../study/react/form/ref/RefHooksComponent";
 
 export const formRoutes = [
     {
@@ -38,13 +39,18 @@ export const formRoutes = [
         exact: true
     },
     {
-        path: "/react/form/ref",
+        path: "/react/form/ref-class",
         component: RefClassComponent,
         exact: true
     },
     {
-        path: "/react/form/ref-parent",
+        path: "/react/form/ref-class-parent",
         component: RefClassParent,
+        exact: true
+    },
+    {
+        path: "/react/form/ref-hooks",
+        component: RefHooksComponent,
         exact: true
     }
 ];
