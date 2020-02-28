@@ -34,5 +34,5 @@ export const formRoutes = [
         path: "/react/form/basic",
         component: UsefulFormBug,
         exact: true
-    }
+    },
 ];
