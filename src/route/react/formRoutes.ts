@@ -5,6 +5,7 @@ import {PageType} from "../../study/typescript/common/PageType";
 import RefClassComponent from "../../study/react/form/ref/RefClassComponent";
 import RefClassParent from "../../study/react/form/ref/RefClassParent";
 import RefHooksComponent from "../../study/react/form/ref/RefHooksComponent";
+import RefHooksParent from "../../study/react/form/ref/RefHooksParent";
 
 export const formRoutes = [
     {
@@ -51,6 +52,11 @@ export const formRoutes = [
     {
         path: "/react/form/ref-hooks",
         component: RefHooksComponent,
+        exact: true
+    },
+    {
+        path: "/react/form/ref-hooks-parent",
+        component: RefHooksParent,
         exact: true
     }
 ];
