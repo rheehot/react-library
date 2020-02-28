@@ -3,6 +3,7 @@ import UserForm from "../../study/react/form/user/UserForm";
 import UsefulFormBug from "../../study/react/form/UsefulFormBug";
 import {PageType} from "../../study/typescript/common/PageType";
 import RefClassComponent from "../../study/react/form/ref/RefClassComponent";
+import RefClassParent from "../../study/react/form/ref/RefClassParent";
 
 export const formRoutes = [
     {
@@ -39,6 +40,11 @@ export const formRoutes = [
     {
         path: "/react/form/ref",
         component: RefClassComponent,
+        exact: true
+    },
+    {
+        path: "/react/form/ref-parent",
+        component: RefClassParent,
         exact: true
     }
 ];

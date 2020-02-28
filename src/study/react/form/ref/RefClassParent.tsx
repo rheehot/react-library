@@ -1,6 +1,7 @@
 import * as React from "react";
 import {RefObject} from "react";
 import MyButton from "../../common/form/MyButton";
+import RefClassChild from "./RefClassChild";
 
 interface AppProp {
 
@@ -10,7 +11,7 @@ interface AppState {
     inputValue: string
 }
 
-export default class RefClassComponent extends React.PureComponent<AppProp, AppState> {
+export default class RefClassParent extends React.PureComponent<AppProp, AppState> {
 
     myRef: RefObject<HTMLInputElement>;
 
@@ -49,7 +50,7 @@ export default class RefClassComponent extends React.PureComponent<AppProp, AppS
     render() {
         return (
             <form onSubmit={this.submit}>
-                <input ref={this.myRef} value={this.state.inputValue} onChange={this.onChangeHandler}/>
+                <RefClassChild inputRef={this.myRef} inputValue={this.state.inputValue} onChangeHandler={this.onChangeHandler}/>
                 <MyButton onClickHandler={this.submit}>제출</MyButton>
             </form>
         )
