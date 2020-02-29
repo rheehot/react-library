@@ -1,7 +1,8 @@
 import * as React from "react";
+import {ReactNode} from "react";
 
 interface AppProp {
-    render: any
+    render: ReactNode
 }
 
 export default function Mouse(props: AppProp) {

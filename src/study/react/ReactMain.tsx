@@ -4,7 +4,7 @@ export default function ReactMain() {
 
     return (
         <div>
-            <input type="text"/>
+            React Main화면입니다.
         </div>
     );
 };
