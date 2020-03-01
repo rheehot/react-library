@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ReactNode} from "react";
+import {ReactNode, useRef, useState, MouseEvent} from "react";
 
 interface AppProp {
     render: ReactNode
@@ -7,11 +7,11 @@ interface AppProp {
 
 export default function Mouse(props: AppProp) {
 
-    const [x, setX] = React.useState(0);
-    const [y, setY] = React.useState(0);
-    const mouseWrap = React.useRef(null);
+    const [x, setX] = useState(0);
+    const [y, setY] = useState(0);
+    const mouseWrap = useRef(null);
     
-    function mouseMove(event: React.MouseEvent<HTMLElement>) {
+    function mouseMove(event: MouseEvent<HTMLElement>) {
 
         setX(event.clientX - mouseWrap.current.parentNode.offsetLeft);
         setY(event.clientY - mouseWrap.current.parentNode.offsetTop);

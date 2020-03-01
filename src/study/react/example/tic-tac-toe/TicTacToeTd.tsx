@@ -1,5 +1,6 @@
 import * as React from "react";
 import CircleSymbol from "../symbol/CircleSymbol";
+import {Component} from "react";
 
 interface AppProp {
     rowIndex: number,
@@ -12,7 +13,7 @@ interface AppState {
 
 }
 
-export default class TicTacToeTd extends React.Component<AppProp, AppState> {
+export default class TicTacToeTd extends Component<AppProp, AppState> {
 
     shouldComponentUpdate(nextProps: Readonly<AppProp>, nextState: Readonly<AppState>, nextContext: any): boolean {
         return nextProps.cellValue !== this.props.cellValue;

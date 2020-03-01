@@ -1,9 +1,10 @@
 import * as React from "react";
 import MyButton from "../../common/form/MyButton";
+import {useState} from "react";
 
 export default function Counter() {
 
-    const [currentCount, setCurrentCount] = React.useState(0);
+    const [currentCount, setCurrentCount] = useState(0);
 
     const decrease = () => {
         setCurrentCount(prevCount => {

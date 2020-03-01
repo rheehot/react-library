@@ -3,19 +3,20 @@ import UserInfo from "./UserInfo";
 import {deleteUser, getUserList} from "./api";
 import MyButton from "../../common/form/MyButton";
 import {RouteComponentProps} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 interface AppProp extends RouteComponentProps {
 }
 
 export default function UserList(props: AppProp) {
 
-	const [stateUserList, setStateUserList] = React.useState([]);
+	const [stateUserList, setStateUserList] = useState([]);
 
 	async function fetchData() {
 		setStateUserList([...await getUserList()]);
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 
 		fetchData().then();
 

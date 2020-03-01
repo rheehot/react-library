@@ -1,8 +1,9 @@
-import * as React from "react";
 import "./TicTacToe.scss";
 import TicTacToe, {GameResult} from "./TicTacToe";
 import TicTacToeTd from "./TicTacToeTd";
 import CircleSymbol from "../symbol/CircleSymbol";
+import {Component} from "react";
+import * as React from "react";
 
 interface AppProp {
     squareCount: number;
@@ -13,7 +14,7 @@ interface AppState {
     message: string
 }
 
-export default class TicTacToeGame extends React.Component<AppProp, AppState> {
+export default class TicTacToeGame extends Component<AppProp, AppState> {
 
     readonly ticTacToe:TicTacToe;
     currentUserIndex: number = 0;

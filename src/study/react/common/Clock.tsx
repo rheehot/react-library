@@ -1,13 +1,13 @@
-import * as React from "react";
 import * as moment from "moment";
 import "./Clock.scss";
-
+import {useEffect, useState} from "react";
+import * as React from "react";
 
 export default function Clock() {
 
-    const [dateFormat, setDateFormat] = React.useState(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    const [dateFormat, setDateFormat] = useState(moment().format('MMMM Do YYYY, h:mm:ss a'));
 
-    React.useEffect(() => {
+    useEffect(() => {
 
         const intervalId = setInterval(() => {
             setDateFormat(moment().format('MMMM Do YYYY, h:mm:ss a'))

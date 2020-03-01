@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Component} from "react";
 import MyButton from "../../../react/common/form/MyButton";
 import "./Collapse.scss";
 
@@ -10,7 +11,7 @@ interface AppState {
 
 }
 
-export default class Collapse extends React.Component<AppProp, AppState> {
+export default class Collapse extends Component<AppProp, AppState> {
 
     toggleCollapse() {
         document.querySelector(".collapse-content").classList.toggle("open");

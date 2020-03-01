@@ -5,11 +5,11 @@ import MyFooter from "./MyFooter";
 import {reactHeader} from "./header/ReactHeader";
 import {cssHeader} from "./header/CssHeader";
 import HeaderInfo from "./header/HeaderInfo";
-
+import {useState} from "react";
 
 export default function Layout() {
 
-    const [headerUls, setHeaderUls] = React.useState(reactHeader);
+    const [headerUls, setHeaderUls] = useState(reactHeader);
 
     const headerChange = (headerInfo: HeaderInfo) => {
 

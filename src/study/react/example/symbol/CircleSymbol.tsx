@@ -1,16 +1,13 @@
 import * as React from "react";
 import {CircleSymbolEnum} from "./CircleSymbolEnum";
 import "./CircleSymbol.scss";
+import {PureComponent} from "react";
 
 interface AppProp {
     colorIndex: number
 }
 
-interface AppState {
-
-}
-
-export default class CircleSymbol extends React.PureComponent<AppProp, AppState> {
+export default class CircleSymbol extends PureComponent<AppProp> {
 
     constructor(props: AppProp) {
         super(props);

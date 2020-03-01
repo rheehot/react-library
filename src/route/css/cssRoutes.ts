@@ -1,4 +1,3 @@
-import {imageRoutes} from "./imageRoutes";
 import {transitionRoutes} from "./transitionRoutes";
 import {squareRoutes} from "./squareRoutes";
 import {naverDiffRoutes} from "./naverDiffRoutes";
@@ -9,4 +8,4 @@ export const routes = [
         path: "/css/main",
         component: CssMain
     }
-].concat(imageRoutes, transitionRoutes, squareRoutes, naverDiffRoutes);
+].concat(transitionRoutes, squareRoutes, naverDiffRoutes);

@@ -7,7 +7,7 @@ import {formRoutes} from "../../../../route/react/formRoutes";
 import {PageType} from "../../../typescript/common/PageType";
 import UserInfo from "./UserInfo";
 import {RouteComponentProps} from "react-router-dom";
-import {useEffect, useMemo, useRef, useState} from "react";
+import {MouseEvent, ChangeEvent, useEffect, useMemo, useRef, useState} from "react";
 
 export default function UserForm(props: RouteComponentProps) {
 
@@ -31,19 +31,19 @@ export default function UserForm(props: RouteComponentProps) {
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     
-    function nameChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    function nameChangeHandler(event: ChangeEvent<HTMLInputElement>) {
         setName(event.target.value);
     }
 
-    function idChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    function idChangeHandler(event: ChangeEvent<HTMLInputElement>) {
         setId(event.target.value);
     }
     
-    function emailChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    function emailChangeHandler(event: ChangeEvent<HTMLInputElement>) {
         setEmail(event.target.value);
     }
 
-    function submit(event: React.MouseEvent<HTMLButtonElement>) {
+    function submit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
 

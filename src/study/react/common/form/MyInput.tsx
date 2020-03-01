@@ -1,13 +1,13 @@
 import * as React from "react";
-import {RefObject} from "react";
+import {ChangeEvent, forwardRef, RefObject} from "react";
 
 interface AppProp {
-    onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void,
     inputValue: string,
     className?: string,
 }
 
-export const MyInput = React.forwardRef((props: AppProp, ref: RefObject<HTMLInputElement>) => {
+export const MyInput = forwardRef((props: AppProp, ref: RefObject<HTMLInputElement>) => {
 
     return (
         <input ref={ref} className={`my-input ${props.className}`} value={props.inputValue} onChange={props.onChangeHandler}/>

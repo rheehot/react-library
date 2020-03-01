@@ -1,10 +1,11 @@
 import * as React from "react";
 import "./form.scss";
+import {ReactNode, MouseEvent} from "react";
 
 interface AppProp {
-    onClickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void,
+    onClickHandler: (event: MouseEvent<HTMLButtonElement>) => void,
     className: string,
-    children: React.ReactNode
+    children: ReactNode
 }
 
 export default function MyButton(props: AppProp) {
