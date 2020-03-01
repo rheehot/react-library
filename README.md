@@ -13,6 +13,11 @@ React / 마크업 공부를 위한 개인프로젝트 입니다.
 
 <hr>
 
+# Coding Standard
+<a href="https://docs.google.com/document/d/1h2AMf9uwz0L9bG8QSsT1iBnJlBZ0s2xdpiTSmyuZCVA/edit#">
+    Naming 관련
+</a>
+
 # React Class Component Guide
 
 기본적으로 prop, state가 바뀌지않았을 때 렌더링하지않도록 대비가 필요.<br>
