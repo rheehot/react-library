@@ -1,6 +1,7 @@
 import * as React from "react";
 import {CircleSymbolEnum} from "./CircleSymbolEnum";
 import "./CircleSymbol.scss";
+import "../../../css/util.scss";
 import {PureComponent} from "react";
 
 interface AppProp {
@@ -22,7 +23,7 @@ export default class CircleSymbol extends PureComponent<AppProp> {
 
     render() {
         return (
-            <div className={`circle ${this.circleColorClass()}`}>
+            <div className={`CircleSymbol circle ${this.circleColorClass()}`}>
             </div>
         )
     }

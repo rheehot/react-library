@@ -1,17 +1,16 @@
-.circle {
+.CircleSymbol {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
 }
 
-.red {
+.CircleSymbol.red {
     background: red;
 }
 
-.blue {
+.CircleSymbol.blue {
     background: blue;
 }
 
-.blue-violet {
+.CircleSymbol.blue-violet {
     background: blueviolet;
 }

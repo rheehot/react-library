@@ -21,7 +21,7 @@ export default function Clock() {
     }, []);
 
     return (
-        <div className="clock-wrap">
+        <div className="Clock-wrap">
             <span>{dateFormat}</span>
         </div>
     )
