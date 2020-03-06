@@ -1,14 +1,11 @@
-import PaletteContainer from "../../study/react/palette/PaletteContainer";
+import MapStateApp from "../../study/react/redux/map-state/MapStateApp";
 
 const path = "/react/redux";
 
 export const reduxRoutes = [
     {
-        path: `${path}/palette`,
-        component: PaletteContainer,
+        path: `${path}/map-state`,
+        component: MapStateApp,
         exact: true,
-        meta: {
-            name: "Palette"
-        }
     }
 ];
