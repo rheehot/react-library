@@ -1,6 +1,6 @@
 export enum MapStateOneAction {
-    INCREASE,
-    DECREASE
+    INCREASE = "map-state-one/INCREASE",
+    DECREASE = "map-state-one/DECREASE",
 }
 
 const initialState = {
