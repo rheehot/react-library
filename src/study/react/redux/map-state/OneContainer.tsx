@@ -11,7 +11,7 @@ interface AppProp {
     referenceState: Array<number>
 }
 
-class MapStateOneContainer extends Component<AppProp> {
+class OneContainer extends Component<AppProp> {
 
     increase() {
         store.dispatch({type: MapStateOneAction.INCREASE});
@@ -39,4 +39,4 @@ function mapState(state: RootState) {
     }
 }
 
-export default connect(mapState)(MapStateOneContainer)
+export default connect(mapState)(OneContainer)

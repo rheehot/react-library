@@ -13,8 +13,6 @@ const initialState = {
 
 export default function color(state = initialState, action: {type: ColorAction, color: Color}) {
 
-    console.log(state);
-
     switch(action.type) {
         case ColorAction.CHANGE:
             return {
