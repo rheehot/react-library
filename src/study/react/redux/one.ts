@@ -3,12 +3,17 @@ export enum MapStateOneAction {
     DECREASE = "map-state-one/DECREASE",
 }
 
-const initialState = {
+export interface OneState {
+    primitiveState: number,
+    referenceState: Array<number>
+}
+
+const initialState:OneState = {
     primitiveState: 1,
     referenceState: [1, 2, 3]
 };
 
-export default function oneReducer(state = initialState, action: {type: MapStateOneAction}) {
+export default function oneReducer(state: OneState = initialState, action: {type: MapStateOneAction}): OneState {
 
     switch(action.type) {
         case MapStateOneAction.INCREASE:

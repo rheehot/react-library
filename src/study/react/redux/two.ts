@@ -3,12 +3,17 @@ export enum MapStateTwoAction {
     DECREASE
 }
 
-const initialState = {
+export interface TwoState {
+    primitiveState: number,
+    referenceState: Array<number>
+}
+
+const initialState:TwoState = {
     primitiveState: 1,
     referenceState: [1, 2, 3]
 };
 
-export default function twoReducer(state = initialState, action: {type: MapStateTwoAction}) {
+export default function twoReducer(state: TwoState = initialState, action: {type: MapStateTwoAction}): TwoState {
 
     switch(action.type) {
         case MapStateTwoAction.INCREASE:

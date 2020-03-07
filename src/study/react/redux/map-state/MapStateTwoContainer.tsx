@@ -2,7 +2,7 @@ import * as React from "react";
 import {Component} from "react";
 import ComponentInfo from "../../common/redux/ComponentInfo";
 import {connect} from "react-redux";
-import {store} from "../store";
+import {RootState, store} from "../store";
 import MyButton from "../../common/form/MyButton";
 import {MapStateTwoAction} from "../two";
 
@@ -23,8 +23,6 @@ class MapStateTwoContainer extends Component<AppProp> {
 
     render() {
 
-        console.log("two props", this.props);
-
         return (
             <div className="MapStateTwoContainer-wrap">
                 <ComponentInfo primitiveProp={this.props.primitiveState} referenceProp={this.props.referenceState} message={"Case 2"}/>
@@ -35,9 +33,7 @@ class MapStateTwoContainer extends Component<AppProp> {
     }
 }
 
-function mapState(state: any) {
-
-    console.log("two state", state);
+function mapState(state: RootState) {
 
     return {
         primitiveState: state.two.primitiveState,

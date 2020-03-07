@@ -2,7 +2,7 @@ import * as React from "react";
 import {Component} from "react";
 import ComponentInfo from "../../common/redux/ComponentInfo";
 import {connect} from "react-redux";
-import {store} from "../store";
+import {RootState, store} from "../store";
 import {MapStateOneAction} from "../one";
 import MyButton from "../../common/form/MyButton";
 
@@ -32,7 +32,7 @@ class MapStateOneContainer extends Component<AppProp> {
     }
 }
 
-function mapState(state: any) {
+function mapState(state: RootState) {
     return {
         primitiveState: state.one.primitiveState,
         referenceState: state.one.referenceState,

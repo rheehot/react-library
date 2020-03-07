@@ -1,7 +1,12 @@
 import {combineReducers, createStore} from "redux";
-import one from "./one";
-import two from "./two";
+import one, {OneState} from "./one";
+import two, {TwoState} from "./two";
 import {devTools} from "../../../store/store";
+
+export interface RootState {
+    one: OneState,
+    two: TwoState
+}
 
 export const rootReducer = combineReducers({
     one,
