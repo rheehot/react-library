@@ -5,17 +5,11 @@ import {connect} from "react-redux";
 import {RootState} from "../store";
 import {MapStateOneAction} from "../one";
 import MyButton from "../../common/form/MyButton";
+import MapStateProp from "../MapStateProp";
 
-interface AppProp {
-    primitiveState: number,
-    referenceState: Array<number>,
-    increase: () => void,
-    decrease: () => void
-}
+class OneContainer extends Component<MapStateProp> {
 
-class OneContainer extends Component<AppProp> {
-
-    shouldComponentUpdate(nextProps: Readonly<AppProp>, nextState: Readonly<{}>, nextContext: any): boolean {
+    shouldComponentUpdate(nextProps: Readonly<MapStateProp>, nextState: Readonly<{}>, nextContext: any): boolean {
         console.log("one container shouldComponentUpdate");
         console.log("prev, next props", this.props, nextProps);
         return true;
