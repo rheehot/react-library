@@ -85,3 +85,6 @@
 .circle {
     border-radius: 50%;
 }
+
+.hidden-increase-decrease-button::-webkit-outer-spin-button{-webkit-appearance: none;margin: 0;}
+.hidden-increase-decrease-button::-webkit-inner-spin-button{-webkit-appearance: none;margin: 0;}

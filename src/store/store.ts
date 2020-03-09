@@ -1,6 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import counter from "./modules/counter";
-import color from "./modules/color";
+import blackDesertReducer from "./modules/blackDesert.";
 
 /**
  * 바로 여기가 getState()했을 때 나오는 property name이 됨.
@@ -8,8 +7,7 @@ import color from "./modules/color";
  * state에 담기는건 state임.
  */
 const rootReducer = combineReducers({
-    counter,
-    color
+    blackDesertReducer
 });
 
 //@ts-ignore

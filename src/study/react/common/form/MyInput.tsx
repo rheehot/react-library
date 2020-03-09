@@ -5,12 +5,16 @@ interface AppProp {
     onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void,
     inputValue: string,
     className?: string,
+    type?: string,
+    showIncreaseDecreaseButton?: boolean
 }
 
 export const MyInput = forwardRef((props: AppProp, ref: RefObject<HTMLInputElement>) => {
 
     return (
-        <input ref={ref} className={`my-input ${props.className}`} value={props.inputValue} onChange={props.onChangeHandler}/>
+        <input type={props.type} ref={ref}
+               value={props.inputValue} onChange={props.onChangeHandler}
+               className={`my-input ${props.className} ${ props.showIncreaseDecreaseButton ? "" : "hidden-increase-decrease-button" }`}/>
     )
 });
 

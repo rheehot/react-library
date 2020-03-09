@@ -1,7 +1,11 @@
+@mixin round-border {
+    border-radius: 5px;
+}
+
 .my-input {
     font-size: 14px;
     padding-left: 10px;
-    border-radius: 5px;
+    @include round-border;
     border: 1px solid blueviolet;
     height: 40px;
 }
@@ -16,7 +20,7 @@
 
 .my-button {
     background: blueviolet;
-    border-radius: 5px;
+    @include round-border;
 
     color: white;
     font-size: 14px;
