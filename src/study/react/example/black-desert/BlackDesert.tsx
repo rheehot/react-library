@@ -1,19 +1,20 @@
 import * as React from "react"
-import {ChangeEvent, useMemo, useState} from "react"
+import {ChangeEvent, MouseEvent, FormEvent, useMemo, useState} from "react"
 import {InputItem} from "../../common/form/InputItem";
 import MyButton from "../../common/form/MyButton";
 import RadioGroup from "../../common/form/RadioGroup";
 import "./BlackDesert.scss";
-import {HERALDRY_FAME_ARRAY} from "./BlackDesertSystem";
+import {HERALDRY_FAME_ARRAY, Item, sellTrade} from "./BlackDesertSystem";
 import {BlackDesertInterface} from "./BlackDesertContainer";
 
 export default function BlackDesert(props: BlackDesertInterface) {
 
-    const [currentPrice, setCurrentPrice] = useState();
-    const [breakEvenPoint, setBreakEvenPoint] = useState();
+    const [currentPrice, setCurrentPrice] = useState("");
+    const [breakEvenPoint, setBreakEvenPoint] = useState("");
     const heraldryFameArray = useMemo(() => {
 
-        return HERALDRY_FAME_ARRAY.map(heraldryFame => ({value: heraldryFame, label: `${heraldryFame}점 이상`}));
+        return [{value: HERALDRY_FAME_ARRAY[0] - 1, label: `${HERALDRY_FAME_ARRAY[0]}점 미만`}]
+            .concat(HERALDRY_FAME_ARRAY.map(heraldryFame => ({value: heraldryFame, label: `${heraldryFame}점 이상`})));
 
     }, [HERALDRY_FAME_ARRAY]);
 
@@ -26,7 +27,14 @@ export default function BlackDesert(props: BlackDesertInterface) {
     }
 
     function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {
+
         setCurrentPrice(event.target.value);
+    }
+
+    function setStateBreakEvenPoint(event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>, item: Item) {
+
+        event.preventDefault();
+        setBreakEvenPoint(String(sellTrade(item, props.userInfo, currentPrice)));
     }
 
     return (
@@ -46,8 +54,8 @@ export default function BlackDesert(props: BlackDesertInterface) {
             <form>
                 <fieldset>손익분기점 계산</fieldset>
                 <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
-                <MyButton onClickHandler={() => {}}>조회</MyButton>
-                <span className="result">+2000 asdasdasd</span>
+                <MyButton onClickHandler={(event) => setStateBreakEvenPoint(event, Item.NOT_PEARL_ITEM)}>조회</MyButton>
+                <span className="result">{breakEvenPoint}</span>
             </form>
             <form>
                 <fieldset>차액 계산</fieldset>
