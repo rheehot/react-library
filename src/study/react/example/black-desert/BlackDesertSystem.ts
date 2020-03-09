@@ -1,0 +1,1 @@
+export const HERALDRY_FAME_ARRAY = [1000, 4000, 7000];

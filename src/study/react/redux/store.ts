@@ -8,7 +8,7 @@ export interface RootState {
     two: TwoState
 }
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
     one,
     two
 });

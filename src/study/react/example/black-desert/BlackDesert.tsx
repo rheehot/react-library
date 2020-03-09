@@ -1,44 +1,28 @@
 import * as React from "react"
+import {ChangeEvent, useMemo, useState} from "react"
 import {InputItem} from "../../common/form/InputItem";
-import {ChangeEvent, useState} from "react";
 import MyButton from "../../common/form/MyButton";
 import RadioGroup from "../../common/form/RadioGroup";
 import "./BlackDesert.scss";
+import {HERALDRY_FAME_ARRAY} from "./BlackDesertSystem";
+import {BlackDesertInterface} from "./BlackDesertContainer";
 
-interface AppProp {
-
-}
-
-export default function BlackDesert(props: AppProp) {
+export default function BlackDesert(props: BlackDesertInterface) {
 
     const [currentPrice, setCurrentPrice] = useState();
     const [breakEvenPoint, setBreakEvenPoint] = useState();
-    const [heraldryFame, setHeraldryFame] = useState(0);
-    const [haveValuePackage, setHaveValuePackage] = useState(true);
+    const heraldryFameArray = useMemo(() => {
+
+        return HERALDRY_FAME_ARRAY.map(heraldryFame => ({value: heraldryFame, label: `${heraldryFame}점 이상`}));
+
+    }, [HERALDRY_FAME_ARRAY]);
 
     function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
-
-        console.log(event.target.checked);
-        setHaveValuePackage(event.target.checked);
+        props.changeUserInfo(Object.assign({}, props.userInfo, {haveValuePackage: event.target.checked}));
     }
 
-    const test = [
-        {
-            value: 7000,
-            label: 7000
-        },
-        {
-            value: 5000,
-            label: 5000
-        },
-        {
-            value: 3000,
-            label: 3000
-        }
-    ];
-
     function setStateHeraldryFame(checkValue: number) {
-        setHeraldryFame(checkValue);
+        props.changeUserInfo(Object.assign({}, props.userInfo, {heraldryFame: checkValue}));
     }
 
     function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {
@@ -52,23 +36,23 @@ export default function BlackDesert(props: AppProp) {
             <h3>사용자 정보 설정</h3>
             <form>
                 <fieldset>가문명성 선택</fieldset>
-                <RadioGroup selectValue={heraldryFame} valueAndLabelArray={test} radioGroupName="HeraldryFame" selectHandler={setStateHeraldryFame}/>
+                <RadioGroup selectValue={props.userInfo.heraldryFame} valueAndLabelArray={heraldryFameArray} radioGroupName="HeraldryFame" selectHandler={setStateHeraldryFame}/>
 
-                <input type="checkbox" onChange={setStateHaveValuePackage} checked={haveValuePackage}/>
+                <input type="checkbox" onChange={setStateHaveValuePackage} checked={props.userInfo.haveValuePackage}/>
                 <label>밸류패키지 여부</label>
             </form>
 
             <h3>이익계산 (기준 : 1개)</h3>
             <form>
                 <fieldset>손익분기점 계산</fieldset>
-                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}></InputItem>
+                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
                 <MyButton onClickHandler={() => {}}>조회</MyButton>
                 <span className="result">+2000 asdasdasd</span>
             </form>
             <form>
                 <fieldset>차액 계산</fieldset>
-                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}></InputItem>
-                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}></InputItem>
+                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
+                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
                 <MyButton onClickHandler={() => {}}>조회</MyButton>
                 <span className="result">+2000 asdasdasd</span>
             </form>
