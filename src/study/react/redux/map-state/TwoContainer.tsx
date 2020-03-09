@@ -2,32 +2,34 @@ import * as React from "react";
 import {Component} from "react";
 import ComponentInfo from "../../common/redux/ComponentInfo";
 import {connect} from "react-redux";
-import {RootState, store} from "../store";
+import {RootState} from "../store";
 import MyButton from "../../common/form/MyButton";
 import {MapStateTwoAction} from "../two";
 
 interface AppProp {
     primitiveState: number,
-    referenceState: Array<number>
+    referenceState: Array<number>,
+    increase: () => void,
+    decrease: () => void,
 }
 
 class TwoContainer extends Component<AppProp> {
 
-    increase() {
-        store.dispatch({type: MapStateTwoAction.INCREASE});
-    }
-
-    decrease() {
-        store.dispatch({type: MapStateTwoAction.DECREASE});
+    shouldComponentUpdate(nextProps: Readonly<AppProp>, nextState: Readonly<{}>, nextContext: any): boolean {
+        console.log("two container shouldComponentUpdate");
+        console.log("prev, next props", this.props, nextProps);
+        return true;
     }
 
     render() {
 
+        console.log("two container render call");
+
         return (
             <div className="MapStateTwoContainer-wrap">
                 <ComponentInfo primitiveProp={this.props.primitiveState} referenceProp={this.props.referenceState} message={"Case 2"}/>
-                <MyButton onClickHandler={this.increase}>dispatch increase</MyButton>
-                <MyButton onClickHandler={this.decrease}>dispatch decrease</MyButton>
+                <MyButton onClickHandler={this.props.increase}>dispatch increase</MyButton>
+                <MyButton onClickHandler={this.props.decrease}>dispatch decrease</MyButton>
             </div>
         )
     }
@@ -41,4 +43,12 @@ function mapState(state: RootState) {
     }
 }
 
-export default connect(mapState)(TwoContainer)
+function mapDispatch(dispatch: Function) {
+
+    return {
+        increase: () => dispatch({type: MapStateTwoAction.INCREASE}),
+        decrease: () => dispatch({type: MapStateTwoAction.DECREASE})
+    }
+}
+
+export default connect(mapState, mapDispatch)(TwoContainer)
