@@ -5,7 +5,7 @@ interface AppProp {
     valueAndLabelArray: Array<{value: string | number, label: string | number}>,
     radioGroupName: string,
     selectValue?: string | number,
-    selectHandler: (checkValue: string | number) => void
+    selectHandler: (checkValue: string) => void
 }
 
 export default function RadioGroup(props: AppProp) {

@@ -11,6 +11,7 @@ import {
     HERALDRY_FAME_ARRAY,
 } from "./BlackDesertSystem";
 import {BlackDesertInterface} from "./BlackDesertContainer";
+import BlackDesertUserInfo from "./BlackDesertUserInfo";
 
 export default function BlackDesert(props: BlackDesertInterface) {
 
@@ -43,11 +44,11 @@ export default function BlackDesert(props: BlackDesertInterface) {
     }
 
     function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
-        props.changeUserInfo(Object.assign({}, props.userInfo, {haveValuePackage: event.target.checked}));
+        props.changeUserInfo(Object.assign<{}, BlackDesertUserInfo, {haveValuePackage: boolean}>({}, props.userInfo, {haveValuePackage: event.target.checked}));
     }
 
     function setStateHeraldryFame(checkValue: string) {
-        props.changeUserInfo(Object.assign({}, props.userInfo, {heraldryFame: true}));
+        props.changeUserInfo(Object.assign<{}, BlackDesertUserInfo, {heraldryFame: number}>({}, props.userInfo, {heraldryFame: Number(checkValue)}));
     }
 
     function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {
