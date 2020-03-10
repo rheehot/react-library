@@ -1,15 +1,6 @@
 import BlackDesertUserInfo from "./BlackDesertUserInfo";
 import HeraldryFame from "./HeraldryFame";
 
-export enum Item {
-
-    //펄템(= 캐쉬템)은 거래세금 면제
-    PEARL_ITEM = "pearl-item",
-
-    //펄템(= 캐쉬템)이 아니면 거래세금 적용
-    NOT_PEARL_ITEM = "not-pearl-item"
-}
-
 export const HERALDRY_FAME_ARRAY = Object.freeze([
     new HeraldryFame(0, 0),
     new HeraldryFame(1000, 0.005),
@@ -31,42 +22,36 @@ const VALUE_PACKAGE_PAY_BACK = 0.3;
 //가문명성 등급에 따라, 정산금액의 0.5%p, 1.0%p, 1.5%p를 추가로 돌려받을 수 있음.
 const HERALDRY_FAME_PERCENT_POINTS = [0, 0.005, 0.01, 0.015];
 
-export function getBreakEvenPrice(item: Item, userInfo: BlackDesertUserInfo, price: number | string): number {
-    return trade(item, userInfo, price, _getBreakEvenPrice);
+export function getBreakEvenPrice(userInfo: BlackDesertUserInfo, price: number | string): number {
+    return trade(userInfo, price, _getBreakEvenPrice);
 }
 
-export function getSettlementPrice(item: Item, userInfo: BlackDesertUserInfo, price: number | string): number {
-    return trade(item, userInfo, price, _getSettlementPrice);
+export function getSettlementPrice(userInfo: BlackDesertUserInfo, price: number | string): number {
+    return trade(userInfo, price, _getSettlementPrice);
 }
 
-function trade(item: Item, userInfo: BlackDesertUserInfo, price: number | string, callback: Function): number {
+function trade(userInfo: BlackDesertUserInfo, price: number | string, callback: Function): number {
 
     const _price = Number(price);
-    const settlementTax = getSettlementTax(item, userInfo);
+    const settlementTax = getSettlementTax(userInfo);
 
     return callback(settlementTax, _price);
 }
 
-function getSettlementTax(item: Item, userInfo: BlackDesertUserInfo): number {
+function getSettlementTax(userInfo: BlackDesertUserInfo): number {
 
     const _userInfoHeraldryFame = Number(userInfo.heraldryFame);
 
-    switch (item) {
-        case Item.PEARL_ITEM:
-            return 1;
+    let settlementTax = 1 - (TRADE_MARKET_TAX + COMMANDERY_TAX);
 
-        case Item.NOT_PEARL_ITEM:
-            let settlementTax = 1 - (TRADE_MARKET_TAX + COMMANDERY_TAX);
+    if(userInfo.haveValuePackage)
+        settlementTax =  settlementTax * (1 + VALUE_PACKAGE_PAY_BACK);
 
-            if(userInfo.haveValuePackage)
-                settlementTax =  settlementTax * (1 + VALUE_PACKAGE_PAY_BACK);
+    const heraldryFameStep = getHeraldryFameStep(_userInfoHeraldryFame);
 
-            const heraldryFameStep = getHeraldryFameStep(_userInfoHeraldryFame);
+    settlementTax += heraldryFameStep !== -1 ? HERALDRY_FAME_PERCENT_POINTS[heraldryFameStep] : 0;
 
-            settlementTax += heraldryFameStep !== -1 ? HERALDRY_FAME_PERCENT_POINTS[heraldryFameStep] : 0;
-
-            return settlementTax;
-    }
+    return settlementTax;
 }
 
 /**

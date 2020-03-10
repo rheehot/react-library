@@ -8,7 +8,6 @@ import {
     getBreakEvenPrice,
     getHeraldryFameStepAmount, getSettlementPrice,
     HERALDRY_FAME_ARRAY,
-    Item
 } from "./BlackDesertSystem";
 import {BlackDesertInterface} from "./BlackDesertContainer";
 
@@ -58,13 +57,13 @@ export default function BlackDesert(props: BlackDesertInterface) {
     function breakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
-        setBreakEvenPoint(getBreakEvenPrice(Item.NOT_PEARL_ITEM, props.userInfo, currentPrice).toFixed(0));
+        setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice).toFixed(0));
     }
 
     function diffBenefitFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
-        const sellPriceWithoutTax = getSettlementPrice(Item.NOT_PEARL_ITEM, props.userInfo, sellPrice);
+        const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
         const diffBenefit = sellPriceWithoutTax - buyPrice;
         setDiffBenefit(diffBenefit ? diffBenefit.toFixed(0) : "");
     }
@@ -72,11 +71,11 @@ export default function BlackDesert(props: BlackDesertInterface) {
     useEffect(() => {
 
         //현재 이 코드가 submit할때 중복되고있음.
-        const breakEventPoint = Number(getBreakEvenPrice(Item.NOT_PEARL_ITEM, props.userInfo, currentPrice)?.toFixed(0));
+        const breakEventPoint = Number(getBreakEvenPrice(props.userInfo, currentPrice)?.toFixed(0));
         setBreakEvenPoint((Number.isNaN(breakEventPoint)) ? "" : breakEventPoint);
 
         //현재 이 코드가 submit할때 중복되고있음.
-        const sellPriceWithoutTax = getSettlementPrice(Item.NOT_PEARL_ITEM, props.userInfo, sellPrice);
+        const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
         const diffBenefit = sellPriceWithoutTax - buyPrice;
         setDiffBenefit(diffBenefit ? diffBenefit.toFixed(0) : "");
 
@@ -99,15 +98,15 @@ export default function BlackDesert(props: BlackDesertInterface) {
             <form>
                 <fieldset>손익분기점 계산</fieldset>
                 <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
+                결과 : <span className="result">{breakEvenPoint}</span>
                 <MyButton onClickHandler={breakEvenPointFormSubmit}>조회</MyButton>
-                <span className="result">{breakEvenPoint}</span>
             </form>
             <form>
                 <fieldset>차익 계산</fieldset>
                 <InputItem labelText="구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
                 <InputItem labelText="판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
+                결과 : <span className="result">{diffBenefit}</span>
                 <MyButton onClickHandler={diffBenefitFormSubmit}>조회</MyButton>
-                <span className="result">{diffBenefit}</span>
             </form>
         </div>
     )
