@@ -14,6 +14,9 @@ const initialState: BlackDesertState = {
 
 export default function blackDesertReducer(state: BlackDesertState = initialState, action: { type: BlackDesertAction, payload: BlackDesertUserInfo }): BlackDesertState {
 
+    state.userInfo.heraldryFame = "123";
+    Object.assign(state.userInfo, {heraldryFame: "123"});
+
     switch (action.type) {
         case BlackDesertAction.CHANGE_USER_INFO:
             return {
