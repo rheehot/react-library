@@ -6,39 +6,33 @@ import MyFooter from "./MyFooter";
 import {reactHeader} from "./header/ReactHeader";
 import {cssHeader} from "./header/CssHeader";
 import HeaderInfo from "./header/HeaderInfo";
+import {getPathDirectoryName} from "../study/typescript/common/UrlUtil";
 
 export default function Layout() {
 
     const [headerUls, setHeaderUls] = useState(() => {
 
-        console.log("setState callback call");
+        const firstPath = getPathDirectoryName(location.pathname, 0);
+        return getHeader(firstPath);
+    });
 
-        const firstDir = location.pathname.split("/")[1];
+    function headerChange(headerInfo: HeaderInfo) {
 
-        switch (firstDir) {
+        const firstPath = getPathDirectoryName(headerInfo.to, 0);
+        const header = getHeader(firstPath);
+        setHeaderUls(header);
+    }
+
+    function getHeader(firstPath: string): Array<Array<HeaderInfo>> {
+
+        switch (firstPath) {
             case "css":
                 return cssHeader;
 
             default:
                 return reactHeader;
         }
-    });
-
-    const headerChange = (headerInfo: HeaderInfo) => {
-
-        const firstDir = headerInfo.to.split("/")[1];
-
-        switch (firstDir) {
-            case "css":
-                setHeaderUls(cssHeader);
-                break;
-
-            default:
-                setHeaderUls(reactHeader);
-        }
-    };
-
-    console.log("return");
+    }
 
     return (
         <>
