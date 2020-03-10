@@ -61,3 +61,12 @@ export function getHeraldryFameStep(userHeraldryFameAmount: number): number {
     else
         return HERALDRY_FAME_ARRAY.findIndex(heraldryFame => userHeraldryFameAmount < heraldryFame.amount) - 1;
 }
+
+/**
+ * @param userHeraldryFameAmount 사용자의 가문명성
+ * @return 사용자의 가문명성 수치의 경계값을 반환.
+ * @example 0~1000, 1000~4000, 4000~7000 단계가 구분되었을 때, (1200) => 1000, (562) => 0, (4597) => 4000
+ */
+export function getHeraldryFameStepAmount(userHeraldryFameAmount: number) {
+    return HERALDRY_FAME_ARRAY[getHeraldryFameStep(userHeraldryFameAmount)].amount;
+}

@@ -1,10 +1,10 @@
 import * as React from "react"
-import {ChangeEvent, MouseEvent, FormEvent, useMemo, useState} from "react"
+import {ChangeEvent, FormEvent, MouseEvent, useEffect, useMemo, useState} from "react"
 import {InputItem} from "../../common/form/InputItem";
 import MyButton from "../../common/form/MyButton";
 import RadioGroup from "../../common/form/RadioGroup";
 import "./BlackDesert.scss";
-import {HERALDRY_FAME_ARRAY, Item, sellTrade} from "./BlackDesertSystem";
+import {getHeraldryFameStepAmount, HERALDRY_FAME_ARRAY, Item, sellTrade} from "./BlackDesertSystem";
 import {BlackDesertInterface} from "./BlackDesertContainer";
 
 export default function BlackDesert(props: BlackDesertInterface) {
@@ -23,7 +23,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
             }
         }).concat({value: last.amount, label: `${last.amount}점 이상`});
 
-    }, [HERALDRY_FAME_ARRAY]);
+    }, []);
 
     function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
         props.changeUserInfo(Object.assign({}, props.userInfo, {haveValuePackage: event.target.checked}));
@@ -38,11 +38,13 @@ export default function BlackDesert(props: BlackDesertInterface) {
         setCurrentPrice(event.target.value);
     }
 
-    function setStateBreakEvenPoint(event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>, item: Item) {
+    function onBreakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>, item: Item) {
 
         event.preventDefault();
         setBreakEvenPoint(sellTrade(item, props.userInfo, currentPrice).toFixed(0));
     }
+
+    useEffect(() => setBreakEvenPoint(sellTrade(Item.NOT_PEARL_ITEM, props.userInfo, currentPrice).toFixed(0)),[props.userInfo]);
 
     return (
         <div className="BlackDesert-wrap">
@@ -51,7 +53,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
             <h3>사용자 정보 설정</h3>
             <form>
                 <fieldset>가문명성 선택</fieldset>
-                <RadioGroup selectValue={props.userInfo.heraldryFame} valueAndLabelArray={heraldryFameArray} radioGroupName="HeraldryFame" selectHandler={setStateHeraldryFame}/>
+                <RadioGroup selectValue={getHeraldryFameStepAmount(props.userInfo.heraldryFame)} valueAndLabelArray={heraldryFameArray} radioGroupName="HeraldryFame" selectHandler={setStateHeraldryFame}/>
 
                 <input type="checkbox" onChange={setStateHaveValuePackage} checked={props.userInfo.haveValuePackage}/>
                 <label>밸류패키지 여부</label>
@@ -61,7 +63,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
             <form>
                 <fieldset>손익분기점 계산</fieldset>
                 <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
-                <MyButton onClickHandler={(event) => setStateBreakEvenPoint(event, Item.NOT_PEARL_ITEM)}>조회</MyButton>
+                <MyButton onClickHandler={(event) => onBreakEvenPointFormSubmit(event, Item.NOT_PEARL_ITEM)}>조회</MyButton>
                 <span className="result">{breakEvenPoint}</span>
             </form>
             <form>
