@@ -30,16 +30,16 @@ export default function BlackDesert(props: BlackDesertInterface) {
 
     }, []);
 
-    const [buyPrice, setBuyPrice] = useState("");
-    const [sellPrice, setSellPrice] = useState("");
+    const [buyPrice, setBuyPrice] = useState(0);
+    const [sellPrice, setSellPrice] = useState(0);
     const [diffBenefit, setDiffBenefit] = useState();
 
     function setStateBuyPrice(event: ChangeEvent<HTMLInputElement>) {
-        setBuyPrice(event.target.value);
+        setBuyPrice(Number(event.target.value));
     }
 
     function setStateSellPrice(event: ChangeEvent<HTMLInputElement>) {
-        setSellPrice(event.target.value);
+        setSellPrice(Number(event.target.value));
     }
 
     function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
@@ -52,7 +52,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
 
     function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {
 
-        setCurrentPrice(event.target.value);
+        setCurrentPrice(Number(event.target.value));
     }
 
     function breakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement>) {
