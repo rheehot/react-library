@@ -31,26 +31,60 @@ const VALUE_PACKAGE_PAY_BACK = 0.3;
 //가문명성 등급에 따라, 정산금액의 0.5%p, 1.0%p, 1.5%p를 추가로 돌려받을 수 있음.
 const HERALDRY_FAME_PERCENT_POINTS = [0, 0.005, 0.01, 0.015];
 
-export function sellTrade(item: Item, userInfo: BlackDesertUserInfo, sellMount: number | string): number {
+export function getBreakEvenAmount(item: Item, userInfo: BlackDesertUserInfo, sellAmount: number | string): number {
+    return trade(item, userInfo, sellAmount, _getBreakEvenAmount);
+}
+
+export function getSettlementAmount(item: Item, userInfo: BlackDesertUserInfo, sellAmount: number | string): number {
+    return trade(item, userInfo, sellAmount, _getSettlementAmount);
+}
+
+function trade(item: Item, userInfo: BlackDesertUserInfo, sellAmount: number | string, callback: Function): number {
+
+    const _sellAmount = Number(sellAmount);
+    const settlementFee = getSettlementFee(item, userInfo);
+
+    return callback(settlementFee, _sellAmount);
+}
+
+function getSettlementFee(item: Item, userInfo: BlackDesertUserInfo): number {
 
     const _userInfoHeraldryFame = Number(userInfo.heraldryFame);
 
     switch (item) {
         case Item.PEARL_ITEM:
-            return Number(sellMount);
+            return 1;
 
         case Item.NOT_PEARL_ITEM:
-            let settlementRate = 1 - (TRADE_MARKET_FEE + COMMANDERY_FEE);
+            let settlementFee = 1 - (TRADE_MARKET_FEE + COMMANDERY_FEE);
 
             if(userInfo.haveValuePackage)
-                settlementRate =  settlementRate * (1 + VALUE_PACKAGE_PAY_BACK);
+                settlementFee =  settlementFee * (1 + VALUE_PACKAGE_PAY_BACK);
 
             const heraldryFameStep = getHeraldryFameStep(_userInfoHeraldryFame);
 
-            settlementRate += heraldryFameStep !== -1 ? HERALDRY_FAME_PERCENT_POINTS[heraldryFameStep] : 0;
+            settlementFee += heraldryFameStep !== -1 ? HERALDRY_FAME_PERCENT_POINTS[heraldryFameStep] : 0;
 
-            return Number(sellMount) * settlementRate;
+            return settlementFee;
     }
+}
+
+/**
+ * @param fee 수수료
+ * @param buyAmount 구매금액
+ * @return 수수료 뗐을 때의 구매금액이 현재 구매금액과 같아지는 최소 구매금액을 반환
+ */
+function _getBreakEvenAmount(fee: number, buyAmount: number): number {
+    return buyAmount / fee;
+}
+
+/**
+ * @param fee 수수료
+ * @param buyAmount 구매금액
+ * @return 수수료를 뗀 금액을 반환
+ */
+function _getSettlementAmount(fee: number, amount: number): number {
+    return amount * fee;
 }
 
 export function getHeraldryFameStep(userHeraldryFameAmount: number): number {

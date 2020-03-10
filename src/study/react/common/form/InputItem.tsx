@@ -5,7 +5,7 @@ import {ChangeEvent, RefObject, forwardRef} from "react";
 interface AppProp {
     labelText: string,
     onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void,
-    inputValue: string,
+    inputValue: string | number,
     type?: string,
     className?: string,
     showIncreaseDecreaseButton?: boolean

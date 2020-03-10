@@ -1,16 +1,22 @@
 import * as React from "react"
-import {ChangeEvent, FormEvent, MouseEvent, useEffect, useMemo, useState} from "react"
+import {ChangeEvent, MouseEvent, useEffect, useMemo, useState} from "react"
 import {InputItem} from "../../common/form/InputItem";
 import MyButton from "../../common/form/MyButton";
 import RadioGroup from "../../common/form/RadioGroup";
 import "./BlackDesert.scss";
-import {getHeraldryFameStepAmount, HERALDRY_FAME_ARRAY, Item, sellTrade} from "./BlackDesertSystem";
+import {
+    getBreakEvenAmount,
+    getHeraldryFameStepAmount,
+    getSettlementAmount,
+    HERALDRY_FAME_ARRAY,
+    Item
+} from "./BlackDesertSystem";
 import {BlackDesertInterface} from "./BlackDesertContainer";
 
 export default function BlackDesert(props: BlackDesertInterface) {
 
-    const [currentPrice, setCurrentPrice] = useState("");
-    const [breakEvenPoint, setBreakEvenPoint] = useState("");
+    const [currentPrice, setCurrentPrice] = useState(0);
+    const [breakEvenPoint, setBreakEvenPoint] = useState();
     const heraldryFameArray = useMemo(() => {
 
         const withoutLast = HERALDRY_FAME_ARRAY.slice(0, HERALDRY_FAME_ARRAY.length - 1);
@@ -25,6 +31,18 @@ export default function BlackDesert(props: BlackDesertInterface) {
 
     }, []);
 
+    const [buyAmount, setBuyAmount] = useState("");
+    const [sellAmount, setSellAmount] = useState("");
+    const [diffBenefit, setDiffBenefit] = useState();
+
+    function setStateBuyAmount(event: ChangeEvent<HTMLInputElement>) {
+        setBuyAmount(event.target.value);
+    }
+
+    function setStateSellAmount(event: ChangeEvent<HTMLInputElement>) {
+        setSellAmount(event.target.value);
+    }
+
     function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
         props.changeUserInfo(Object.assign({}, props.userInfo, {haveValuePackage: event.target.checked}));
     }
@@ -38,13 +56,32 @@ export default function BlackDesert(props: BlackDesertInterface) {
         setCurrentPrice(event.target.value);
     }
 
-    function onBreakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>, item: Item) {
+    function breakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
-        setBreakEvenPoint(sellTrade(item, props.userInfo, currentPrice).toFixed(0));
+        setBreakEvenPoint(getBreakEvenAmount(Item.NOT_PEARL_ITEM, props.userInfo, currentPrice).toFixed(0));
     }
 
-    useEffect(() => setBreakEvenPoint(sellTrade(Item.NOT_PEARL_ITEM, props.userInfo, currentPrice).toFixed(0)),[props.userInfo]);
+    function diffBenefitFormSubmit(event: MouseEvent<HTMLButtonElement>) {
+
+        event.preventDefault();
+        const sellAmountWithoutFee = getSettlementAmount(Item.NOT_PEARL_ITEM, props.userInfo, sellAmount);
+        const diffBenefit = sellAmountWithoutFee - buyAmount;
+        setDiffBenefit(diffBenefit ? diffBenefit.toFixed(0) : "");
+    }
+
+    useEffect(() => {
+
+        //현재 이 코드가 submit할때 중복되고있음.
+        const breakEventPoint = Number(getBreakEvenAmount(Item.NOT_PEARL_ITEM, props.userInfo, currentPrice)?.toFixed(0));
+        setBreakEvenPoint((Number.isNaN(breakEventPoint)) ? "" : breakEventPoint);
+
+        //현재 이 코드가 submit할때 중복되고있음.
+        const sellAmountWithoutFee = getSettlementAmount(Item.NOT_PEARL_ITEM, props.userInfo, sellAmount);
+        const diffBenefit = sellAmountWithoutFee - buyAmount;
+        setDiffBenefit(diffBenefit ? diffBenefit.toFixed(0) : "");
+
+    },[props.userInfo]);
 
     return (
         <div className="BlackDesert-wrap">
@@ -59,19 +96,19 @@ export default function BlackDesert(props: BlackDesertInterface) {
                 <label>밸류패키지 여부</label>
             </form>
 
-            <h3>이익계산 (기준 : 1개)</h3>
+            <h3>이익계산 (기준 : 아이템 1개 가격)</h3>
             <form>
                 <fieldset>손익분기점 계산</fieldset>
                 <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
-                <MyButton onClickHandler={(event) => onBreakEvenPointFormSubmit(event, Item.NOT_PEARL_ITEM)}>조회</MyButton>
+                <MyButton onClickHandler={breakEvenPointFormSubmit}>조회</MyButton>
                 <span className="result">{breakEvenPoint}</span>
             </form>
             <form>
-                <fieldset>차액 계산</fieldset>
-                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
-                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
-                <MyButton onClickHandler={() => {}}>조회</MyButton>
-                <span className="result">+2000 asdasdasd</span>
+                <fieldset>차익 계산</fieldset>
+                <InputItem labelText="구매 가격" onChangeHandler={setStateBuyAmount} inputValue={buyAmount}/>
+                <InputItem labelText="판매 가격" onChangeHandler={setStateSellAmount} inputValue={sellAmount}/>
+                <MyButton onClickHandler={diffBenefitFormSubmit}>조회</MyButton>
+                <span className="result">{diffBenefit}</span>
             </form>
         </div>
     )
