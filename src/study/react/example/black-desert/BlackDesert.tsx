@@ -1,3 +1,4 @@
+import "../../../css/cssPropertiesClass.scss";
 import * as React from "react"
 import {ChangeEvent, MouseEvent, useEffect, useMemo, useState} from "react"
 import {InputItem} from "../../common/form/InputItem";
@@ -95,19 +96,25 @@ export default function BlackDesert(props: BlackDesertInterface) {
             </form>
 
             <h3>이익계산 (기준 : 아이템 1개 가격)</h3>
-            <form>
-                <fieldset>손익분기점 계산</fieldset>
-                <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
-                결과 : <span className="result">{breakEvenPoint}</span>
-                <MyButton onClickHandler={breakEvenPointFormSubmit}>조회</MyButton>
-            </form>
-            <form>
-                <fieldset>차익 계산</fieldset>
-                <InputItem labelText="구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
-                <InputItem labelText="판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
-                결과 : <span className="result">{diffBenefit}</span>
-                <MyButton onClickHandler={diffBenefitFormSubmit}>조회</MyButton>
-            </form>
+            <div className="flex-wrap">
+                <form className="mt-20 mr-20 flex-direction-column">
+                    <fieldset>손익분기점 계산</fieldset>
+                    <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
+                    <div className="form-footer">
+                        <span>결과 : <span className="result">{breakEvenPoint}</span></span>
+                        <MyButton onClickHandler={breakEvenPointFormSubmit}>조회</MyButton>
+                    </div>
+                </form>
+                <form className="mt-20">
+                    <fieldset>차익 계산</fieldset>
+                    <InputItem labelText="구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
+                    <InputItem labelText="판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
+                    <div className="form-footer">
+                        <span>결과 : <span className="result">{diffBenefit}</span></span>
+                        <MyButton onClickHandler={diffBenefitFormSubmit}>조회</MyButton>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

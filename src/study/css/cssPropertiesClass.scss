@@ -11,5 +11,33 @@
 }
 
 .flex-direction-column {
+    display: flex;
     flex-direction: column;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin flex-between-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-between-center {
+    @include flex-between-center;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-60 {
+    margin-top: 60px;
 }
