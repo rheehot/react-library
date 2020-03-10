@@ -15,8 +15,8 @@ import BlackDesertUserInfo from "./BlackDesertUserInfo";
 
 export default function BlackDesert(props: BlackDesertInterface) {
 
-    const [currentPrice, setCurrentPrice] = useState(0);
-    const [breakEvenPoint, setBreakEvenPoint] = useState();
+    const [currentPrice, setCurrentPrice] = useState("");
+    const [breakEvenPoint, setBreakEvenPoint] = useState(0);
     const heraldryFameArray = useMemo(() => {
 
         const withoutLast = HERALDRY_FAME_ARRAY.slice(0, HERALDRY_FAME_ARRAY.length - 1);
@@ -31,16 +31,16 @@ export default function BlackDesert(props: BlackDesertInterface) {
 
     }, []);
 
-    const [buyPrice, setBuyPrice] = useState(0);
-    const [sellPrice, setSellPrice] = useState(0);
+    const [buyPrice, setBuyPrice] = useState("");
+    const [sellPrice, setSellPrice] = useState("");
     const [diffBenefit, setDiffBenefit] = useState(0);
 
     function setStateBuyPrice(event: ChangeEvent<HTMLInputElement>) {
-        setBuyPrice(Number(event.target.value));
+        setBuyPrice(event.target.value);
     }
 
     function setStateSellPrice(event: ChangeEvent<HTMLInputElement>) {
-        setSellPrice(Number(event.target.value));
+        setSellPrice(event.target.value);
     }
 
     function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
@@ -53,7 +53,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
 
     function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {
 
-        setCurrentPrice(Number(event.target.value));
+        setCurrentPrice(event.target.value);
     }
 
     function breakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement>) {
@@ -65,8 +65,10 @@ export default function BlackDesert(props: BlackDesertInterface) {
     function diffBenefitFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
+
         const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
-        setDiffBenefit(sellPriceWithoutTax - buyPrice);
+        const _buyPrice = Number(buyPrice);
+        setDiffBenefit(sellPriceWithoutTax - _buyPrice);
     }
 
     useEffect(() => {
@@ -76,7 +78,8 @@ export default function BlackDesert(props: BlackDesertInterface) {
 
         //현재 이 코드가 submit할때 중복되고있음.
         const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
-        setDiffBenefit(sellPriceWithoutTax - buyPrice);
+        const _buyPrice = Number(buyPrice);
+        setDiffBenefit(sellPriceWithoutTax - _buyPrice);
 
     },[props.userInfo]);
 
