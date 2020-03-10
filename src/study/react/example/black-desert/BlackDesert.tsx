@@ -13,8 +13,15 @@ export default function BlackDesert(props: BlackDesertInterface) {
     const [breakEvenPoint, setBreakEvenPoint] = useState("");
     const heraldryFameArray = useMemo(() => {
 
-        return [{value: HERALDRY_FAME_ARRAY[0] - 1, label: `${HERALDRY_FAME_ARRAY[0]}점 미만`}]
-            .concat(HERALDRY_FAME_ARRAY.map(heraldryFame => ({value: heraldryFame, label: `${heraldryFame}점 이상`})));
+        const withoutLast = HERALDRY_FAME_ARRAY.slice(0, HERALDRY_FAME_ARRAY.length - 1);
+        const last = HERALDRY_FAME_ARRAY[HERALDRY_FAME_ARRAY.length - 1];
+
+        return withoutLast.map((heraldryFame, index) => {
+            return {
+                value: heraldryFame.amount,
+                label: `${heraldryFame.amount}점 이상 ${HERALDRY_FAME_ARRAY[index + 1].amount}점 미만`
+            }
+        }).concat({value: last.amount, label: `${last.amount}점 이상`});
 
     }, [HERALDRY_FAME_ARRAY]);
 
@@ -34,7 +41,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
     function setStateBreakEvenPoint(event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>, item: Item) {
 
         event.preventDefault();
-        setBreakEvenPoint(String(sellTrade(item, props.userInfo, currentPrice)));
+        setBreakEvenPoint(sellTrade(item, props.userInfo, currentPrice).toFixed(0));
     }
 
     return (
