@@ -56,30 +56,32 @@ export default function BlackDesert(props: BlackDesertInterface) {
         setCurrentPrice(event.target.value);
     }
 
+    function setStateBreakEvenPoint() {
+        setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice));
+    }
+
+    function setStateDiffBenefit() {
+        const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
+        const _buyPrice = Number(buyPrice);
+        setDiffBenefit(sellPriceWithoutTax - _buyPrice);
+    }
+
     function breakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
-        setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice));
+        setStateBreakEvenPoint();
     }
 
     function diffBenefitFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
-
-        const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
-        const _buyPrice = Number(buyPrice);
-        setDiffBenefit(sellPriceWithoutTax - _buyPrice);
+        setStateDiffBenefit();
     }
 
     useEffect(() => {
 
-        //현재 이 코드가 submit할때 중복되고있음.
-        setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice));
-
-        //현재 이 코드가 submit할때 중복되고있음.
-        const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
-        const _buyPrice = Number(buyPrice);
-        setDiffBenefit(sellPriceWithoutTax - _buyPrice);
+        setStateBreakEvenPoint();
+        setStateDiffBenefit();
 
     },[props.userInfo]);
 
