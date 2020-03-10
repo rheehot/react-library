@@ -47,6 +47,11 @@ export default function BlackDesert(props: BlackDesertInterface) {
     }
 
     function setStateHeraldryFame(checkValue: number) {
+
+        console.log(checkValue);
+        console.log(typeof checkValue);
+        debugger;
+
         props.changeUserInfo(Object.assign({}, props.userInfo, {heraldryFame: checkValue}));
     }
 
