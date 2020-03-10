@@ -46,13 +46,8 @@ export default function BlackDesert(props: BlackDesertInterface) {
         props.changeUserInfo(Object.assign({}, props.userInfo, {haveValuePackage: event.target.checked}));
     }
 
-    function setStateHeraldryFame(checkValue: number) {
-
-        console.log(checkValue);
-        console.log(typeof checkValue);
-        debugger;
-
-        props.changeUserInfo(Object.assign({}, props.userInfo, {heraldryFame: checkValue}));
+    function setStateHeraldryFame(checkValue: string) {
+        props.changeUserInfo(Object.assign({}, props.userInfo, {heraldryFame: true}));
     }
 
     function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {
