@@ -87,7 +87,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
             <h1>검은사막 거래소 수익 계산기</h1>
 
             <h3>사용자 정보 설정</h3>
-            <form>
+            <form className="mt-20">
                 <fieldset>가문명성 선택</fieldset>
                 <RadioGroup selectValue={getHeraldryFameStepAmount(props.userInfo.heraldryFame)} valueAndLabelArray={heraldryFameArray} radioGroupName="HeraldryFame" selectHandler={setStateHeraldryFame}/>
 
