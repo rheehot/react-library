@@ -8,8 +8,9 @@ import MultiSetStateParent from "../../study/react/render/multi-set-state/MultiS
 import StatePropReferenceParent from "../../study/react/render/state-prop-reference/StatePropReferenceParent";
 import ReactMemoParent from "../../study/react/render/react-memo/ReactMemoParent";
 import HooksSecondParam from "../../study/react/render/hooks-second-param/HooksSecondParam";
+import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 
-const path = "/react/render";
+const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/render`;
 
 export const renderRoutes = [
     {

@@ -2,10 +2,13 @@ import UserList from "../../study/react/form/user/UserList";
 import UserForm from "../../study/react/form/user/UserForm";
 import UsefulFormBug from "../../study/react/form/UsefulFormBug";
 import {PageType} from "../../study/typescript/common/PageType";
+import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
+
+const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/form`;
 
 export const formRoutes = [
     {
-        path: "/react/form/user/list",
+        path: `${path}/user/list`,
         component: UserList,
         meta: {
             name: "회원목록",
@@ -13,7 +16,7 @@ export const formRoutes = [
         exact: true
     },
     {
-        path: "/react/form/user/modify/:id",
+        path: `${path}/user/modify/:id`,
         component: UserForm,
         meta: {
             name: "회원수정",
@@ -22,7 +25,7 @@ export const formRoutes = [
         exact: true
     },
     {
-        path: "/react/form/user/create",
+        path: `${path}/user/create`,
         component: UserForm,
         meta: {
             name: "회원추가",
@@ -31,7 +34,7 @@ export const formRoutes = [
         exact: true
     },
     {
-        path: "/react/form/basic",
+        path: `${path}/basic`,
         component: UsefulFormBug,
         exact: true
     },

@@ -1,6 +1,7 @@
 import MapStateApp from "../../study/react/redux/map-state/MapStateApp";
+import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 
-const path = "/react/redux";
+const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/redux`;
 
 export const reduxRoutes = [
     {

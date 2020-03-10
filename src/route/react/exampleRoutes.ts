@@ -1,9 +1,9 @@
 import Counter from "../../study/react/example/counter/Counter";
 import RenderProp from "../../study/react/example/render-prop/RenderProp";
 import TicTacToeHome from "../../study/react/example/tic-tac-toe/TicTacToeHome";
-import BlackDesertContainer from "../../study/react/example/black-desert/BlackDesertContainer";
+import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 
-const path = `/react/example`;
+const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/example`;
 
 export const exampleRoutes = [
     {
@@ -21,12 +21,4 @@ export const exampleRoutes = [
         component: RenderProp,
         exact: true
     },
-    {
-        path: `${path}/black-desert`,
-        component: BlackDesertContainer,
-        exact: true,
-        meta: {
-            name: "검은사막 계산기"
-        }
-    }
 ];

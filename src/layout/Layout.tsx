@@ -7,6 +7,7 @@ import {reactHeader} from "./header/ReactHeader";
 import {cssHeader} from "./header/CssHeader";
 import HeaderInfo from "./header/HeaderInfo";
 import {getPathDirectoryName} from "../study/typescript/common/UrlUtil";
+import {blackDesertHeader} from "./header/BlackDesertHeader";
 
 export default function Layout() {
 
@@ -28,6 +29,9 @@ export default function Layout() {
         switch (firstPath) {
             case "css":
                 return cssHeader;
+
+            case "black-desert":
+                return blackDesertHeader;
 
             default:
                 return reactHeader;
