@@ -33,7 +33,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
 
     const [buyPrice, setBuyPrice] = useState(0);
     const [sellPrice, setSellPrice] = useState(0);
-    const [diffBenefit, setDiffBenefit] = useState();
+    const [diffBenefit, setDiffBenefit] = useState(0);
 
     function setStateBuyPrice(event: ChangeEvent<HTMLInputElement>) {
         setBuyPrice(Number(event.target.value));
@@ -59,27 +59,24 @@ export default function BlackDesert(props: BlackDesertInterface) {
     function breakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
-        setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice).toFixed(0));
+        setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice));
     }
 
     function diffBenefitFormSubmit(event: MouseEvent<HTMLButtonElement>) {
 
         event.preventDefault();
         const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
-        const diffBenefit = sellPriceWithoutTax - buyPrice;
-        setDiffBenefit(diffBenefit ? diffBenefit.toFixed(0) : "");
+        setDiffBenefit(sellPriceWithoutTax - buyPrice);
     }
 
     useEffect(() => {
 
         //현재 이 코드가 submit할때 중복되고있음.
-        const breakEventPoint = Number(getBreakEvenPrice(props.userInfo, currentPrice)?.toFixed(0));
-        setBreakEvenPoint((Number.isNaN(breakEventPoint)) ? "" : breakEventPoint);
+        setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice));
 
         //현재 이 코드가 submit할때 중복되고있음.
         const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
-        const diffBenefit = sellPriceWithoutTax - buyPrice;
-        setDiffBenefit(diffBenefit ? diffBenefit.toFixed(0) : "");
+        setDiffBenefit(sellPriceWithoutTax - buyPrice);
 
     },[props.userInfo]);
 
@@ -100,7 +97,7 @@ export default function BlackDesert(props: BlackDesertInterface) {
             <div className="flex-wrap">
                 <form className="mt-20 mr-20 flex-direction-column">
                     <fieldset>손익분기점 계산</fieldset>
-                    <InputItem labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
+                    <InputItem type="number" labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
                     <div className="form-footer">
                         <span>결과 : <span className="result">{breakEvenPoint}</span></span>
                         <MyButton onClickHandler={breakEvenPointFormSubmit}>조회</MyButton>
@@ -108,8 +105,8 @@ export default function BlackDesert(props: BlackDesertInterface) {
                 </form>
                 <form className="mt-20">
                     <fieldset>차익 계산</fieldset>
-                    <InputItem labelText="구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
-                    <InputItem labelText="판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
+                    <InputItem type="number" labelText="구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
+                    <InputItem type="number" labelText="판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
                     <div className="form-footer">
                         <span>결과 : <span className="result">{diffBenefit}</span></span>
                         <MyButton onClickHandler={diffBenefitFormSubmit}>조회</MyButton>

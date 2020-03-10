@@ -35,7 +35,7 @@ function trade(userInfo: BlackDesertUserInfo, price: number | string, callback: 
     const _price = Number(price);
     const settlementTax = getSettlementTax(userInfo);
 
-    return callback(settlementTax, _price);
+    return Number(callback(settlementTax, _price).toFixed(0));
 }
 
 function getSettlementTax(userInfo: BlackDesertUserInfo): number {
