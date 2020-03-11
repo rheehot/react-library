@@ -2,8 +2,8 @@ import * as React from "react"
 import {connect} from "react-redux";
 import BlackDesert from "./BlackDesert";
 import BlackDesertUserInfo from "./BlackDesertUserInfo";
-import {BlackDesertAction} from "../../../../store/modules/blackDesert.";
-import {RootState} from "../../../../store/store";
+import {BlackDesertAction} from "../../../store/modules/blackDesert.";
+import {RootState} from "../../../store/store";
 
 export interface BlackDesertInterface {
     userInfo: BlackDesertUserInfo;

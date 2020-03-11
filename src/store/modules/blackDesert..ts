@@ -1,4 +1,4 @@
-import BlackDesertUserInfo from "../../study/react/example/black-desert/BlackDesertUserInfo";
+import BlackDesertUserInfo from "../../study/black-desert/trade/BlackDesertUserInfo";
 
 export enum BlackDesertAction {
     CHANGE_USER_INFO = "black-desert/CHANGE_USER_INFO",

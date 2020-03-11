@@ -1,4 +1,4 @@
-import "../../../css/cssPropertiesClass.scss";
+import "../../css/cssPropertiesClass.scss";
 import * as React from "react"
 import {ChangeEvent, MouseEvent, useEffect, useMemo, useState} from "react"
 import {InputItem} from "../../common/form/InputItem";

@@ -1,5 +1,5 @@
 import {BLACK_DESERT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
-import BlackDesert from "../../study/react/example/black-desert/BlackDesertContainer";
+import BlackDesert from "../../study/black-desert/trade/BlackDesertContainer";
 
 const path = `${BLACK_DESERT_FIRST_PATH_DIRECTORY_NAME}/trade`;
 
