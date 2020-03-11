@@ -1,7 +1,7 @@
 import * as React from "react"
 import {connect} from "react-redux";
-import NotPearlMarket from "./NotPearlMarket";
-import UserInfo from "./UserInfo";
+import TradeMarket from "./TradeMarket";
+import UserInfo from "../common/UserInfo";
 import {BlackDesertAction} from "../../../store/modules/blackDesert.";
 import {RootState} from "../../../store/store";
 
@@ -10,9 +10,9 @@ export interface BlackDesertInterface {
     changeUserInfo: (userInfo: UserInfo) => void
 }
 
-function NotPearlMarketContainer(props: BlackDesertInterface) {
+function TradeMarketContainer(props: BlackDesertInterface) {
 
-    return <NotPearlMarket userInfo={props.userInfo} changeUserInfo={props.changeUserInfo}/>
+    return <TradeMarket userInfo={props.userInfo} changeUserInfo={props.changeUserInfo}/>
 }
 
 function mapState(rootState: RootState) {
@@ -29,4 +29,4 @@ function mapDispatch(dispatch: Function) {
     }
 }
 
-export default connect(mapState, mapDispatch)(NotPearlMarketContainer)
+export default connect(mapState, mapDispatch)(TradeMarketContainer)

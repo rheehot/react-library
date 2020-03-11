@@ -1,4 +1,4 @@
-import UserInfo from "../../study/black-desert/trade-market/UserInfo";
+import UserInfo from "../../study/black-desert/common/UserInfo";
 
 export enum BlackDesertAction {
     CHANGE_USER_INFO = "black-desert/CHANGE_USER_INFO",

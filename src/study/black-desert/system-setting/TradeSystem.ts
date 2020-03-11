@@ -1,5 +1,5 @@
-import UserInfo from "./UserInfo";
-import HeraldryFame from "./HeraldryFame";
+import UserInfo from "../common/UserInfo";
+import HeraldryFame from "../trade-market/HeraldryFame";
 
 export const HERALDRY_FAME_ARRAY = Object.freeze([
     new HeraldryFame(0, 0),
