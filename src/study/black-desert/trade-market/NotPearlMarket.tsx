@@ -1,19 +1,19 @@
 import "../../css/cssPropertiesClass.scss";
 import * as React from "react"
 import {ChangeEvent, MouseEvent, useEffect, useMemo, useState} from "react"
-import {InputItem} from "../../common/form/InputItem";
-import MyButton from "../../common/form/MyButton";
-import RadioGroup from "../../common/form/RadioGroup";
-import "./BlackDesert.scss";
+import "./TradeMarket.scss";
 import {
     getBreakEvenPrice,
     getHeraldryFameStepAmount, getSettlementPrice,
     HERALDRY_FAME_ARRAY,
-} from "./BlackDesertSystem";
-import {BlackDesertInterface} from "./BlackDesertContainer";
-import BlackDesertUserInfo from "./BlackDesertUserInfo";
+} from "./TradeSystem";
+import {BlackDesertInterface} from "./NotPearlMarketContainer";
+import UserInfo from "./UserInfo";
+import {InputItem} from "../../react/common/form/InputItem";
+import MyButton from "../../react/common/form/MyButton";
+import RadioGroup from "../../react/common/form/RadioGroup";
 
-export default function BlackDesert(props: BlackDesertInterface) {
+export default function NotPearlMarket(props: BlackDesertInterface) {
 
     const [currentPrice, setCurrentPrice] = useState("");
     const [breakEvenPoint, setBreakEvenPoint] = useState(0);
@@ -44,11 +44,11 @@ export default function BlackDesert(props: BlackDesertInterface) {
     }
 
     function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
-        props.changeUserInfo(Object.assign<{}, BlackDesertUserInfo, {haveValuePackage: boolean}>({}, props.userInfo, {haveValuePackage: event.target.checked}));
+        props.changeUserInfo(Object.assign<{}, UserInfo, {haveValuePackage: boolean}>({}, props.userInfo, {haveValuePackage: event.target.checked}));
     }
 
     function setStateHeraldryFame(checkValue: string) {
-        props.changeUserInfo(Object.assign<{}, BlackDesertUserInfo, {heraldryFame: number}>({}, props.userInfo, {heraldryFame: Number(checkValue)}));
+        props.changeUserInfo(Object.assign<{}, UserInfo, {heraldryFame: number}>({}, props.userInfo, {heraldryFame: Number(checkValue)}));
     }
 
     function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {

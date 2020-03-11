@@ -1,4 +1,4 @@
-export default class BlackDesertUserInfo {
+export default class UserInfo {
     heraldryFame: number;
     haveValuePackage: boolean;
 

@@ -1,4 +1,4 @@
-import BlackDesertUserInfo from "./BlackDesertUserInfo";
+import UserInfo from "./UserInfo";
 import HeraldryFame from "./HeraldryFame";
 
 export const HERALDRY_FAME_ARRAY = Object.freeze([
@@ -22,15 +22,15 @@ const VALUE_PACKAGE_PAY_BACK = 0.3;
 //가문명성 등급에 따라, 정산금액의 0.5%p, 1.0%p, 1.5%p를 추가로 돌려받을 수 있음.
 const HERALDRY_FAME_PERCENT_POINTS = [0, 0.005, 0.01, 0.015];
 
-export function getBreakEvenPrice(userInfo: BlackDesertUserInfo, price: number | string): number {
+export function getBreakEvenPrice(userInfo: UserInfo, price: number | string): number {
     return trade(userInfo, price, _getBreakEvenPrice);
 }
 
-export function getSettlementPrice(userInfo: BlackDesertUserInfo, price: number | string): number {
+export function getSettlementPrice(userInfo: UserInfo, price: number | string): number {
     return trade(userInfo, price, _getSettlementPrice);
 }
 
-function trade(userInfo: BlackDesertUserInfo, price: number | string, callback: Function): number {
+function trade(userInfo: UserInfo, price: number | string, callback: Function): number {
 
     const _price = Number(price);
     const settlementTax = getSettlementTax(userInfo);
@@ -38,7 +38,7 @@ function trade(userInfo: BlackDesertUserInfo, price: number | string, callback: 
     return Number(callback(settlementTax, _price).toFixed(0));
 }
 
-function getSettlementTax(userInfo: BlackDesertUserInfo): number {
+function getSettlementTax(userInfo: UserInfo): number {
 
     const _userInfoHeraldryFame = Number(userInfo.heraldryFame);
 
