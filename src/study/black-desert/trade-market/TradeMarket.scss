@@ -12,9 +12,18 @@
         border: 1px solid blueviolet;
         padding: 20px;
 
-        > fieldset {
-            font-weight: bold;
-            margin-bottom: 10px;
+        > .form-header {
+            margin-bottom: 20px;
+            @include flex-between-center;
+
+            > .more-view {
+                font-size: 12px;
+                color: gray;
+            }
+
+            > fieldset {
+                font-weight: bold;
+            }
         }
 
         > .RadioGroup-wrap {

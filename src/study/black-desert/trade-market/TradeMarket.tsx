@@ -12,6 +12,7 @@ import UserInfo from "../common/UserInfo";
 import {InputItem} from "../../react/common/form/InputItem";
 import MyButton from "../../react/common/form/MyButton";
 import RadioGroup from "../../react/common/form/RadioGroup";
+import {Link} from "react-router-dom";
 
 export default function TradeMarket(props: BlackDesertInterface) {
 
@@ -78,6 +79,14 @@ export default function TradeMarket(props: BlackDesertInterface) {
         setStateDiffBenefit();
     }
 
+    function breakEvenPointInfo() {
+        if(breakEvenPoint)
+            alert(`${currentPrice}은화에 구매를 하면, 나중에 수수료를 따져봤을 때 ${breakEvenPoint}은화 이상 올라갈 때 되팔아야 수익이 생깁니다.`);
+
+        else
+            alert("현재 가격을 입력하시고 조회를 누르신 다음, Info버튼을 클릭해주세요.");
+    }
+
     useEffect(() => {
 
         setStateBreakEvenPoint();
@@ -101,7 +110,10 @@ export default function TradeMarket(props: BlackDesertInterface) {
             <h3>이익계산 (기준 : 아이템 1개 가격)</h3>
             <div className="flex-wrap">
                 <form className="mt-20 mr-20 flex-direction-column">
-                    <fieldset>손익분기점 계산</fieldset>
+                    <div className="form-header">
+                        <fieldset>손익분기점 계산</fieldset>
+                        <MyButton type="button" onClickHandler={breakEvenPointInfo}>Info</MyButton>
+                    </div>
                     <InputItem type="number" labelText="현재 가격" onChangeHandler={setStateCurrentPrice} inputValue={currentPrice}/>
                     <div className="form-footer">
                         <span>결과 : <span className="result">{breakEvenPoint}</span></span>
@@ -109,7 +121,10 @@ export default function TradeMarket(props: BlackDesertInterface) {
                     </div>
                 </form>
                 <form className="mt-20">
-                    <fieldset>차익 계산</fieldset>
+                    <div className="form-header">
+                        <fieldset>차익 계산</fieldset>
+                        <Link className="more-view" to="/black-desert/trade-market/diff-benefit-detail">더보기</Link>
+                    </div>
                     <InputItem type="number" labelText="구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
                     <InputItem type="number" labelText="판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
                     <div className="form-footer">
