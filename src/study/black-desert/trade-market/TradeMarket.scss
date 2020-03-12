@@ -1,42 +1,8 @@
 @import "src/study/css/cssPropertiesClass";
 
-.BlackDesert-wrap {
+.TradeMarket-wrap {
 
-    > h3 {
+    h3 {
         margin-top: 20px;
-    }
-
-    form {
-        max-width: 412px;
-        border-radius: 5px;
-        border: 1px solid blueviolet;
-        padding: 20px;
-
-        > .form-header {
-            margin-bottom: 20px;
-            @include flex-between-center;
-
-            > .more-view {
-                font-size: 12px;
-                color: gray;
-            }
-
-            > fieldset {
-                font-weight: bold;
-            }
-        }
-
-        > .RadioGroup-wrap {
-            margin-bottom: 10px;
-        }
-
-        > .form-footer {
-            margin-top: auto;
-            @include flex-between-center;
-
-            > .my-button {
-                float: right;
-            }
-        }
     }
 }
