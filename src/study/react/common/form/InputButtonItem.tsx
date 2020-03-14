@@ -7,7 +7,7 @@ import {ChangeEvent, MouseEvent} from "react";
 interface AppProp {
     labelText: string,
     buttonText: string,
-    inputValue: string,
+    inputValue: string | number,
     onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void,
     onClickHandler: (event: MouseEvent<HTMLButtonElement>) => void
 }

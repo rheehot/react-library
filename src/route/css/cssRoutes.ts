@@ -4,10 +4,11 @@ import {naverDiffRoutes} from "./naverDiffRoutes";
 import CssMain from "../../study/css/CssMain";
 import {CSS_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 import {propertiesRoutes} from "./propertiesRoutes";
+import {insteadFlexRoutes} from "./insteadFlexRoutes";
 
 export const routes = [
     {
         path: `${CSS_FIRST_PATH_DIRECTORY_NAME}/main`,
         component: CssMain
     }
-].concat(transitionRoutes, squareRoutes, naverDiffRoutes, propertiesRoutes);
+].concat(transitionRoutes, squareRoutes, naverDiffRoutes, propertiesRoutes, insteadFlexRoutes);
