@@ -1,6 +1,7 @@
 import * as React from "react";
 import "../../util.scss";
 import "./Enlargement.scss"
+import {SH_IMG_1} from "../../imageSrcs";
 
 export default function Enlargement() {
 
@@ -10,12 +11,11 @@ export default function Enlargement() {
             <div className="grid-container">
                 <div className="hover-container hover-scale-container">
                     <div className="background-image-default hover-scale-item"
-                         style={{backgroundImage: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrYLqm52KIn6zAH25GbsJDnYEkuEgkIYwLxPz0uEpot0UgxGIr)"}}/>
+                         style={{backgroundImage: `url(${SH_IMG_1})`}}/>
                 </div>
 
                 <div className="hover-container hover-scale-container">
-                    <img className="hover-scale-item"
-                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrYLqm52KIn6zAH25GbsJDnYEkuEgkIYwLxPz0uEpot0UgxGIr" alt=""/>
+                    <img className="hover-scale-item" src={SH_IMG_1} alt=""/>
                 </div>
             </div>
         </div>

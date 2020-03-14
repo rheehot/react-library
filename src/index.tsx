@@ -6,6 +6,9 @@ import Layout from "./layout/Layout";
 import {Provider} from "react-redux";
 import {store} from "./store/store";
 
+import "./layout/reset.css";
+import "./study/css/cssPropertiesClass.scss";
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>

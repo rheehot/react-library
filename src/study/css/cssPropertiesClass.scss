@@ -1,3 +1,5 @@
+@import "cssPropertiesMixin";
+
 .display-block {
     display: block;
 }
@@ -20,18 +22,24 @@
     flex-wrap: wrap;
 }
 
-@mixin flex-between-center {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .flex-between-center {
     @include flex-between-center;
 }
 
 .display-none {
     display: none;
+}
+
+.list-style {
+    list-style: inside;
+}
+
+.vertical-align-top > * {
+    vertical-align: top;
+}
+
+.pre-line {
+    white-space: pre-line;
 }
 
 .mr-20 {
@@ -44,6 +52,10 @@
 
 .mb-20 {
     margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
 }
 
 .ml-20 {

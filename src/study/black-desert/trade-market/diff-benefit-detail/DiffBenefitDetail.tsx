@@ -2,7 +2,6 @@ import * as React from "react"
 import {InputItem} from "../../../react/common/form/InputItem";
 import MyButton from "../../../react/common/form/MyButton";
 import {DiffBenefitProp} from "../form-components/diff-benefit/DiffBenefitContainer";
-import "../../../css/cssPropertiesClass.scss";
 import UserTradeSettingContainer from "../form-components/user-trade-setting/UserTradeSettingContainer";
 
 export default function DiffBenefitDetail(props: DiffBenefitProp) {

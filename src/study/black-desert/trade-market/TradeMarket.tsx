@@ -1,4 +1,3 @@
-import "../../css/cssPropertiesClass.scss";
 import * as React from "react"
 import "./TradeMarket.scss";
 import UserTradeSettingContainer from "./form-components/user-trade-setting/UserTradeSettingContainer";
