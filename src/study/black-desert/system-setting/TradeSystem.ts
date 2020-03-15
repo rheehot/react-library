@@ -67,12 +67,13 @@ function getSettlementTax(userInfo: UserInfo): number {
 
 export function getDiffBenefitDetailInfo(userInfo: UserInfo, params: DiffBenefitDetailParams): DiffBenefitDetailInfo {
 
-    const buyPrice = Number(params.buyPrice);
-    const investPrice = Number(params.investPrice);
-    const maxTradeQuantity = Number(params.maxTradeQuantity);
+    const {sellPrice, buyPrice, investPrice, maxTradeQuantity} = params;
+
+    if(sellPrice <= 0 || buyPrice <= 0)
+        return undefined;
 
     const _realInvestPrice = (investPrice > 0) ? investPrice : BILLION;
-    const benefit = getSettlementPrice(userInfo, params.sellPrice) - buyPrice;
+    const benefit = getSettlementPrice(userInfo, sellPrice) - buyPrice;
     const totalBenefit = _realInvestPrice * benefit / buyPrice;
     const totalBuyQuantityForTotalBenefit = totalBenefit / benefit;
     const minTradeCount = maxTradeQuantity > 0 ? totalBuyQuantityForTotalBenefit / maxTradeQuantity : 0;
