@@ -30,7 +30,7 @@ const HERALDRY_FAME_PERCENT_POINTS = [0, 0.005, 0.01, 0.015];
  * @return 소수부븐을 버리고 3자리마다 ,로 구분한 문자열을 반환
  */
 export function getNumberWithCommaAndNaturalNumber(num: number): string {
-    return Number(num.toFixed(0)).toLocaleString();
+    return Math.floor(num).toLocaleString();
 }
 
 export function getBreakEvenPrice(userInfo: UserInfo, price: number | string): number {
@@ -75,7 +75,7 @@ export function getDiffBenefitDetailInfo(userInfo: UserInfo, params: DiffBenefit
     const benefit = getSettlementPrice(userInfo, params.sellPrice) - buyPrice;
     const totalBenefit = _realInvestPrice * benefit / buyPrice;
     const totalBuyQuantityForTotalBenefit = totalBenefit / benefit;
-    const minTradeCount = totalBuyQuantityForTotalBenefit / maxTradeQuantity;
+    const minTradeCount = maxTradeQuantity > 0 ? totalBuyQuantityForTotalBenefit / maxTradeQuantity : 0;
 
     return new DiffBenefitDetailInfo(_realInvestPrice, totalBenefit, maxTradeQuantity, minTradeCount);
 }
