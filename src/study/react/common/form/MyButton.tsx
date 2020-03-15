@@ -7,12 +7,13 @@ interface AppProp {
     className: string,
     children: ReactNode,
     type?: "button" | "submit" | "reset";
+    disable: boolean
 }
 
 export default function MyButton(props: AppProp) {
 
     return (
-        <button type={props.type} className={`my-button ${props.className}`} onClick={props.onClickHandler}>
+        <button type={props.type} className={`my-button ${props.className} ${ props.disable ? "button-disable" : ""}`} onClick={props.onClickHandler}>
             {(props.children) ? props.children : '버튼'}
         </button>
     )
@@ -20,5 +21,6 @@ export default function MyButton(props: AppProp) {
 
 MyButton.defaultProps = {
     className: "",
-    children: "버튼"
+    children: "버튼",
+    disable: false
 };

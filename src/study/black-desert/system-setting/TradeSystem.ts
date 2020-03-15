@@ -1,5 +1,8 @@
 import UserInfo from "../common/UserInfo";
 import HeraldryFame from "../trade-market/HeraldryFame";
+import DiffBenefitDetailParams from "./DiffBenefitDetailParams";
+import DiffBenefitDetailInfo from "./DiffBenefitDetailInfo";
+import {BILLION} from "../../typescript/common/NumberUnit";
 
 export const HERALDRY_FAME_ARRAY = Object.freeze([
     new HeraldryFame(0, 0),
@@ -21,6 +24,14 @@ const VALUE_PACKAGE_PAY_BACK = 0.3;
 
 //가문명성 등급에 따라, 정산금액의 0.5%p, 1.0%p, 1.5%p를 추가로 돌려받을 수 있음.
 const HERALDRY_FAME_PERCENT_POINTS = [0, 0.005, 0.01, 0.015];
+
+/**
+ * @param num
+ * @return 소수부븐을 버리고 3자리마다 ,로 구분한 문자열을 반환
+ */
+export function getNumberWithCommaAndNaturalNumber(num: number): string {
+    return Number(num.toFixed(0)).toLocaleString();
+}
 
 export function getBreakEvenPrice(userInfo: UserInfo, price: number | string): number {
     return trade(userInfo, price, _getBreakEvenPrice);
@@ -52,6 +63,21 @@ function getSettlementTax(userInfo: UserInfo): number {
     settlementTax += heraldryFameStep !== -1 ? HERALDRY_FAME_PERCENT_POINTS[heraldryFameStep] : 0;
 
     return settlementTax;
+}
+
+export function getDiffBenefitDetailInfo(userInfo: UserInfo, params: DiffBenefitDetailParams): DiffBenefitDetailInfo {
+
+    const buyPrice = Number(params.buyPrice);
+    const investPrice = Number(params.investPrice);
+    const maxTradeQuantity = Number(params.maxTradeQuantity);
+
+    const _realInvestPrice = (investPrice > 0) ? investPrice : BILLION;
+    const benefit = getSettlementPrice(userInfo, params.sellPrice) - buyPrice;
+    const totalBenefit = _realInvestPrice * benefit / buyPrice;
+    const totalBuyQuantityForTotalBenefit = totalBenefit / benefit;
+    const minTradeCount = totalBuyQuantityForTotalBenefit / maxTradeQuantity;
+
+    return new DiffBenefitDetailInfo(_realInvestPrice, totalBenefit, maxTradeQuantity, minTradeCount);
 }
 
 /**

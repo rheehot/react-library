@@ -1,10 +1,50 @@
 import * as React from "react"
+import {ChangeEvent, MouseEvent, useState} from "react"
 import {InputItem} from "../../../react/common/form/InputItem";
 import MyButton from "../../../react/common/form/MyButton";
 import {DiffBenefitProp} from "../form-components/diff-benefit/DiffBenefitContainer";
 import UserTradeSettingContainer from "../form-components/user-trade-setting/UserTradeSettingContainer";
+import {getDiffBenefitDetailInfo} from "../../system-setting/TradeSystem";
+import DiffBenefitDetailParams from "../../system-setting/DiffBenefitDetailParams";
 
 export default function DiffBenefitDetail(props: DiffBenefitProp) {
+
+    const [buyPrice, setBuyPrice] = useState("");
+    const [sellPrice, setSellPrice] = useState("");
+    const [investPrice, setInvestPrice] = useState("");
+    const [maxTradeQuantity, setMaxTradeQuantity] = useState("");
+
+    const [commaInvestPrice, setCommaInvestPrice] = useState("");
+    const [totalBenefit, setTotalBenefit] = useState("");
+    const [minTradeCount, setMinTradeCount] = useState("");
+
+    function setStateBuyPrice(event: ChangeEvent<HTMLInputElement>) {
+        setBuyPrice(event.target.value);
+    }
+    function setStateSellPrice(event: ChangeEvent<HTMLInputElement>) {
+        setSellPrice(event.target.value);
+    }
+    function setStateInvestPrice(event: ChangeEvent<HTMLInputElement>) {
+        setInvestPrice(event.target.value);
+    }
+    function setStateMaxTradeQuantity(event: ChangeEvent<HTMLInputElement>) {
+        setMaxTradeQuantity(event.target.value);
+    }
+
+    function diffBenefitDetailFormSubmit(event: MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+
+        const params = new DiffBenefitDetailParams(buyPrice, sellPrice, investPrice, maxTradeQuantity);
+        const info = getDiffBenefitDetailInfo(props.userInfo, params);
+
+        setCommaInvestPrice(info.commaInvestPrice);
+        setTotalBenefit(info.commaTotalBenefit);
+        setMaxTradeQuantity(info.commaMaxTradeQuantity);
+
+        if(info.maxTradeQuantity > 0) {
+            setMinTradeCount(info.commaMinTradeCount);
+        }
+    }
 
     return (
         <div className="DiffBenefitDetail-wrap">
@@ -12,26 +52,22 @@ export default function DiffBenefitDetail(props: DiffBenefitProp) {
             <h1 className="mb-20">검은사막 차익계산 상세 분석</h1>
 
             <div className="vertical-align-top">
-                <UserTradeSettingContainer className="mr-20 mb-20 display-inline-block"/>
-
+                <UserTradeSettingContainer className="display-inline-block mr-20 mb-20"/>
                 <form className="trade-market-form display-inline-block">
                     <fieldset className="form-header">거래정보 입력</fieldset>
-                    <InputItem labelText="투자 금액" onChangeHandler={() => {}} inputValue={123}/>
-                    <InputItem labelText="최대 수량" onChangeHandler={() => {}} inputValue={123}/>
-                    <InputItem labelText="개당 무게" onChangeHandler={() => {}} inputValue={123}/>
-                    <InputItem labelText="구매 금액" onChangeHandler={() => {}} inputValue={123}/>
-                    <InputItem labelText="판매 금액" onChangeHandler={() => {}} inputValue={123}/>
-                    <MyButton onClickHandler={()=>{}}>조회</MyButton>
+                    <InputItem labelText="총 투자 금액" onChangeHandler={setStateInvestPrice} inputValue={investPrice}/>
+                    <InputItem labelText="거래 최대 수량" onChangeHandler={setStateMaxTradeQuantity} inputValue={maxTradeQuantity}/>
+                    <InputItem labelText="*개당 구매 금액" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
+                    <InputItem labelText="*개당 판매 금액" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
+                    <MyButton className="float-right" onClickHandler={diffBenefitDetailFormSubmit} disable={!(buyPrice && sellPrice)}>조회</MyButton>
                 </form>
             </div>
 
             <h3 className="mt-20 mb-20">분석 결과</h3>
 
             <ul className="mb-30">
-                <li>구매 금액, 판매 금액은 반드시 입력해야함.</li>
-                <li>1. n억을 투자했을 때 얼마의 수익가능. (투자금액 안적으면 1억으로 하기)</li>
-                <li>2. if(최대수량 입력했을 때) 총 n번의 거래소를 들락날락 해야함. 한번에 최대 n개씩 물건을 산다고 했을 때, 총 m개의 물건을 사야함.</li>
-                <li>3. if(기대 무게 입력했을 때) 총 x VT의 거래소창고 무게를 차지함.</li>
+                <li>{`${commaInvestPrice}은화를 투자했을 때 얻을 수 있는 이익은 ${totalBenefit}은화 입니다.`}</li>
+                <li>{`위의 수익을 내기 위해서는, ${maxTradeQuantity}개씩 총 ${minTradeCount}회를 구매해야 합니다.`}</li>
             </ul>
         </div>
     )

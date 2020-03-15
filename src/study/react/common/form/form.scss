@@ -47,3 +47,9 @@
         flex-grow: 1;
     }
 }
+
+.button-disable {
+    color: white;
+    background: lightgray;
+    pointer-events: none;
+}

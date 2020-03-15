@@ -48,8 +48,8 @@ export default function DiffBenefit(props: DiffBenefitProp) {
                 <fieldset>차익 계산</fieldset>
                 <Link className="more-view" to="/black-desert/trade-market/diff-benefit-detail">더보기</Link>
             </div>
-            <InputItem type="number" labelText="구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
-            <InputItem type="number" labelText="판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
+            <InputItem type="number" labelText="개당 구매 가격" onChangeHandler={setStateBuyPrice} inputValue={buyPrice}/>
+            <InputItem type="number" labelText="개당 판매 가격" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
             <div className="form-footer">
                 <span>결과 : <span className="result">{diffBenefit}</span></span>
                 <MyButton onClickHandler={diffBenefitFormSubmit}>조회</MyButton>
