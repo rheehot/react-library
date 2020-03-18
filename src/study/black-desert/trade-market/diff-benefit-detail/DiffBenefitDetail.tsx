@@ -34,6 +34,7 @@ export default function DiffBenefitDetail(props: DiffBenefitProp) {
 
         const params = new DiffBenefitDetailParams(buyPrice, sellPrice, investPrice, maxTradeQuantity);
         const info = getDiffBenefitDetailInfo(props.userInfo, params);
+        console.log(info);
         setInfo(info);
     }
 

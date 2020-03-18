@@ -1,5 +1,6 @@
 import * as React from "react"
 import DiffBenefitDetailInfo from "../../system-setting/DiffBenefitDetailInfo";
+import usePrevious from "../../../react/common/custom/usePrevious";
 
 interface AppProp {
     result: DiffBenefitDetailInfo
@@ -7,10 +8,15 @@ interface AppProp {
 
 export default function DiffBenefitDetailResult({result}: AppProp) {
 
+    const prevResult = usePrevious(result);
+
     const minTradeCountLi = result?.minTradeCount > 0 ?
         <li>{`위의 수익을 내기 위해서는 ${result.commaMaxTradeQuantity}개씩 약 ${result.commaMinTradeCount}회를 구매해야 합니다.`}</li> : null;
 
-    if(result) {
+    if( result?.commaMaxTradeQuantity !== prevResult?.commaMaxTradeQuantity ||
+        result?.commaMinTradeCount !== prevResult?.commaMinTradeCount ||
+        result?.commaInvestPrice !== prevResult?.commaInvestPrice ||
+        result?.commaTotalBenefit !== prevResult?.commaTotalBenefit ) {
 
         console.log("render");
 
@@ -26,6 +32,6 @@ export default function DiffBenefitDetailResult({result}: AppProp) {
         );
 
     } else {
-        return null;
+        return undefined;
     }
 }
