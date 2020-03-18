@@ -1,5 +1,5 @@
 import * as React from "react"
-import usePrevProps from "../../common/custom/usePrevProps";
+import usePrevious from "../../common/custom/usePrevious";
 
 interface AppProp {
     referenceProp: Array<number>
@@ -7,7 +7,7 @@ interface AppProp {
 
 export default function UsePrevPropChild(props: AppProp) {
 
-    const prevReferenceProp = usePrevProps(props.referenceProp);
+    const prevReferenceProp = usePrevious(props.referenceProp);
 
     return (
         <div className="UsePrevPropChild-wrap">
