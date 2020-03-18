@@ -1,6 +1,6 @@
 import * as React from "react"
 import {useState} from "react";
-import MyButton from "../../common/form/MyButton";
+import MyButton from "../../../common/form/MyButton";
 import UsePrevPropChild from "./UsePrevPropChild";
 
 export default function UsePrevPropParent() {

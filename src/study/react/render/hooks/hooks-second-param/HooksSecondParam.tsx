@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
-import MyButton from "../../common/form/MyButton";
+import MyButton from "../../../common/form/MyButton";
 
 export default function HooksSecondParam() {
 

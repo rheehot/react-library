@@ -1,6 +1,6 @@
 import * as React from "react";
 import FunctionalChild from "./FunctionalChild";
-import MyButton from "../../common/form/MyButton";
+import MyButton from "../../../common/form/MyButton";
 import {FunctionalMemoChild} from "./FunctionalMemoChild";
 
 interface AppProp {

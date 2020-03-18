@@ -1,5 +1,5 @@
 import * as React from "react";
-import MyButton from "../../common/form/MyButton";
+import MyButton from "../../../common/form/MyButton";
 
 interface AppProp {
     primitiveProp: number,
@@ -10,7 +10,7 @@ interface AppState {
     childState: number
 }
 
-export default class StatePropReferenceChild extends React.Component<AppProp, AppState> {
+export default class PropReRenderChild extends React.Component<AppProp, AppState> {
 
     constructor(props: AppProp) {
         super(props);
@@ -29,22 +29,9 @@ export default class StatePropReferenceChild extends React.Component<AppProp, Ap
         });
     }
 
-    shouldComponentUpdate(nextProps: Readonly<AppProp>, nextState: Readonly<AppState>, nextContext: any): boolean {
-
-        console.log(nextProps);
+    myPropConsoleLog = () => {
         console.log(this.props);
-        console.log(nextProps === this.props);
-        console.log(nextProps == this.props);
-        debugger;
-
-        console.log(nextState);
-        console.log(this.state);
-        console.log(nextState === this.state);
-        console.log(nextState == this.state);
-        debugger;
-
-        return true;
-    }
+    };
 
     render() {
 
@@ -53,9 +40,11 @@ export default class StatePropReferenceChild extends React.Component<AppProp, Ap
         return (
             <div className="component-wrap">
                 Child Component
-                <MyButton onClickHandler={this.justSetState}>setState호출(값은 유지)</MyButton>
+                <MyButton onClickHandler={this.justSetState}>setState호출(state유지)</MyButton>
+                <MyButton onClickHandler={this.myPropConsoleLog}>현재 prop 콘솔에 찍기</MyButton>
                 <div>부모에게받은 primitive prop = {this.props.primitiveProp}</div>
                 <div>부모에게받은 reference prop = {this.props.referenceProp}</div>
+                <div>부모에게받은 dynamic prop = {this.props.dynamicProp}</div>
             </div>
         );
     }

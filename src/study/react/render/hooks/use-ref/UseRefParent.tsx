@@ -1,6 +1,6 @@
 import * as React from "react"
 import UseRefChild from "./UseRefChild";
-import MyButton from "../../common/form/MyButton";
+import MyButton from "../../../common/form/MyButton";
 import {useState} from "react";
 
 export default function UseRefParent() {

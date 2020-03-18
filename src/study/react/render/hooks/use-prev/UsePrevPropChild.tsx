@@ -1,5 +1,5 @@
 import * as React from "react"
-import usePrevious from "../../common/custom/usePrevious";
+import usePrevious from "../../../common/custom/usePrevious";
 
 interface AppProp {
     referenceProp: Array<number>

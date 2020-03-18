@@ -1,6 +1,6 @@
 import * as React from "react";
 import PureComponentChild from "./PureComponentChild";
-import MyButton from "../../common/form/MyButton";
+import MyButton from "../../../common/form/MyButton";
 
 interface AppProp {
 
