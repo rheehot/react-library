@@ -11,9 +11,9 @@ export default function UseRefChild(props: AppProp) {
 
     useEffect(() => {
         prevProps.current = props.referenceProp;
-        console.log("prev-props=", prevProps.current);
     });
 
+    console.log("prev-props=", prevProps.current);
     console.log("props=", props.referenceProp);
     console.log("child component render");
 
