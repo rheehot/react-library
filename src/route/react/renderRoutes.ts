@@ -9,6 +9,7 @@ import StatePropReferenceParent from "../../study/react/render/state-prop-refere
 import ReactMemoParent from "../../study/react/render/react-memo/ReactMemoParent";
 import HooksSecondParam from "../../study/react/render/hooks-second-param/HooksSecondParam";
 import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
+import UseRefParent from "../../study/react/render/use-ref/UseRefParent";
 
 const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/render`;
 
@@ -77,4 +78,9 @@ export const renderRoutes = [
         component: HooksSecondParam,
         exact: true
     },
+    {
+        path: `${path}/use-ref`,
+        component: UseRefParent,
+        exact: true
+    }
 ];
