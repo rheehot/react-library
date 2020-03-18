@@ -1,20 +1,21 @@
 import * as React from "react"
+import {ChangeEvent, useEffect, useRef} from "react"
 import RadioGroup from "../../../../react/common/form/RadioGroup";
 import {getHeraldryFameStepAmount, HERALDRY_FAME_ARRAY} from "../../../system-setting/TradeSystem";
-import {ChangeEvent} from "react";
 import UserInfo from "../../../common/UserInfo";
-import {useMemo} from "react";
 import {UserTradeSettingProp} from "./UserTradeSettingContainer";
 import "../TradeMarketForm.scss";
 
 export default function UserTradeSetting(props: UserTradeSettingProp) {
 
-    const heraldryFameArray = useMemo(() => {
+    const heraldryFameArray = useRef([]);
+
+    useEffect(() => {
 
         const withoutLast = HERALDRY_FAME_ARRAY.slice(0, HERALDRY_FAME_ARRAY.length - 1);
         const last = HERALDRY_FAME_ARRAY[HERALDRY_FAME_ARRAY.length - 1];
 
-        return withoutLast.map((heraldryFame, index) => {
+        heraldryFameArray.current = withoutLast.map((heraldryFame, index) => {
             return {
                 value: heraldryFame.amount,
                 label: `${heraldryFame.amount}점 이상 ${HERALDRY_FAME_ARRAY[index + 1].amount}점 미만`
@@ -36,7 +37,7 @@ export default function UserTradeSetting(props: UserTradeSettingProp) {
             <div className="form-header">
                 <fieldset>가문명성 선택</fieldset>
             </div>
-            <RadioGroup selectValue={getHeraldryFameStepAmount(props.userInfo.heraldryFame)} valueAndLabelArray={heraldryFameArray} radioGroupName="HeraldryFame" selectHandler={setStateHeraldryFame}/>
+            <RadioGroup selectValue={getHeraldryFameStepAmount(props.userInfo.heraldryFame)} valueAndLabelArray={heraldryFameArray.current} radioGroupName="HeraldryFame" selectHandler={setStateHeraldryFame}/>
 
             <input type="checkbox" onChange={setStateHaveValuePackage} checked={props.userInfo.haveValuePackage}/>
             <label>밸류패키지 여부</label>
