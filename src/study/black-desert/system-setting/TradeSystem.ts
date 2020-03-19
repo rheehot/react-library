@@ -70,7 +70,7 @@ export function getDiffBenefitDetailInfo(userInfo: UserInfo, params: DiffBenefit
     const {sellPrice, buyPrice, investPrice, maxTradeQuantity} = params;
 
     if(sellPrice <= 0 || buyPrice <= 0)
-        return undefined;
+        return new DiffBenefitDetailInfo();
 
     const _realInvestPrice = (investPrice > 0) ? investPrice : BILLION;
     const benefit = getSettlementPrice(userInfo, sellPrice) - buyPrice;

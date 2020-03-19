@@ -7,6 +7,7 @@ import UserTradeSettingContainer from "../form-components/user-trade-setting/Use
 import {getDiffBenefitDetailInfo} from "../../system-setting/TradeSystem";
 import DiffBenefitDetailParams from "../../system-setting/DiffBenefitDetailParams";
 import DiffBenefitDetailResult from "./DiffBenefitDetailResult";
+import DiffBenefitDetailInfo from "../../system-setting/DiffBenefitDetailInfo";
 
 export default function DiffBenefitDetail(props: DiffBenefitProp) {
 
@@ -15,7 +16,7 @@ export default function DiffBenefitDetail(props: DiffBenefitProp) {
     const [investPrice, setInvestPrice] = useState("");
     const [maxTradeQuantity, setMaxTradeQuantity] = useState("");
 
-    const [info, setInfo] = useState();
+    const [info, setInfo] = useState(new DiffBenefitDetailInfo());
 
     function setStateBuyPrice(event: ChangeEvent<HTMLInputElement>) {
         setBuyPrice(event.target.value);
@@ -34,7 +35,6 @@ export default function DiffBenefitDetail(props: DiffBenefitProp) {
 
         const params = new DiffBenefitDetailParams(buyPrice, sellPrice, investPrice, maxTradeQuantity);
         const info = getDiffBenefitDetailInfo(props.userInfo, params);
-        console.log(info);
         setInfo(info);
     }
 
@@ -60,7 +60,8 @@ export default function DiffBenefitDetail(props: DiffBenefitProp) {
                     <InputItem type="number" labelText="*개당 판매 금액" onChangeHandler={setStateSellPrice} inputValue={sellPrice}/>
                     <MyButton className="float-right" onClickHandler={diffBenefitDetailFormSubmit} disable={!(buyPrice && sellPrice)}>조회</MyButton>
                 </form>
-                <DiffBenefitDetailResult result={info}/>
+                <DiffBenefitDetailResult investPrice={info.commaInvestPrice} maxTradeQuantity={info.commaMaxTradeQuantity}
+                                         minTradeCount={info.commaMinTradeCount} totalBenefit={info.commaTotalBenefit}/>
             </div>
         </div>
     )

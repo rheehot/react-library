@@ -11,7 +11,7 @@ export default class DiffBenefitDetailInfo {
     maxTradeQuantity: number;
     minTradeCount: number;
 
-    constructor(investPrice: number, totalBenefit: number, maxTradeQuantity: number, minTradeCount: number) {
+    constructor(investPrice: number = 0, totalBenefit: number = 0, maxTradeQuantity: number = 0, minTradeCount: number = 0) {
         this.commaInvestPrice = getNumberWithCommaAndNaturalNumber(investPrice);
         this.commaTotalBenefit = getNumberWithCommaAndNaturalNumber(totalBenefit);
         this.commaMaxTradeQuantity = getNumberWithCommaAndNaturalNumber(maxTradeQuantity);

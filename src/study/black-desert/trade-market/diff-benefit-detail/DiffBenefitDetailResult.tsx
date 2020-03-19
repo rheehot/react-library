@@ -1,37 +1,36 @@
 import * as React from "react"
-import DiffBenefitDetailInfo from "../../system-setting/DiffBenefitDetailInfo";
-import usePrevious from "../../../react/common/custom/usePrevious";
+import {memo} from "react";
 
 interface AppProp {
-    result: DiffBenefitDetailInfo
+    investPrice: string,
+    totalBenefit: string,
+    maxTradeQuantity: string,
+    minTradeCount: string
 }
 
-export default function DiffBenefitDetailResult({result}: AppProp) {
+export default memo(function DiffBenefitDetailResult(props: AppProp) {
 
-    const prevResult = usePrevious(result);
+    const minTradeCountLi = props.minTradeCount !== "0" ?
+        <li>{`위의 수익을 내기 위해서는 ${props.maxTradeQuantity}개씩 약 ${props.minTradeCount}회를 구매해야 합니다.`}</li> : null;
 
-    const minTradeCountLi = result?.minTradeCount > 0 ?
-        <li>{`위의 수익을 내기 위해서는 ${result.commaMaxTradeQuantity}개씩 약 ${result.commaMinTradeCount}회를 구매해야 합니다.`}</li> : null;
 
-    if( result?.commaMaxTradeQuantity !== prevResult?.commaMaxTradeQuantity ||
-        result?.commaMinTradeCount !== prevResult?.commaMinTradeCount ||
-        result?.commaInvestPrice !== prevResult?.commaInvestPrice ||
-        result?.commaTotalBenefit !== prevResult?.commaTotalBenefit ) {
+    if (props.investPrice !== "0" && props.totalBenefit !== "0") {
 
-        console.log("render");
+        console.log("child render");
 
         return (
             <div className="DiffBenefitDetailResult-wrap">
                 <h3 className="mt-20 mb-20">분석 결과</h3>
 
                 <ul className="mb-30">
-                    <li>{`${result.commaInvestPrice}은화를 투자했을 때 얻을 수 있는 이익은 약 ${result.commaTotalBenefit}은화 입니다.`}</li>
+                    <li>{`${props.investPrice}은화를 투자했을 때 얻을 수 있는 이익은 약 ${props.totalBenefit}은화 입니다.`}</li>
                     {minTradeCountLi}
                 </ul>
             </div>
         );
 
     } else {
-        return undefined;
+        return null;
     }
-}
+
+})
