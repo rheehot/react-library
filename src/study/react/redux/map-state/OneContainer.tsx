@@ -3,9 +3,9 @@ import {Component} from "react";
 import ComponentInfo from "../../common/redux/ComponentInfo";
 import {connect} from "react-redux";
 import {RootState} from "../store";
-import {MapStateOneAction} from "../one";
 import MyButton from "../../common/form/MyButton";
 import MapStateProp from "../MapStateProp";
+import {decrease, increase} from "./oneActions";
 
 class OneContainer extends Component<MapStateProp> {
 
@@ -37,12 +37,8 @@ function mapState(state: RootState) {
     }
 }
 
-function mapDispatch(dispatch: Function) {
-
-    return {
-        increase: () => dispatch({type: MapStateOneAction.INCREASE}),
-        decrease: () => dispatch({type: MapStateOneAction.DECREASE})
-    }
-}
+const mapDispatch = {
+    increase, decrease
+};
 
 export default connect(mapState, mapDispatch)(OneContainer)
