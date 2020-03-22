@@ -3,7 +3,7 @@ export enum MapStateOneAction {
     DECREASE = "map-state-one/DECREASE",
 }
 
-export interface OneState {
+interface OneState {
     primitiveState: number,
     referenceState: Array<number>
 }
