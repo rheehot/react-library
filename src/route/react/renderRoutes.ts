@@ -11,6 +11,7 @@ import HooksSecondParam from "../../study/react/render/hooks/hooks-second-param/
 import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 import UseRefParent from "../../study/react/render/hooks/use-ref/UseRefParent";
 import UsePrevPropParent from "../../study/react/render/hooks/use-prev/UsePrevPropParent";
+import LiteralParent from "../../study/react/render/common/literal/LiteralParent";
 
 const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/render`;
 
@@ -87,6 +88,11 @@ export const renderRoutes = [
     {
         path: `${path}/use-prev`,
         component: UsePrevPropParent,
+        exact: true
+    },
+    {
+        path: `${path}/literal`,
+        component: LiteralParent,
         exact: true
     }
 ];
