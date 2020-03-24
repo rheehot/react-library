@@ -22,7 +22,7 @@ class OneContainer extends Component<MapStateProp> {
         return (
             <div className="MapStateOneContainer-wrap">
                 <ComponentInfo primitiveProp={this.props.primitiveState} referenceProp={this.props.referenceState} message={"Case 2"}/>
-                <MyButton onClickHandler={this.props.increase}>dispatch increase</MyButton>
+                <MyButton onClickHandler={() => this.props.increase(2)}>dispatch increase</MyButton>
                 <MyButton onClickHandler={this.props.decrease}>dispatch decrease</MyButton>
             </div>
         )

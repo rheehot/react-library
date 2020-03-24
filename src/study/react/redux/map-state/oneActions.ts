@@ -1,7 +1,7 @@
 import {MapStateOneAction} from "../one";
 
-export function increase() {
-    return {type: MapStateOneAction.INCREASE};
+export function increase(num: number) {
+    return {type: MapStateOneAction.INCREASE, payload: num};
 }
 
 export function decrease() {

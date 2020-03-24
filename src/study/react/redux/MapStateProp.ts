@@ -1,6 +1,6 @@
 export default interface MapStateProp {
     primitiveState: number,
     referenceState: Array<number>,
-    increase: () => void,
+    increase: (num: number) => void,
     decrease: () => void,
 }
