@@ -1,6 +1,6 @@
-import Counter from "../../study/react/example/counter/Counter";
-import RenderProp from "../../study/react/example/render-prop/RenderProp";
-import TicTacToeHome from "../../study/react/example/tic-tac-toe/TicTacToeHome";
+import Counter from "../../containers/react/example/counter/Counter";
+import RenderProp from "../../containers/react/example/render-prop/RenderProp";
+import TicTacToeHome from "../../containers/react/example/tic-tac-toe/TicTacToeHome";
 import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 
 const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/example`;

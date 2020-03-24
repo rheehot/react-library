@@ -6,7 +6,7 @@ import MyFooter from "./MyFooter";
 import {reactHeader} from "./header/ReactHeader";
 import {cssHeader} from "./header/CssHeader";
 import HeaderInfo from "./header/HeaderInfo";
-import {getPathDirectoryName} from "../study/typescript/common/UrlUtil";
+import {getPathDirectoryName} from "../utils/common/UrlUtil";
 import {blackDesertHeader} from "./header/BlackDesertHeader";
 
 export default function Layout() {

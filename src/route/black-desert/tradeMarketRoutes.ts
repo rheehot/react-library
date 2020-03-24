@@ -1,6 +1,6 @@
 import {BLACK_DESERT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
-import DiffBenefitDetailContainer from "../../study/black-desert/trade-market/diff-benefit-detail/DiffBenefitDetailContainer";
-import TradeMarket from "../../study/black-desert/trade-market/TradeMarket";
+import DiffBenefitDetailContainer from "../../containers/black-desert/trade-market/diff-benefit-detail/DiffBenefitDetailContainer";
+import TradeMarket from "../../containers/black-desert/trade-market/TradeMarket";
 
 const path = `${BLACK_DESERT_FIRST_PATH_DIRECTORY_NAME}/trade-market`;
 

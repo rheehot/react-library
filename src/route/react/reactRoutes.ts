@@ -1,4 +1,4 @@
-import ReactMain from "../../study/react/ReactMain";
+import ReactMain from "../../containers/react/ReactMain";
 import {exampleRoutes} from "./exampleRoutes";
 import {formRoutes} from "./formRoutes";
 import {renderRoutes} from "./renderRoutes";

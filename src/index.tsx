@@ -4,10 +4,10 @@ import * as ReactDOM from "react-dom";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Layout from "./layout/Layout";
 import {Provider} from "react-redux";
-import {store} from "./store/store";
+import {store} from "./redux/store";
 
 import "./layout/reset.css";
-import "./study/css/cssPropertiesClass.scss";
+import "./containers/css/cssPropertiesClass.scss";
 
 ReactDOM.render(
     <Provider store={store}>

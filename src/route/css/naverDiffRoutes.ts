@@ -1,4 +1,4 @@
-import NaverDiffMine from "../../study/css/naver-diff/NaverDiffMine";
+import NaverDiffMine from "../../containers/css/naver-diff/NaverDiffMine";
 import {CSS_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 
 const path = `${CSS_FIRST_PATH_DIRECTORY_NAME}/naver-diff`;

@@ -1,4 +1,4 @@
-import MapStateApp from "../../study/react/redux/map-state/MapStateApp";
+import MapStateApp from "../../containers/react/redux/map-state/MapStateApp";
 import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 
 const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/redux`;

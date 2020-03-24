@@ -1,7 +1,7 @@
-import UserList from "../../study/react/form/user/UserList";
-import UserForm from "../../study/react/form/user/UserForm";
-import UsefulFormBug from "../../study/react/form/UsefulFormBug";
-import {PageType} from "../../study/typescript/common/PageType";
+import UserList from "../../containers/react/form/user/UserList";
+import UserForm from "../../containers/react/form/user/UserForm";
+import UsefulFormBug from "../../containers/react/form/UsefulFormBug";
+import {PageType} from "../../utils/common/PageType";
 import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
 
 const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/form`;

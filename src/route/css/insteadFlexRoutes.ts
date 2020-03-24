@@ -1,5 +1,5 @@
 import {CSS_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
-import FlexWrapExample from "../../study/css/instead-flex/FlexWrapExample";
+import FlexWrapExample from "../../containers/css/instead-flex/FlexWrapExample";
 
 const path = `${CSS_FIRST_PATH_DIRECTORY_NAME}/instead-flex`;
 

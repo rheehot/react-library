@@ -1,6 +1,6 @@
 import {tradeMarketRoutes} from "./tradeMarketRoutes";
 import {BLACK_DESERT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
-import BlackDesertMain from "../../study/black-desert/BlackDesertMain";
+import BlackDesertMain from "../../containers/black-desert/BlackDesertMain";
 
 export const routes = [
     {

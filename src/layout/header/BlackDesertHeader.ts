@@ -1,6 +1,6 @@
 import HeaderInfo from "./HeaderInfo";
 import {mainHeader} from "./MainHeader";
-import {hoverableHeaderList} from "../../study/typescript/header/header";
+import {hoverableHeaderList} from "../../utils/header/header";
 import {tradeMarketRoutes} from "../../route/black-desert/tradeMarketRoutes";
 
 export const blackDesertHeader: Array<Array<HeaderInfo>> = mainHeader.concat([
