@@ -8,19 +8,17 @@ export default function Counter() {
 
     const decrease = () => {
         setCurrentCount(prevCount => {
-            console.log(prevCount);
             return prevCount - 1;
         })
     };
     const increase = () => {
         setCurrentCount(prevCount => {
-            console.log(prevCount);
             return prevCount + 1;
         });
     };
 
     return (
-        <div className="component-wrap">
+        <div className="Counter-wrap">
             <h1>카운터</h1>
             <h2>{currentCount}</h2>
             <MyButton onClickHandler={increase}>+</MyButton>

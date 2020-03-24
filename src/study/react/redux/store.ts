@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import one from "./one";
+import {reducer as one} from "./one";
 import two from "./two";
 import {devTools} from "../../../store/store";
 
