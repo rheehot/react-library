@@ -1,12 +1,14 @@
 import {combineReducers, createStore} from "redux";
-import blackDesert, {BlackDesertState} from "./modules/blackDesert.";
+import blackDesert from "./modules/blackDesert.";
+import {reducer as one} from "./modules/one";
+import {reducer as two} from "./modules/two";
 
-export interface RootState {
-    blackDesert: BlackDesertState
-}
+export type RootState = ReturnType<typeof rootReducer>
 
 const rootReducer = combineReducers({
-    blackDesert
+    blackDesert,
+    one,
+    two
 });
 
 //@ts-ignore
