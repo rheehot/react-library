@@ -1,4 +1,4 @@
-import {Action, BaseAction, handleActions} from "redux-actions";
+import {Action, handleActions} from "redux-actions";
 
 export enum MapStateOneAction {
     INCREASE = "map-state-one/INCREASE",
@@ -22,7 +22,7 @@ export const reducer = handleActions({
         referenceState: [...state.referenceState, state.primitiveState]
     }),
 
-    [MapStateOneAction.DECREASE]: (state: OneState, action: BaseAction) => ({
+    [MapStateOneAction.DECREASE]: (state: OneState) => ({
         primitiveState: state.primitiveState - 1,
         referenceState: [...state.referenceState, state.primitiveState]
     })
