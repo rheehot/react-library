@@ -13,10 +13,25 @@ React / 마크업 공부를 위한 개인프로젝트 입니다.
 
 <hr>
 
-# Coding Standard
-<a href="https://docs.google.com/document/d/1h2AMf9uwz0L9bG8QSsT1iBnJlBZ0s2xdpiTSmyuZCVA/edit?usp=sharing">
-    Naming 관련
-</a>
+# Coding Standard Link
+
+<ul>
+    <li>
+        <a href="https://docs.google.com/document/d/1h2AMf9uwz0L9bG8QSsT1iBnJlBZ0s2xdpiTSmyuZCVA/edit?usp=sharing">
+            React
+        </a>
+    </li>
+    <li>
+        <a href="https://docs.google.com/document/d/1IFqi03PdPu-OzNqGPlBsEol7PJasiPtlD4S0HTTQBBE/edit?usp=sharing">
+            Hooks
+        </a>
+    </li>
+    <li>
+        <a href="https://docs.google.com/document/d/1s9nEeKM6YKIiC56vUU1p3CKearmoIvKUIDz-5C7LCO8/edit?usp=sharing">
+            Redux
+        </a>
+    </li>
+</ul>
 
 # React Class Component Guide
 
