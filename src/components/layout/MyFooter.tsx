@@ -4,7 +4,7 @@ import Clock from "../clock/Clock";
 export default function MyFooter() {
 
     return (
-        <footer>
+        <footer className="MyFooter-wrap">
             <Clock/>
         </footer>
     )

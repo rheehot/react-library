@@ -4,7 +4,7 @@ import Routes from "../../route/routes";
 export default function AppMain() {
 
     return (
-        <div className="main">
+        <div className="AppMain-wrap">
             <Routes/>
         </div>
     );

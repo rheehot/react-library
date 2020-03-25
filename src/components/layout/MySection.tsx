@@ -5,7 +5,7 @@ import AppMain from "./AppMain";
 export default function MySection() {
 
     return (
-        <section>
+        <section className="MySection-wrap">
             <MyAside/>
             <AppMain/>
         </section>

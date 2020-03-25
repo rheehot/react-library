@@ -32,7 +32,7 @@ export default function MyHeader(props: AppProp) {
     );
 
     return (
-        <header>
+        <header className="MyHeader-wrap">
             <nav className="dropdown-nav">
                 {headerUls}
             </nav>
