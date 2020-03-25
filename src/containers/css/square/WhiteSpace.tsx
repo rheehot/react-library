@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./WhiteSpace.scss";
 
 interface AppProp {
 

@@ -1,6 +1,7 @@
 import * as React from "react";
 import MineSweeperTr from "./MineSweeperTr";
 import mineMapInit from "./mineMapInit";
+import "./MineSweeper.scss";
 
 interface AppProp {
 
@@ -38,7 +39,7 @@ export default class MineSweeper extends React.Component<AppProp, AppState> {
         });
 
         return (
-            <div className="component-wrap">
+            <div className="MineSweeper-wrap">
                 {mineTrs}
             </div>
         )
