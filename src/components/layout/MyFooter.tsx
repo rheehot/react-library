@@ -1,5 +1,5 @@
 import * as React from "react";
-import Clock from "../components/clock/Clock";
+import Clock from "../clock/Clock";
 
 export default function MyFooter() {
 

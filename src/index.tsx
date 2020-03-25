@@ -2,11 +2,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import Layout from "./layout/Layout";
+import Layout from "./components/layout/Layout";
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
 
-import "./layout/reset.css";
+import "./components/layout/reset.css";
 import "./containers/css/cssPropertiesClass.scss";
 
 ReactDOM.render(
