@@ -1,7 +1,7 @@
 import UserInfo from "../../classes/black-desert/UserInfo";
 import HeraldryFame from "../../containers/black-desert/trade-market/HeraldryFame";
-import DiffBenefitDetailParams from "../../containers/black-desert/system-setting/DiffBenefitDetailParams";
-import DiffBenefitDetailInfo from "../../containers/black-desert/system-setting/DiffBenefitDetailInfo";
+import DiffBenefitDetailParams from "../../classes/black-desert/DiffBenefitDetailParams";
+import DiffBenefitDetailInfo from "../../classes/black-desert/DiffBenefitDetailInfo";
 import {BILLION} from "../common/NumberUnit";
 
 export const HERALDRY_FAME_ARRAY = Object.freeze([

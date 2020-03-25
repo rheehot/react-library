@@ -1,4 +1,4 @@
-import {getNumberWithCommaAndNaturalNumber} from "../../../utils/black-desert/TradeSystem";
+import {getNumberWithCommaAndNaturalNumber} from "../../utils/black-desert/TradeSystem";
 
 export default class DiffBenefitDetailInfo {
     commaInvestPrice: string;

@@ -5,9 +5,9 @@ import MyButton from "../../../../components/form/MyButton";
 import {DiffBenefitProp} from "../../../../components/black-desert/form/diff-benefit/DiffBenefitContainer";
 import UserTradeSettingContainer from "../../../../components/black-desert/form/user-trade-setting/UserTradeSettingContainer";
 import {getDiffBenefitDetailInfo} from "../../../../utils/black-desert/TradeSystem";
-import DiffBenefitDetailParams from "../../system-setting/DiffBenefitDetailParams";
+import DiffBenefitDetailParams from "../../../../classes/black-desert/DiffBenefitDetailParams";
 import DiffBenefitDetailResult from "./DiffBenefitDetailResult";
-import DiffBenefitDetailInfo from "../../system-setting/DiffBenefitDetailInfo";
+import DiffBenefitDetailInfo from "../../../../classes/black-desert/DiffBenefitDetailInfo";
 
 export default function DiffBenefitDetail(props: DiffBenefitProp) {
 

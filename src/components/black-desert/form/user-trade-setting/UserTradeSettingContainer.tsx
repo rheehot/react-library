@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import UserTradeSetting from "./UserTradeSetting";
 import {RootState} from "../../../../redux/store";
 import UserInfo from "../../../../classes/black-desert/UserInfo";
-import {BlackDesertAction} from "../../../../redux/modules/blackDesert.";
+import {changeUserInfo} from "../../../../redux/modules/blackDesert";
 
 export interface UserTradeSettingProp {
     userInfo: UserInfo,
@@ -23,11 +23,8 @@ function mapState(rootState: RootState) {
     }
 }
 
-function mapDispatch(dispatch: Function) {
-
-    return {
-        changeUserInfo: (userInfo: UserInfo) => dispatch({type: BlackDesertAction.CHANGE_USER_INFO, payload: userInfo})
-    }
-}
+const mapDispatch = {
+    changeUserInfo
+};
 
 export default connect(mapState, mapDispatch)(UserTradeSettingContainer)
