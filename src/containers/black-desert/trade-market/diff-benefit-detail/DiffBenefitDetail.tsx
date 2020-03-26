@@ -18,30 +18,30 @@ export default function DiffBenefitDetail(props: DiffBenefitProp) {
 
     const [info, setInfo] = useState(new DiffBenefitDetailInfo());
 
-    function setStateBuyPrice(event: ChangeEvent<HTMLInputElement>) {
+    const setStateBuyPrice = (event: ChangeEvent<HTMLInputElement>) => {
         setBuyPrice(event.target.value);
-    }
-    function setStateSellPrice(event: ChangeEvent<HTMLInputElement>) {
+    };
+    const setStateSellPrice = (event: ChangeEvent<HTMLInputElement>) => {
         setSellPrice(event.target.value);
-    }
-    function setStateInvestPrice(event: ChangeEvent<HTMLInputElement>) {
+    };
+    const setStateInvestPrice = (event: ChangeEvent<HTMLInputElement>) => {
         setInvestPrice(event.target.value);
-    }
-    function setStateMaxTradeQuantity(event: ChangeEvent<HTMLInputElement>) {
+    };
+    const setStateMaxTradeQuantity = (event: ChangeEvent<HTMLInputElement>) => {
         setMaxTradeQuantity(event.target.value);
-    }
+    };
 
-    function resultInfo() {
+    const resultInfo = () => {
 
         const params = new DiffBenefitDetailParams(buyPrice, sellPrice, investPrice, maxTradeQuantity);
         const info = getDiffBenefitDetailInfo(props.userInfo, params);
         setInfo(info);
-    }
+    };
 
-    function diffBenefitDetailFormSubmit(event: MouseEvent<HTMLButtonElement>) {
+    const diffBenefitDetailFormSubmit = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         resultInfo();
-    }
+    };
 
     useEffect(() => ( resultInfo() ), [props.userInfo]);
 

@@ -1,5 +1,5 @@
 import UserInfo from "../../classes/black-desert/UserInfo";
-import HeraldryFame from "../../containers/black-desert/trade-market/HeraldryFame";
+import HeraldryFame from "../../classes/black-desert/HeraldryFame";
 import DiffBenefitDetailParams from "../../classes/black-desert/DiffBenefitDetailParams";
 import DiffBenefitDetailInfo from "../../classes/black-desert/DiffBenefitDetailInfo";
 import {BILLION} from "../common/NumberUnit";

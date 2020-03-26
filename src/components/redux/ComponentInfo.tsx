@@ -13,20 +13,20 @@ export default function ComponentInfo(props: AppProp) {
 
     const dummyUseState = useState(0);
 
-    function setStatedummyState() {
+    const setStatedummyState = () => {
         dummyUseState[1](prevDummayState => prevDummayState + 1);
-    }
+    };
 
-    function setStateButton() {
+    const setStateButton = () => {
 
-        if(props.setStateButton)
+        if (props.setStateButton)
             return (
                 <><MyButton onClickHandler={setStatedummyState}>setState call</MyButton><br/></>
             );
 
         else
             return null;
-    }
+    };
 
     return (
         <div className="ComponentInfo-wrap">

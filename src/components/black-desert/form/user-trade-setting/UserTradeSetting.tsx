@@ -24,13 +24,13 @@ export default function UserTradeSetting(props: UserTradeSettingProp) {
         }).concat({value: last.amount, label: `${last.amount}점 이상`});
     }()));
 
-    function setStateHaveValuePackage(event: ChangeEvent<HTMLInputElement>) {
-        props.changeUserInfo(Object.assign<{}, UserInfo, {haveValuePackage: boolean}>({}, props.userInfo, {haveValuePackage: event.target.checked}));
-    }
+    const setStateHaveValuePackage = (event: ChangeEvent<HTMLInputElement>) => {
+        props.changeUserInfo(Object.assign<{}, UserInfo, { haveValuePackage: boolean }>({}, props.userInfo, {haveValuePackage: event.target.checked}));
+    };
 
-    function setStateHeraldryFame(checkValue: string) {
-        props.changeUserInfo(Object.assign<{}, UserInfo, {heraldryFame: number}>({}, props.userInfo, {heraldryFame: Number(checkValue)}));
-    }
+    const setStateHeraldryFame = (checkValue: string) => {
+        props.changeUserInfo(Object.assign<{}, UserInfo, { heraldryFame: number }>({}, props.userInfo, {heraldryFame: Number(checkValue)}));
+    };
 
     return (
         <form className={`trade-market-form ${props.className ? props.className : ""}`}>

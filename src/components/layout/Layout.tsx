@@ -17,14 +17,14 @@ export default function Layout() {
         return getHeader(firstPath);
     });
 
-    function headerChange(headerInfo: HeaderInfo) {
+    const headerChange = (headerInfo: HeaderInfo) => {
 
         const firstPath = getPathDirectoryName(headerInfo.to, 0);
         const header = getHeader(firstPath);
         setHeaderUls(header);
-    }
+    };
 
-    function getHeader(firstPath: string): Array<Array<HeaderInfo>> {
+    const getHeader = (firstPath: string): Array<Array<HeaderInfo>> => {
 
         switch (firstPath) {
             case "css":
@@ -36,7 +36,7 @@ export default function Layout() {
             default:
                 return reactHeader;
         }
-    }
+    };
 
     return (
         <>
