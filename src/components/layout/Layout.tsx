@@ -11,19 +11,6 @@ import {blackDesertHeader} from "./header/BlackDesertHeader";
 
 export default function Layout() {
 
-    const [headerUls, setHeaderUls] = useState(() => {
-
-        const firstPath = getPathDirectoryName(location.pathname, 0);
-        return getHeader(firstPath);
-    });
-
-    const headerChange = (headerInfo: HeaderInfo) => {
-
-        const firstPath = getPathDirectoryName(headerInfo.to, 0);
-        const header = getHeader(firstPath);
-        setHeaderUls(header);
-    };
-
     const getHeader = (firstPath: string): Array<Array<HeaderInfo>> => {
 
         switch (firstPath) {
@@ -36,6 +23,19 @@ export default function Layout() {
             default:
                 return reactHeader;
         }
+    };
+
+    const [headerUls, setHeaderUls] = useState(() => {
+
+        const firstPath = getPathDirectoryName(location.pathname, 0);
+        return getHeader(firstPath);
+    });
+
+    const headerChange = (headerInfo: HeaderInfo) => {
+
+        const firstPath = getPathDirectoryName(headerInfo.to, 0);
+        const header = getHeader(firstPath);
+        setHeaderUls(header);
     };
 
     return (
