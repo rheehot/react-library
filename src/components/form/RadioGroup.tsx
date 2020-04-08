@@ -10,25 +10,25 @@ interface AppProp {
 
 export default function RadioGroup(props: AppProp) {
 
-    function onChangeHandler(event: ChangeEvent<HTMLInputElement>) {
+    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         props.selectHandler(event.target.value);
-    }
+    };
 
-    function lis() {
+    const lis = () => {
         return (
             props.valueAndLabelArray.map((valueAndLabel, index) => {
 
                 return (
                     <li key={`li-${index}`}>
                         <input type="radio" name="radioGroupName" value={valueAndLabel.value} onChange={onChangeHandler}
-                        checked={props.selectValue == valueAndLabel.value}/>
+                               checked={props.selectValue == valueAndLabel.value}/>
                         <label>{valueAndLabel.label}</label>
                     </li>
                 )
 
             })
         );
-    }
+    };
 
     return (
         <ul className="RadioGroup-wrap">

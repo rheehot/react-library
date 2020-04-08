@@ -13,24 +13,24 @@ export default function BreakEvenPoint(props: BreakEvenPointProp) {
     const [currentPrice, setCurrentPrice] = useState("");
     const [breakEvenPoint, setBreakEvenPoint] = useState(0);
 
-    function setStateCurrentPrice(event: ChangeEvent<HTMLInputElement>) {
+    const setStateCurrentPrice = (event: ChangeEvent<HTMLInputElement>) => {
 
         setCurrentPrice(event.target.value);
-    }
+    };
 
-    function setStateBreakEvenPoint() {
+    const setStateBreakEvenPoint = () => {
         setBreakEvenPoint(getBreakEvenPrice(props.userInfo, currentPrice));
-    }
+    };
 
-    function breakEvenPointFormSubmit(event: MouseEvent<HTMLButtonElement>) {
+    const breakEvenPointFormSubmit = (event: MouseEvent<HTMLButtonElement>) => {
 
         event.preventDefault();
         setStateBreakEvenPoint();
-    }
+    };
 
-    function breakEvenPointInfo() {
+    const breakEvenPointInfo = () => {
         alert(`${currentPrice}은화에 구매를 하면, 나중에 수수료를 따져봤을 때 ${breakEvenPoint}은화 이상 올라갈 때 되팔아야 수익이 생깁니다.`);
-    }
+    };
 
     useEffect(() => {
 

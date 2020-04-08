@@ -12,14 +12,14 @@ interface AppProp {
 
 export default function MyButton(props: AppProp) {
 
-    function onClickHandler(event: MouseEvent<HTMLButtonElement>) {
+    const onClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
 
-        if(! props.disable)
+        if (!props.disable)
             props.onClickHandler(event);
 
         else
             event.preventDefault();
-    }
+    };
 
     return (
         <button type={props.type} className={`my-button ${props.className} ${ props.disable ? "button-disable" : ""}`} onClick={onClickHandler}>

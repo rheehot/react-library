@@ -16,25 +16,25 @@ export default function DiffBenefit(props: DiffBenefitProp) {
     const [sellPrice, setSellPrice] = useState("");
     const [diffBenefit, setDiffBenefit] = useState(0);
 
-    function setStateBuyPrice(event: ChangeEvent<HTMLInputElement>) {
+    const setStateBuyPrice = (event: ChangeEvent<HTMLInputElement>) => {
         setBuyPrice(event.target.value);
-    }
+    };
 
-    function setStateSellPrice(event: ChangeEvent<HTMLInputElement>) {
+    const setStateSellPrice = (event: ChangeEvent<HTMLInputElement>) => {
         setSellPrice(event.target.value);
-    }
+    };
 
-    function setStateDiffBenefit() {
+    const setStateDiffBenefit = () => {
         const sellPriceWithoutTax = getSettlementPrice(props.userInfo, sellPrice);
         const _buyPrice = Number(buyPrice);
         setDiffBenefit(sellPriceWithoutTax - _buyPrice);
-    }
+    };
 
-    function diffBenefitFormSubmit(event: MouseEvent<HTMLButtonElement>) {
+    const diffBenefitFormSubmit = (event: MouseEvent<HTMLButtonElement>) => {
 
         event.preventDefault();
         setStateDiffBenefit();
-    }
+    };
 
     useEffect(() => {
 

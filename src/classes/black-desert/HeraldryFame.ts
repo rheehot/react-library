@@ -1,5 +1,4 @@
 export default class HeraldryFame {
-
     amount: number;
     taxReduction: number;
 
