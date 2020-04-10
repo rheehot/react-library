@@ -6,6 +6,10 @@
   "scripts": {
     "serve": "webpack-dev-server --mode development"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/developer-choi/react-library"
+  },
   "keywords": [],
   "author": "YuJinChoe",
   "license": "ISC",
