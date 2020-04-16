@@ -1,8 +1,9 @@
 import {Action, createAction, handleActions} from "redux-actions";
+import {PROJECT_NAME} from "../store";
 
 //Actions
-const TWO_INCREASE = "project-name/two/TWO_INCREASE";
-const TWO_DECREASE = "project-name/two/TWO_DECREASE";
+const TWO_INCREASE = `/${PROJECT_NAME}/two/TWO_INCREASE`;
+const TWO_DECREASE = `/${PROJECT_NAME}/two/TWO_DECREASE`;
 
 //Action Creators
 export const twoIncrease = createAction(TWO_INCREASE);

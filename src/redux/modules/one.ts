@@ -1,8 +1,9 @@
 import {Action, createAction, handleActions} from "redux-actions";
+import {PROJECT_NAME} from "../store";
 
 //Actions
-const ONE_INCREASE = "react-library/one/ONE_INCREASE";
-const ONE_DECREASE = "react-library/one/DECREASE";
+const ONE_INCREASE = `/${PROJECT_NAME}/one/ONE_INCREASE`;
+const ONE_DECREASE = `/${PROJECT_NAME}/one/ONE_DECREASE`;
 
 //Action Creators
 export const oneIncrease = createAction(ONE_INCREASE);

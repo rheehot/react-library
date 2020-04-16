@@ -3,6 +3,8 @@ import {reducer as one} from "./modules/one";
 import {reducer as two} from "./modules/two";
 import {reducer as blackDesert} from "./modules/blackDesert";
 
+export const PROJECT_NAME = "react-library";
+
 const rootReducer = combineReducers({
     one,
     two,
