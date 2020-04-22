@@ -1,12 +1,12 @@
 import {combineReducers, createStore} from "redux";
-import {reducer as one} from "./modules/one";
-import {reducer as two} from "./modules/two";
-import {reducer as blackDesert} from "./modules/blackDesert";
+import {reducer as blackDesert} from "./modules/blackDesert"
+import {reducer as counter} from "./modules/counter";
+
+export const PROJECT_NAME = "react-library";
 
 const rootReducer = combineReducers({
-    one,
-    two,
-    blackDesert
+    blackDesert,
+    counter
 });
 
 export type RootState = ReturnType<typeof rootReducer>

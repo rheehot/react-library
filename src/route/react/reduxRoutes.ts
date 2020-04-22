@@ -1,12 +1,15 @@
-import MapStateApp from "../../containers/react/redux/map-state/MapStateApp";
 import {REACT_FIRST_PATH_DIRECTORY_NAME} from "../firstPath";
+import CounterContainer from "../../containers/react/redux/counter/CounterContainer";
 
 const path = `${REACT_FIRST_PATH_DIRECTORY_NAME}/redux`;
 
 export const reduxRoutes = [
     {
-        path: `${path}/map-state`,
-        component: MapStateApp,
+        path: `${path}/counter`,
+        component: CounterContainer,
         exact: true,
+        meta: {
+            name: "Counter"
+        }
     }
 ];
