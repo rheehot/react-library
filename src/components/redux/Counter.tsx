@@ -10,6 +10,7 @@ export default function Counter(props: CounterProp) {
             <TwoDataTypeInfo primitive={props.primitive} reference={props.reference}/>
             <MyButton onClickHandler={props.increase}>+</MyButton>
             <MyButton onClickHandler={props.decrease}>-</MyButton>
+            <MyButton onClickHandler={props.increaseAsync}>+ 1초</MyButton>
         </div>
     )
 }

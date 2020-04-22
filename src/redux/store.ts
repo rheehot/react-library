@@ -1,8 +1,8 @@
-import {combineReducers, createStore} from "redux";
+import {combineReducers, createStore, applyMiddleware} from "redux";
 import {reducer as blackDesert} from "./modules/blackDesert";
 import {reducer as counter} from "./modules/counter";
-
-export const PROJECT_NAME = "react-library";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./sagas/sagas";
 
 const rootReducer = combineReducers({
     blackDesert,
@@ -13,4 +13,8 @@ export type RootState = ReturnType<typeof rootReducer>
 
 //@ts-ignore
 export const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-export const store = createStore(rootReducer, devTools);
+const sagaMiddleware = createSagaMiddleware();
+
+export const store = createStore(rootReducer, devTools, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+

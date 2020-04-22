@@ -3,11 +3,12 @@ import {connect} from "react-redux";
 import {RootState} from "../../../../redux/store";
 import Counter from "../../../../components/redux/Counter";
 import {TwoDataType} from "../../../../interfaces/TwoDataType";
-import {CounterState, decrease, increase} from "../../../../redux/modules/counter";
+import {CounterState, decrease, increase, increaseAsync} from "../../../../redux/modules/counter";
 
 export interface CounterProp extends TwoDataType{
     increase: typeof increase;
     decrease: typeof decrease;
+    increaseAsync: typeof increaseAsync;
 }
 
 function CounterContainer(props: CounterProp) {
@@ -24,7 +25,7 @@ function mapState(rootState: RootState): CounterState {
 }
 
 const mapDispatch = {
-    increase, decrease
+    increase, decrease, increaseAsync
 }
 
 export default connect(mapState, mapDispatch)(CounterContainer)
