@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./Layout.scss";
 import {Link} from "react-router-dom";
-import HeaderInfo from "./header/HeaderInfo";
+import HeaderInfo from "../../classes/layout/HeaderInfo";
 
 interface AppProp {
     headerUls: Array<Array<HeaderInfo>>,

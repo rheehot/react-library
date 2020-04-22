@@ -9,7 +9,11 @@ import {RouteComponentProps} from "react-router-dom";
 import {MouseEvent, ChangeEvent, useEffect, useMemo, useRef, useState} from "react";
 import {PageType} from "../../../../utils/common/PageType";
 
-export default function UserForm(props: RouteComponentProps) {
+interface MatchParam {
+    id: string
+}
+
+export default function UserForm(props: RouteComponentProps<MatchParam>) {
 
     const pageType = useMemo(() => {
 
@@ -84,8 +88,7 @@ export default function UserForm(props: RouteComponentProps) {
 
     async function fetchData() {
 
-        const userId = props.match.params.id;
-        const {id, name, email} = await getUserInfo(userId);
+        const {id, name, email} = await getUserInfo(Number(props.match.params.id));
 
         setId(String(id));
         setName(name);

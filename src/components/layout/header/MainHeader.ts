@@ -1,4 +1,4 @@
-import HeaderInfo from "./HeaderInfo";
+import HeaderInfo from "../../../classes/layout/HeaderInfo";
 
 export const mainHeader: Array<Array<HeaderInfo>> = [
     [

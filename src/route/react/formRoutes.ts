@@ -36,6 +36,9 @@ export const formRoutes = [
     {
         path: `${path}/basic`,
         component: UsefulFormBug,
-        exact: true
+        exact: true,
+        meta: {
+            hoverable: false
+        }
     },
 ];

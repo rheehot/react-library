@@ -1,4 +1,4 @@
-import HeaderInfo from "../../components/layout/header/HeaderInfo";
+import HeaderInfo from "../../classes/layout/HeaderInfo";
 
 export function hoverableHeaderList(firstHeaderName: string, routes: Array<any>): Array<HeaderInfo> {
     const firstHeader = new HeaderInfo((routes[0].path), firstHeaderName);

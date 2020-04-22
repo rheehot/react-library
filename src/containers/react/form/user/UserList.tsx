@@ -5,10 +5,7 @@ import MyButton from "../../../../components/form/MyButton";
 import {RouteComponentProps} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-interface AppProp extends RouteComponentProps {
-}
-
-export default function UserList(props: AppProp) {
+export default function UserList(props: RouteComponentProps) {
 
 	const [stateUserList, setStateUserList] = useState([]);
 

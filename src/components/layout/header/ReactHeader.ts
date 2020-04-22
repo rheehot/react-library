@@ -1,4 +1,4 @@
-import HeaderInfo from "./HeaderInfo";
+import HeaderInfo from "../../../classes/layout/HeaderInfo";
 import {mainHeader} from "./MainHeader";
 import {exampleRoutes} from "../../../route/react/exampleRoutes";
 import {formRoutes} from "../../../route/react/formRoutes";

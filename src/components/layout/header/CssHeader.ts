@@ -1,4 +1,4 @@
-import HeaderInfo from "./HeaderInfo";
+import HeaderInfo from "../../../classes/layout/HeaderInfo";
 import {mainHeader} from "./MainHeader";
 import {hoverableHeaderList} from "../../../utils/header/header";
 import {naverDiffRoutes} from "../../../route/css/naverDiffRoutes";

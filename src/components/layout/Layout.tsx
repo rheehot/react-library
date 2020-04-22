@@ -5,7 +5,7 @@ import MySection from "./MySection";
 import MyFooter from "./MyFooter";
 import {reactHeader} from "./header/ReactHeader";
 import {cssHeader} from "./header/CssHeader";
-import HeaderInfo from "./header/HeaderInfo";
+import HeaderInfo from "../../classes/layout/HeaderInfo";
 import {getPathDirectoryName} from "../../utils/common/UrlUtil";
 import {blackDesertHeader} from "./header/BlackDesertHeader";
 
