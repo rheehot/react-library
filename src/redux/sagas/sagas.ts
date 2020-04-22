@@ -2,7 +2,7 @@ import {put, takeEvery, all} from "redux-saga/effects";
 import {INCREASE, INCREASE_ASYNC} from "../modules/counter";
 
 function delay(ms: number) {
-    new Promise(res => setTimeout(res, ms));
+    return new Promise(res => setTimeout(res, ms));
 }
 
 function* helloSaga() {
@@ -10,6 +10,7 @@ function* helloSaga() {
 }
 
 function* increaseAsync () {
+    console.log("generator increaseAsync() saga call");
     yield delay(5000);
     yield put({type: INCREASE});
 }
