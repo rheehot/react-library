@@ -1,17 +1,16 @@
-import {PROJECT_NAME} from "../store";
-import {Action, createAction} from "redux-actions";
+import {createAction, handleActions} from "redux-actions";
 import {TwoDataType} from "../../interfaces/TwoDataType";
 
 //Actions
-const INCREASE = `${PROJECT_NAME}/counter/INCREASE`;
-const DECREASE = `${PROJECT_NAME}/counter/DECREASE`;
+const INCREASE = "react-library/counter/INCREASE";
+const DECREASE = "react-library/counter/DECREASE";
 
 //Action Creators
 export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
 
 //state and reducer
-export interface CounterState extends TwoDataType {
+export interface CounterState extends TwoDataType{
 }
 
 const initialState: CounterState = {
@@ -19,13 +18,16 @@ const initialState: CounterState = {
     reference: [0]
 };
 
-export function reducer(state = initialState, action: Action<undefined>) {
+export const reducer = handleActions({
 
-    console.log(initialState);
-    debugger;
+    [INCREASE]: (state: CounterState) => ({
+        primitive: state.primitive + 1,
+        reference: [...state.reference, state.primitive + 1]
+    }),
 
-    switch (action.type) {
-        default:
-            return initialState;
-    }
-}
+    [DECREASE]: (state: CounterState) => ({
+        primitive: state.primitive - 1,
+        reference: [...state.reference, state.primitive - 1]
+    }),
+
+}, initialState);

@@ -1,9 +1,8 @@
 import {Action, createAction, handleActions} from "redux-actions";
 import UserInfo from "../../classes/black-desert/UserInfo";
-import {PROJECT_NAME} from "../store";
 
 //Actions
-const CHANGE_USER_INFO = `${PROJECT_NAME}/blackDesert/CHANGE_USER_INFO`;
+const CHANGE_USER_INFO = `react-library/blackDesert/CHANGE_USER_INFO`;
 
 //Action Creators
 export const changeUserInfo = createAction(CHANGE_USER_INFO);

@@ -1,8 +1,6 @@
 import {combineReducers, createStore} from "redux";
-import {reducer as blackDesert} from "./modules/blackDesert"
+import {reducer as blackDesert} from "./modules/blackDesert";
 import {reducer as counter} from "./modules/counter";
-
-export const PROJECT_NAME = "react-library";
 
 const rootReducer = combineReducers({
     blackDesert,

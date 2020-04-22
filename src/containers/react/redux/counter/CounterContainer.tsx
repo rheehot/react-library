@@ -1,9 +1,9 @@
 import * as React from "react"
 import {connect} from "react-redux";
-import {CounterState, decrease, increase} from "../../../../redux/modules/counter";
 import {RootState} from "../../../../redux/store";
 import Counter from "../../../../components/redux/Counter";
 import {TwoDataType} from "../../../../interfaces/TwoDataType";
+import {CounterState, decrease, increase} from "../../../../redux/modules/counter";
 
 export interface CounterProp extends TwoDataType{
     increase: () => void
