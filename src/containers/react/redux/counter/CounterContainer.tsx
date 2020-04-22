@@ -6,8 +6,8 @@ import {TwoDataType} from "../../../../interfaces/TwoDataType";
 import {CounterState, decrease, increase} from "../../../../redux/modules/counter";
 
 export interface CounterProp extends TwoDataType{
-    increase: () => void
-    decrease: () => void
+    increase: typeof increase;
+    decrease: typeof decrease;
 }
 
 function CounterContainer(props: CounterProp) {
