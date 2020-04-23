@@ -1,13 +1,13 @@
 import * as React from "react"
 import {useEffect, useRef} from "react";
 
-export default function usePrevious<T>(propValue: T, initialValue: T = undefined): T {
+export default function usePrevious<T>(propValue: T) {
 
-    const ref = useRef<T>(initialValue);
+    const ref = useRef<T>();
 
     useEffect(() => {
         ref.current = propValue;
     });
 
-    return ref.current;
+    return ref.current as T;
 }
