@@ -11,7 +11,7 @@ function* helloSaga() {
 
 function* increaseAsync () {
     console.log("generator increaseAsync() saga call");
-    yield delay(5000);
+    yield delay(1000);
     yield put({type: INCREASE});
 }
 

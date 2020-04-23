@@ -18,6 +18,8 @@ function CounterContainer(props: CounterProp) {
 
 function mapState(rootState: RootState): CounterState {
 
+    console.log("counter map state call");
+
     return {
         primitive: rootState.counter.primitive,
         reference: rootState.counter.reference

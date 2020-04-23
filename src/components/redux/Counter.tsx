@@ -7,7 +7,7 @@ export default function Counter(props: CounterProp) {
     
     return (
         <div className="Counter-wrap">
-            <TwoDataTypeInfo primitive={props.primitive} reference={props.reference}/>
+            <TwoDataTypeInfo primitive={props.primitive} reference={props.reference} message="일반 카운터"/>
             <MyButton onClickHandler={props.increase}>+</MyButton>
             <MyButton onClickHandler={props.decrease}>-</MyButton>
             <MyButton onClickHandler={props.increaseAsync}>+ 1초</MyButton>
