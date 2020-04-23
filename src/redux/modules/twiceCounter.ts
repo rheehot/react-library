@@ -1,5 +1,5 @@
 import {createAction, handleActions} from "redux-actions";
-import {TwoDataType} from "../../interfaces/TwoDataType";
+import {NumberType} from "../../interfaces/NumberType";
 
 //Actions
 const TWICE_INCREASE = "react-library/twiceCounter/TWICE_INCREASE";
@@ -12,24 +12,21 @@ export const twiceDecrease = createAction(TWICE_DECREASE);
 export const notChange = createAction(NOT_CHANGE);
 
 //state and reducer
-export interface TwiceCounterState extends TwoDataType {
+export interface TwiceCounterState extends NumberType {
 }
 
 const initialState: TwiceCounterState = {
     primitive: 0,
-    reference: [0]
 };
 
 export const reducer = handleActions<TwiceCounterState>({
 
     [TWICE_INCREASE]: state => ({
         primitive: state.primitive + 2,
-        reference: [...state.reference, state.primitive + 2]
     })
     ,
     [TWICE_DECREASE]: state => ({
         primitive: state.primitive - 2,
-        reference: [...state.reference, state.primitive - 2]
     }),
 
     [NOT_CHANGE]: state => state

@@ -1,5 +1,5 @@
 import {createAction, handleActions} from "redux-actions";
-import {TwoDataType} from "../../interfaces/TwoDataType";
+import {NumberType} from "../../interfaces/NumberType";
 
 //Actions
 export const INCREASE = "react-library/counter/INCREASE";
@@ -12,23 +12,20 @@ export const decrease = createAction(DECREASE);
 export const increaseAsync = createAction(INCREASE_ASYNC);
 
 //state and reducer
-export interface CounterState extends TwoDataType{
+export interface CounterState extends NumberType {
 }
 
 const initialState: CounterState = {
     primitive: 0,
-    reference: [0]
 };
 
 export const reducer = handleActions<CounterState>({
 
     [INCREASE]: state => ({
         primitive: state.primitive + 1,
-        reference: [...state.reference, state.primitive + 1]
     }),
 
     [DECREASE]: state => ({
         primitive: state.primitive - 1,
-        reference: [...state.reference, state.primitive - 1]
     })
 }, initialState);

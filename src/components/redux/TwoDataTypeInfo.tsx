@@ -1,8 +1,9 @@
 import * as React from "react"
-import {TwoDataType} from "../../interfaces/TwoDataType";
 
-interface TwoDataTypeInfoProp extends TwoDataType {
+interface TwoDataTypeInfoProp {
     message: string;
+    primitive: number;
+    reference?: number[];
 }
 
 export default function TwoDataTypeInfo(props: TwoDataTypeInfoProp) {

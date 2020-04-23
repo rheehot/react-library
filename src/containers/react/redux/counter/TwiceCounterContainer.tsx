@@ -1,11 +1,11 @@
 import * as React from "react"
 import {connect} from "react-redux";
 import TwiceCounter from "../../../../components/redux/TwiceCounter";
-import {TwoDataType} from "../../../../interfaces/TwoDataType";
 import {notChange, TwiceCounterState, twiceDecrease, twiceIncrease} from "../../../../redux/modules/twiceCounter";
 import {RootState} from "../../../../redux/store";
+import {NumberType} from "../../../../interfaces/NumberType";
 
-export interface TwiceCounterProp extends TwoDataType {
+export interface TwiceCounterProp extends NumberType {
     twiceIncrease: typeof twiceIncrease;
     twiceDecrease: typeof twiceDecrease;
     notChange: typeof notChange;
@@ -22,7 +22,6 @@ function mapState(rootState: RootState): TwiceCounterState {
 
     return {
         primitive: rootState.twiceCounter.primitive,
-        reference: rootState.twiceCounter.reference
     };
 }
 

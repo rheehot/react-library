@@ -9,7 +9,7 @@ export default function TwiceCounter(props: TwiceCounterProp) {
 
     return (
         <div className="TwiceCounter-wrap">
-            <TwoDataTypeInfo primitive={props.primitive} reference={props.reference} message="2배씩 증감하는 카운터"/>
+            <TwoDataTypeInfo primitive={props.primitive} message="2배씩 증감하는 카운터"/>
             <MyButton onClickHandler={props.twiceIncrease}>+</MyButton>
             <MyButton onClickHandler={props.twiceDecrease}>-</MyButton>
             <MyButton onClickHandler={props.notChange}>Not Change</MyButton>

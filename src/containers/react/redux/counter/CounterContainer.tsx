@@ -2,10 +2,10 @@ import * as React from "react"
 import {connect} from "react-redux";
 import {RootState} from "../../../../redux/store";
 import Counter from "../../../../components/redux/Counter";
-import {TwoDataType} from "../../../../interfaces/TwoDataType";
 import {CounterState, decrease, increase, increaseAsync} from "../../../../redux/modules/counter";
+import {NumberType} from "../../../../interfaces/NumberType";
 
-export interface CounterProp extends TwoDataType{
+export interface CounterProp extends NumberType {
     increase: typeof increase;
     decrease: typeof decrease;
     increaseAsync: typeof increaseAsync;
@@ -22,7 +22,6 @@ function mapState(rootState: RootState): CounterState {
 
     return {
         primitive: rootState.counter.primitive,
-        reference: rootState.counter.reference
     };
 }
 
